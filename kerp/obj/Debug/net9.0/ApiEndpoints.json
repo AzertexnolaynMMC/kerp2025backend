@@ -1,0 +1,517 @@
+[
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "DictionaryAdminAll",
+    "RelativePath": "api/Dictionary/DictionaryAdminAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "proc",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "PageInsert",
+    "RelativePath": "api/Dictionary/DictionaryInsertRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.Dictionary.DictionaryInsertRequest, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "DictionarySelect",
+    "RelativePath": "api/Dictionary/DictionarySelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "proc",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "DictionarySelectLanguage",
+    "RelativePath": "api/Dictionary/DictionarySelectLanguage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "DictionaryStatus",
+    "RelativePath": "api/Dictionary/DictionaryStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Dictionary.DictionaryStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DictionaryController",
+    "Method": "DictionaryUpdate",
+    "RelativePath": "api/Dictionary/DictionaryUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Dictionary.DictionaryUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.HelperController",
+    "Method": "LoginTypeLangs",
+    "RelativePath": "api/Helper/LoginTypeLangs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.LanguageController",
+    "Method": "LanguageActiveAndDeaktive",
+    "RelativePath": "api/Language/LanguageActiveAndDeaktive",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Language.LanguageActiveAndDeaktive",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.LanguageController",
+    "Method": "LanguageAdminAll",
+    "RelativePath": "api/Language/LanguageAdminAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.LanguageController",
+    "Method": "PageInsert",
+    "RelativePath": "api/Language/LanguageInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Language.LanguageInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.LanguageController",
+    "Method": "LanguageUpdate",
+    "RelativePath": "api/Language/LanguageUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Language.LanguageUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageController",
+    "Method": "PageAdminAll",
+    "RelativePath": "api/Page/PageAdminAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageController",
+    "Method": "PageInsert",
+    "RelativePath": "api/Page/PageInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Pages.PageInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageController",
+    "Method": "PagesActiveAndDeactiveAsync",
+    "RelativePath": "api/Page/PagesActiveAndDeactive",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Pages.PagesActiveAndDeactive",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageController",
+    "Method": "PageUpdate",
+    "RelativePath": "api/Page/PageUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Pages.PageUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageUserController",
+    "Method": "PageInsert",
+    "RelativePath": "api/PageUser/PageUserInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.PageUser.PageUserInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageUserController",
+    "Method": "PageUserSelectAdmin",
+    "RelativePath": "api/PageUser/PageUserSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageUserController",
+    "Method": "PageUserSelectPage",
+    "RelativePath": "api/PageUser/PageUserSelectPage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageUserController",
+    "Method": "PageUserSelectUser",
+    "RelativePath": "api/PageUser/PageUserSelectUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PageUserController",
+    "Method": "PageUserStatus",
+    "RelativePath": "api/PageUser/PageUserStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.PageUser.PageUserStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.SectionController",
+    "Method": "SectionInsert",
+    "RelativePath": "api/Section/SectionInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Section.SectionInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.SectionController",
+    "Method": "SectionSelectAdmin",
+    "RelativePath": "api/Section/SectionSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.SectionController",
+    "Method": "SectionStatus",
+    "RelativePath": "api/Section/SectionStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Section.SectionStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.SectionController",
+    "Method": "SectionStructureSelect",
+    "RelativePath": "api/Section/SectionStructureSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.SectionController",
+    "Method": "SectionUpdate",
+    "RelativePath": "api/Section/SectionUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Section.SectionUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.StructureController",
+    "Method": "StructureInsert",
+    "RelativePath": "api/Structure/StructureInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Structure.StructureInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.StructureController",
+    "Method": "StructureSelectAdmin",
+    "RelativePath": "api/Structure/StructureSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.StructureController",
+    "Method": "StructureStatus",
+    "RelativePath": "api/Structure/StructureStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Structure.StructureStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.StructureController",
+    "Method": "StructureUpdate",
+    "RelativePath": "api/Structure/StructureUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Structure.StructureUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "LoginUser",
+    "RelativePath": "api/User/LoginUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.SystemModel.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserRefleshPage",
+    "RelativePath": "api/User/UserRefleshPage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.WorkOrderTypeController",
+    "Method": "SectionInsert",
+    "RelativePath": "api/WorkOrderType/WorkOrderTypeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.WorkOrderType.WorkOrderTypeInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.WorkOrderTypeController",
+    "Method": "WorkOrderTypeSelectAdmin",
+    "RelativePath": "api/WorkOrderType/WorkOrderTypeSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.WorkOrderTypeController",
+    "Method": "SectionStatus",
+    "RelativePath": "api/WorkOrderType/WorkOrderTypeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.WorkOrderType.WorkOrderTypeStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.WorkOrderTypeController",
+    "Method": "SectionUpdate",
+    "RelativePath": "api/WorkOrderType/WorkOrderTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.WorkOrderType.WorkOrderTypeUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[kerp.WeatherForecast, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

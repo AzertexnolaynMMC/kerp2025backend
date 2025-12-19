@@ -1,0 +1,133 @@
+﻿using kerp.Contexts;
+using kerp.Hubs.PageHub;
+using kerp.Repository.AdminRepository.DictionaryRepository;
+using kerp.Repository.AdminRepository.LanguageRepository;
+using kerp.Repository.AdminRepository.PageRepository;
+using kerp.Repository.AdminRepository.PageUserRepository;
+using kerp.Repository.AdminRepository.SectionRepository;
+using kerp.Repository.AdminRepository.StructureRepository;
+using kerp.Repository.AdminRepository.WorkOrderTypeRepository;
+using kerp.Repository.HelperRepository;
+using kerp.Repository.UserRepository;
+using kerp.Service;
+using kerp.SystemModel;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Text;
+
+namespace kerp
+{
+    public class Startup(IConfiguration configuration)
+    {
+        public IConfiguration Configuration { get; } = configuration;
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureServices(IServiceCollection services)
+        {
+
+            // Veritabanı bağlantısı
+            _ = services.AddDbContext<KerpContext>(options =>
+
+            //1
+              options.UseSqlServer("data source=.;Initial Catalog=kerpdb;User Id=SA;Password=Az@rtexnol@ynSQL;TrustServerCertificate=True;")
+
+            //2
+            //  options.UseSqlServer("data source=.;Initial Catalog=kerp;User Id=kerpadmin;Password=Az@rtexnol@ynSQL;TrustServerCertificate=True;")
+            );
+
+
+            _ = services.AddMvc();
+
+            // CORS ayarları
+            _ = services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                    builder.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true).AllowCredentials());
+            });
+
+            // JWT ayarları
+            JwtSettings jwtSettings = new();
+            Configuration.Bind("Jwt", jwtSettings);
+            _ = services.AddSingleton(jwtSettings);
+
+            // JWT kimlik doğrulama yapılandırması
+            _ = services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings.Issuer,
+                    ValidAudience = jwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            // Repository servisleri
+            _ = services.AddScoped<IUserRepository, UserRepository>();
+            _ = services.AddScoped<IHelperRepository, HelperRepository>();
+            _ = services.AddScoped<IPageRepository, PageRepository>();
+            _ = services.AddScoped<ILanguageRepository, LanguageRepository>();
+            _ = services.AddScoped<IDictionaryRepository, DictionaryRepository>();
+            _ = services.AddScoped<IStructureRepository, StructureRepository>();
+            _ = services.AddScoped<ISectionRepository, SectionRepository>();
+            _ = services.AddScoped<IWorkOrderTypeRepository, WorkOrderTypeRepository>();
+            _ = services.AddScoped<IPageUserRepository, PageUserRepository>();
+
+
+            // TokenService servisi
+            _ = services.AddSingleton<TokenService>();
+
+            // SignalR
+            _ = services.AddSignalR();
+
+            // Swagger
+            _ = services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Kerp API", Version = "v1" });
+            });
+
+            _ = services.AddRazorPages();
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            _ = app.UseCors("CorsPolicy");
+            _ = app.UseSwagger();
+            _ = app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kerp API v1"));
+
+            _ = app.UseExceptionHandler("/Error");
+            _ = env.IsDevelopment() ? app.UseDeveloperExceptionPage() : app.UseHsts();
+            _ = app.UseHttpsRedirection();
+            _ = app.UseStaticFiles();
+
+            _ = app.UseRouting();
+
+            _ = app.UseAuthentication(); // Authentication middleware
+            _ = app.UseAuthorization();
+
+            _ = app.UseEndpoints(endpoints =>
+            {
+                _ = endpoints.MapControllers();
+                _ = endpoints.MapHub<PageHub>("/hubs/page");
+                //   _ = endpoints.MapHub<DoneHub>("api/CrashDone");
+                // _ = endpoints.MapHub<ResearchHub>("api/CrashResearch");
+            });
+        }
+    }
+
+
+
+
+}

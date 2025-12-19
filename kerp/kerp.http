@@ -1,0 +1,6 @@
+@kerp_HostAddress = http://localhost:5168
+
+GET {{kerp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
