@@ -43,6 +43,9 @@ namespace kerp.Controllers.Admin
             }
 
         }
+
+
+
         [HttpGet("PageUserSelectPage")]
         public IActionResult PageUserSelectPage()
         {
@@ -143,11 +146,16 @@ namespace kerp.Controllers.Admin
         }
 
         [HttpPost("PageUserInsert")]
-        public IActionResult PageInsert([FromBody] List<PageUserInsert> PagesActiveAndDeactive)
+        public async Task<IActionResult> PageInsertAsync([FromBody] List<PageUserInsert> PagesActiveAndDeactive)
         {
+
             try
             {
                 List<PageUserSelectAdmin>? result = _repository.Post(PagesActiveAndDeactive);
+                await _hubContext.Clients.All.SendAsync(
+   "PagesActiveAndDeactiveChanged",
+   1
+);
 
                 return Ok(new CustomerResponseModel<List<PageUserSelectAdmin>>
                 {

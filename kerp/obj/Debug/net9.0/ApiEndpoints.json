@@ -158,6 +158,116 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.Admin.ManagerEmployeController",
+    "Method": "PageInsert",
+    "RelativePath": "api/ManagerEmploye/ManagerEmployeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.ManagerEmploye.ManagerEmployeInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.ManagerEmployeController",
+    "Method": "ManagerEmployeSelect",
+    "RelativePath": "api/ManagerEmploye/ManagerEmployeSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.ManagerEmployeController",
+    "Method": "ManagerEmployeStatus",
+    "RelativePath": "api/ManagerEmploye/ManagerEmployeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.ManagerEmploye.ManagerEmployeStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.ManagerEmployeController",
+    "Method": "ManagerEmployeUsers",
+    "RelativePath": "api/ManagerEmploye/ManagerEmployeUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MaterialController",
+    "Method": "MaterialInsert",
+    "RelativePath": "api/Material/MaterialInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Material.MaterialInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MaterialController",
+    "Method": "MaterialSelectAdmin",
+    "RelativePath": "api/Material/MaterialSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MaterialController",
+    "Method": "MaterialStatus",
+    "RelativePath": "api/Material/MaterialStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Material.MaterialStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MaterialController",
+    "Method": "MaterialUpdate",
+    "RelativePath": "api/Material/MaterialUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Material.MaterialUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.Admin.PageController",
     "Method": "PageAdminAll",
     "RelativePath": "api/Page/PageAdminAll",
@@ -217,7 +327,7 @@
   },
   {
     "ContainingType": "kerp.Controllers.Admin.PageUserController",
-    "Method": "PageInsert",
+    "Method": "PageInsertAsync",
     "RelativePath": "api/PageUser/PageUserInsert",
     "HttpMethod": "POST",
     "IsController": true,
@@ -272,6 +382,64 @@
       {
         "Name": "PagesActiveAndDeactive",
         "Type": "kerp.Prosedur.Admin.PageUser.PageUserStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.ProjectController",
+    "Method": "ProjectInsert",
+    "RelativePath": "api/Project/ProjectInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Project.ProjectInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.ProjectController",
+    "Method": "ProjectSelectAdmin",
+    "RelativePath": "api/Project/ProjectSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.ProjectController",
+    "Method": "ProjectStatus",
+    "RelativePath": "api/Project/ProjectStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Project.ProjectStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.ProjectController",
+    "Method": "ProjectUpdate",
+    "RelativePath": "api/Project/ProjectUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Project.ProjectUpdate",
         "IsRequired": true
       }
     ],

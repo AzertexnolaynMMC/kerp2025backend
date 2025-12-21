@@ -174,3 +174,4 @@ E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\refint\kerp.dll
 E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\kerp.pdb
 E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\kerp.genruntimeconfig.cache
 E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\ref\kerp.dll
+E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\kerp.sourcelink.json

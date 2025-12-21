@@ -2,8 +2,11 @@
 using kerp.Hubs.PageHub;
 using kerp.Repository.AdminRepository.DictionaryRepository;
 using kerp.Repository.AdminRepository.LanguageRepository;
+using kerp.Repository.AdminRepository.ManagerEmployeRepository;
+using kerp.Repository.AdminRepository.MaterialRepository;
 using kerp.Repository.AdminRepository.PageRepository;
 using kerp.Repository.AdminRepository.PageUserRepository;
+using kerp.Repository.AdminRepository.ProjectRepository;
 using kerp.Repository.AdminRepository.SectionRepository;
 using kerp.Repository.AdminRepository.StructureRepository;
 using kerp.Repository.AdminRepository.WorkOrderTypeRepository;
@@ -83,6 +86,9 @@ namespace kerp
             _ = services.AddScoped<ISectionRepository, SectionRepository>();
             _ = services.AddScoped<IWorkOrderTypeRepository, WorkOrderTypeRepository>();
             _ = services.AddScoped<IPageUserRepository, PageUserRepository>();
+            _ = services.AddScoped<IManagerEmployeRepository, ManagerEmployeRepository>();
+            _ = services.AddScoped<IMaterialRepository, MaterialRepository>();
+            _ = services.AddScoped<IProjectRepository, ProjectRepository>();
 
 
             // TokenService servisi

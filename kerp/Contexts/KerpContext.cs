@@ -1,8 +1,11 @@
 ﻿using kerp.Entities;
 using kerp.Prosedur.Admin.Dictionary;
 using kerp.Prosedur.Admin.Language;
+using kerp.Prosedur.Admin.ManagerEmploye;
+using kerp.Prosedur.Admin.Material;
 using kerp.Prosedur.Admin.Pages;
 using kerp.Prosedur.Admin.PageUser;
+using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
 using kerp.Prosedur.Admin.WorkOrderType;
 using kerp.Prosedur.Helpers;
@@ -23,9 +26,13 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
-     public virtual DbSet<PageUserSelectPage> PageUserSelectPage { get; set; }
-     public virtual DbSet<PageUserSelectUser> PageUserSelectUser { get; set; }
-     public virtual DbSet<PageUserSelectAdmin> PageUserSelectAdmin { get; set; }
+    public virtual DbSet<ProjectSelectAdmin> ProjectSelectAdmin { get; set; }
+    public virtual DbSet<MaterialSelectAdmin> MaterialSelectAdmin { get; set; }
+    public virtual DbSet<ManagerEmployeUsers> ManagerEmployeUsers { get; set; }
+    public virtual DbSet<ManagerEmployeSelect> ManagerEmployeSelect { get; set; }
+    public virtual DbSet<PageUserSelectPage> PageUserSelectPage { get; set; }
+    public virtual DbSet<PageUserSelectUser> PageUserSelectUser { get; set; }
+    public virtual DbSet<PageUserSelectAdmin> PageUserSelectAdmin { get; set; }
     public virtual DbSet<WorkOrderTypeSelectAdmin> WorkOrderTypeSelectAdmin { get; set; }
     public virtual DbSet<SectionStructureSelect> SectionStructureSelect { get; set; }
     public virtual DbSet<SectionSelectAdmin> SectionSelectAdmin { get; set; }
@@ -76,8 +83,12 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<SectionSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PageUserSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserPage>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<ManagerEmployeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<ManagerEmployeUsers>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<WorkOrderTypeSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<LoginTypeLang>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MaterialSelectAdmin>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<ProjectSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLogin>().HasKey(q => q.UserId);
 
         //bitti
