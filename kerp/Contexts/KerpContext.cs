@@ -1,12 +1,16 @@
 ﻿using kerp.Entities;
+using kerp.Prosedur.Admin.Asset;
+using kerp.Prosedur.Admin.AssetTitle;
 using kerp.Prosedur.Admin.Dictionary;
 using kerp.Prosedur.Admin.Language;
+using kerp.Prosedur.Admin.Logs;
 using kerp.Prosedur.Admin.ManagerEmploye;
 using kerp.Prosedur.Admin.Material;
 using kerp.Prosedur.Admin.Pages;
 using kerp.Prosedur.Admin.PageUser;
 using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
+using kerp.Prosedur.Admin.UserConMachine;
 using kerp.Prosedur.Admin.WorkOrderType;
 using kerp.Prosedur.Helpers;
 using kerp.Prosedur.Structure;
@@ -26,6 +30,15 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<SqlLogSelect> SqlLogSelect { get; set; }
+    public virtual DbSet<AssetTitleSelectAdmin> AssetTitleSelectAdmin { get; set; }
+    public virtual DbSet<AssetSelectAdmin> AssetSelectAdmin { get; set; }
+    public virtual DbSet<AssetSelectByAssetType> AssetSelectByAssetType { get; set; }
+    public virtual DbSet<AssetSelectByStructure> AssetSelectByStructure { get; set; }
+    public virtual DbSet<AssetSelectByAssetTitle> AssetSelectByAssetTitle { get; set; }
+    public virtual DbSet<UserConMachineSelectMachine> UserConMachineSelectMachine { get; set; }
+    public virtual DbSet<UserConMachineSelectUser> UserConMachineSelectUser { get; set; }
+    public virtual DbSet<UserConMachineSelectAdmin> UserConMachineSelectAdmin { get; set; }
     public virtual DbSet<ProjectSelectAdmin> ProjectSelectAdmin { get; set; }
     public virtual DbSet<MaterialSelectAdmin> MaterialSelectAdmin { get; set; }
     public virtual DbSet<ManagerEmployeUsers> ManagerEmployeUsers { get; set; }
@@ -72,7 +85,18 @@ public partial class KerpContext : DbContext
         //basladi
         _ = modelBuilder.Entity<DictionarySelect>().HasKey(q => q.ExternalId);
         _ = modelBuilder.Entity<UserRefleshPage>().HasKey(q => q.UserId);
+        _ = modelBuilder.Entity<UserLogin>().HasKey(q => q.UserId);
+
+        _ = modelBuilder.Entity<SqlLogSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<AssetTitleSelectAdmin>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<AssetSelectAdmin>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<AssetSelectByAssetType>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<AssetSelectByStructure>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<AssetSelectByAssetTitle>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserConMachineSelectMachine>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserConMachineSelectUser>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DictionarySelectLanguage>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserConMachineSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PageUserSelectPage>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PageUserSelectUser>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DictionaryAdminAll>().HasKey(q => q.Id);
@@ -89,7 +113,6 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<LoginTypeLang>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MaterialSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<ProjectSelectAdmin>().HasKey(q => q.Id);
-        _ = modelBuilder.Entity<UserLogin>().HasKey(q => q.UserId);
 
         //bitti
         _ = modelBuilder.Entity<LoginType>(entity =>

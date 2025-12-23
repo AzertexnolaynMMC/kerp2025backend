@@ -1,17 +1,5 @@
 ﻿using kerp.Contexts;
 using kerp.Hubs.PageHub;
-using kerp.Repository.AdminRepository.DictionaryRepository;
-using kerp.Repository.AdminRepository.LanguageRepository;
-using kerp.Repository.AdminRepository.ManagerEmployeRepository;
-using kerp.Repository.AdminRepository.MaterialRepository;
-using kerp.Repository.AdminRepository.PageRepository;
-using kerp.Repository.AdminRepository.PageUserRepository;
-using kerp.Repository.AdminRepository.ProjectRepository;
-using kerp.Repository.AdminRepository.SectionRepository;
-using kerp.Repository.AdminRepository.StructureRepository;
-using kerp.Repository.AdminRepository.WorkOrderTypeRepository;
-using kerp.Repository.HelperRepository;
-using kerp.Repository.UserRepository;
 using kerp.Service;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -75,7 +63,19 @@ namespace kerp
                     ClockSkew = TimeSpan.Zero
                 };
             });
-
+            _ = services.Scan(scan => scan
+                // Proyektin bütün referenced assembly-lərini scan edir
+                .FromApplicationDependencies(a =>
+                    a.FullName != null && a.FullName.StartsWith("kerp")) // istəsəniz bunu silib hamısını scan etdirə bilərsiniz
+                .AddClasses(c => c
+                    .Where(t =>
+                        t.Name.EndsWith("Repository") &&
+                        t.Namespace != null &&
+                        t.Namespace.StartsWith("kerp.Repository")))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime()
+            );
+            /*
             // Repository servisleri
             _ = services.AddScoped<IUserRepository, UserRepository>();
             _ = services.AddScoped<IHelperRepository, HelperRepository>();
@@ -89,8 +89,9 @@ namespace kerp
             _ = services.AddScoped<IManagerEmployeRepository, ManagerEmployeRepository>();
             _ = services.AddScoped<IMaterialRepository, MaterialRepository>();
             _ = services.AddScoped<IProjectRepository, ProjectRepository>();
+            _ = services.AddScoped<IUserConMachineRepository, UserConMachineRepository>();
 
-
+            */
             // TokenService servisi
             _ = services.AddSingleton<TokenService>();
 

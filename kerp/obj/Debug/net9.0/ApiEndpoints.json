@@ -1,5 +1,151 @@
 [
   {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetInsert",
+    "RelativePath": "api/Asset/AssetInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Asset.AssetInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetSelectAdmin",
+    "RelativePath": "api/Asset/AssetSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetSelectByAssetTitle",
+    "RelativePath": "api/Asset/AssetSelectByAssetTitle",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetSelectByAssetType",
+    "RelativePath": "api/Asset/AssetSelectByAssetType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetSelectByStructure",
+    "RelativePath": "api/Asset/AssetSelectByStructure",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetStatus",
+    "RelativePath": "api/Asset/AssetStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Asset.AssetStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetController",
+    "Method": "AssetUpdate",
+    "RelativePath": "api/Asset/AssetUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Asset.AssetUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetTitleController",
+    "Method": "ProjectInsert",
+    "RelativePath": "api/AssetTitle/AssetTitleInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.AssetTitle.AssetTitleInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetTitleController",
+    "Method": "AssetTitleSelectAdmin",
+    "RelativePath": "api/AssetTitle/AssetTitleSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetTitleController",
+    "Method": "ProjectStatus",
+    "RelativePath": "api/AssetTitle/AssetTitleStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.AssetTitle.AssetTitleStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.AssetTitleController",
+    "Method": "ProjectUpdate",
+    "RelativePath": "api/AssetTitle/AssetTitleUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.AssetTitle.AssetTitleUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.Admin.DictionaryController",
     "Method": "DictionaryAdminAll",
     "RelativePath": "api/Dictionary/DictionaryAdminAll",
@@ -155,6 +301,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.LogsController",
+    "Method": "SqlLogSelect",
+    "RelativePath": "api/Logs/SqlLogSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -599,6 +755,68 @@
         "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserConMachineController",
+    "Method": "UserConMachineSelectAdmin",
+    "RelativePath": "api/UserConMachine/UserConMachineSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserConMachineController",
+    "Method": "UserConMachineSelectMachine",
+    "RelativePath": "api/UserConMachine/UserConMachineSelectMachine",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserConMachineController",
+    "Method": "UserConMachineSelectUser",
+    "RelativePath": "api/UserConMachine/UserConMachineSelectUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserConMachineController",
+    "Method": "SectionInsert",
+    "RelativePath": "api/UserConMachine/WorkOrderTypeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.UserConMachine.UserConMachineInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserConMachineController",
+    "Method": "SectionStatus",
+    "RelativePath": "api/UserConMachine/WorkOrderTypeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.UserConMachine.UserConMachineStatus",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
