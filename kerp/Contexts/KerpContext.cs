@@ -11,8 +11,14 @@ using kerp.Prosedur.Admin.PageUser;
 using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
 using kerp.Prosedur.Admin.UserConMachine;
+using kerp.Prosedur.Admin.UserLogins;
 using kerp.Prosedur.Admin.WorkOrderType;
 using kerp.Prosedur.Helpers;
+using kerp.Prosedur.Hr.Users.Mail;
+using kerp.Prosedur.Hr.Users.Phone;
+using kerp.Prosedur.Hr.Users.Section;
+using kerp.Prosedur.Hr.Users.Structur;
+using kerp.Prosedur.Hr.Users.User;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Users.UserPage;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +36,14 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<UserLoginsSelectLoginType> UserLoginsSelectLoginType { get; set; }
+    public virtual DbSet<UserLoginsSelectUser> UserLoginsSelectUser { get; set; }
+    public virtual DbSet<UserLoginsSelectAdmin> UserLoginsSelectAdmin { get; set; }
+    public virtual DbSet<UserSelectSection> UserSelectSection { get; set; }
+    public virtual DbSet<UserSelectStructure> UserSelectStructure { get; set; }
+    public virtual DbSet<UserSelectPhone> UserSelectPhone { get; set; }
+    public virtual DbSet<UserSelectMail> UserSelectMail { get; set; }
+    public virtual DbSet<UserSelectAdmin> UserSelectAdmin { get; set; }
     public virtual DbSet<SqlLogSelect> SqlLogSelect { get; set; }
     public virtual DbSet<AssetTitleSelectAdmin> AssetTitleSelectAdmin { get; set; }
     public virtual DbSet<AssetSelectAdmin> AssetSelectAdmin { get; set; }
@@ -87,6 +101,14 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<UserRefleshPage>().HasKey(q => q.UserId);
         _ = modelBuilder.Entity<UserLogin>().HasKey(q => q.UserId);
 
+        _ = modelBuilder.Entity<UserLoginsSelectLoginType>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserLoginsSelectUser>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserLoginsSelectAdmin>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectSection>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectStructure>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectMail>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectPhone>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<SqlLogSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<AssetTitleSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<AssetSelectAdmin>().HasKey(q => q.Id);

@@ -246,6 +246,200 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserInsert",
+    "RelativePath": "api/Hr/User/UserInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.User.UserInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserInsertMail",
+    "RelativePath": "api/Hr/User/UserInsertMail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.Mail.UserInsertMail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserInsertPhone",
+    "RelativePath": "api/Hr/User/UserInsertPhone",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.Phone.UserInsertPhone",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserSelectAdmin",
+    "RelativePath": "api/Hr/User/UserSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserSelectMail",
+    "RelativePath": "api/Hr/User/UserSelectMail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserSelectPhone",
+    "RelativePath": "api/Hr/User/UserSelectPhone",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserSelectSection",
+    "RelativePath": "api/Hr/User/UserSelectSection",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserSelectStructure",
+    "RelativePath": "api/Hr/User/UserSelectStructure",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserStatus",
+    "RelativePath": "api/Hr/User/UserStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.User.UserStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserStatusMail",
+    "RelativePath": "api/Hr/User/UserStatusMail",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.Mail.UserStatusMail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserStatusPhone",
+    "RelativePath": "api/Hr/User/UserStatusPhone",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.User.UserStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserUpdate",
+    "RelativePath": "api/Hr/User/UserUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.User.UserUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserUpdateMail",
+    "RelativePath": "api/Hr/User/UserUpdateMail",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.Mail.UserUpdatetMail",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Hr.UserController",
+    "Method": "UserUpdatePhone",
+    "RelativePath": "api/Hr/User/UserUpdatePhone",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Hr.Users.Phone.UserUpdatetPhone",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.Admin.LanguageController",
     "Method": "LanguageActiveAndDeaktive",
     "RelativePath": "api/Language/LanguageActiveAndDeaktive",
@@ -816,6 +1010,84 @@
       {
         "Name": "PagesActiveAndDeactive",
         "Type": "kerp.Prosedur.Admin.UserConMachine.UserConMachineStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsInsert",
+    "RelativePath": "api/UserLogins/UserLoginsInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.UserLogins.UserLoginsInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsSelectAdmin",
+    "RelativePath": "api/UserLogins/UserLoginsSelectAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsSelectLoginType",
+    "RelativePath": "api/UserLogins/UserLoginsSelectLoginType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsSelectUser",
+    "RelativePath": "api/UserLogins/UserLoginsSelectUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsStatus",
+    "RelativePath": "api/UserLogins/UserLoginsStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.UserLogins.UserLoginsStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserLoginsController",
+    "Method": "UserLoginsUpdate",
+    "RelativePath": "api/UserLogins/UserLoginsUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.UserLogins.UserLoginsUpdate",
         "IsRequired": true
       }
     ],
