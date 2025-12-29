@@ -20,7 +20,8 @@ using kerp.Prosedur.Hr.Users.Section;
 using kerp.Prosedur.Hr.Users.Structur;
 using kerp.Prosedur.Hr.Users.User;
 using kerp.Prosedur.Structure;
-using kerp.Prosedur.Users.UserPage;
+using kerp.Prosedur.Users;
+using kerp.Prosedur.Users.UserPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace kerp.Contexts;
@@ -36,6 +37,17 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<UserSelectPhoneCheck> UserSelectPhoneCheck { get; set; }
+    public virtual DbSet<UserSelectPhoneSingle> UserSelectPhoneSingle { get; set; }
+    public virtual DbSet<UserSelectMailSingle> UserSelectMailSingle { get; set; }
+    public virtual DbSet<UserSelectMailCheck> UserSelectMailCheck { get; set; }
+    public virtual DbSet<UserSelectShortInfo> UserSelectShortInfo { get; set; }
+    public virtual DbSet<AppLog> AppLog { get; set; }
+    public virtual DbSet<UserPhoneInfoSelect> UserPhoneInfoSelect { get; set; }
+    public virtual DbSet<UserUserLoginsSelect> UserUserLoginsSelect { get; set; }
+    public virtual DbSet<UserUserConMachineSelect> UserUserConMachineSelect { get; set; }
+    public virtual DbSet<UserManagerEmployeSelect> UserManagerEmployeSelect { get; set; }
+    public virtual DbSet<UserMailInfoSelect> UserMailInfoSelect { get; set; }
     public virtual DbSet<UserLoginsSelectLoginType> UserLoginsSelectLoginType { get; set; }
     public virtual DbSet<UserLoginsSelectUser> UserLoginsSelectUser { get; set; }
     public virtual DbSet<UserLoginsSelectAdmin> UserLoginsSelectAdmin { get; set; }
@@ -83,7 +95,6 @@ public partial class KerpContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    public virtual DbSet<UserLogin> UserLogins { get; set; }
 
     public virtual DbSet<UserMail> UserMails { get; set; }
 
@@ -101,6 +112,18 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<UserRefleshPage>().HasKey(q => q.UserId);
         _ = modelBuilder.Entity<UserLogin>().HasKey(q => q.UserId);
 
+        _ = modelBuilder.Entity<AppLog>().HasKey(q => q.LogId);
+
+        _ = modelBuilder.Entity<UserSelectPhoneCheck>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectPhoneSingle>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectMailCheck>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectMailSingle>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectShortInfo>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserPhoneInfoSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserUserLoginsSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserUserConMachineSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserManagerEmployeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserMailInfoSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLoginsSelectLoginType>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLoginsSelectUser>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLoginsSelectAdmin>().HasKey(q => q.Id);

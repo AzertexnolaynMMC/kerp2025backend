@@ -923,6 +923,22 @@
   },
   {
     "ContainingType": "kerp.Controllers.UserController",
+    "Method": "AppLogsInsert",
+    "RelativePath": "api/User/AppLogsInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.Logs.AppLogsInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
     "Method": "LoginUser",
     "RelativePath": "api/User/LoginUser",
     "HttpMethod": "POST",
@@ -932,6 +948,54 @@
       {
         "Name": "model",
         "Type": "kerp.SystemModel.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserInsertMailSingle",
+    "RelativePath": "api/User/UserInsertMailSingle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserInsertMailSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserInsertPhoneSingle",
+    "RelativePath": "api/User/UserInsertPhoneSingle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserInsertPhoneSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserNameSurnamePositionUpdate",
+    "RelativePath": "api/User/UserNameSurnamePositionUpdate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserNameSurnamePositionUpdate",
         "IsRequired": true
       }
     ],
@@ -949,6 +1013,70 @@
         "Name": "userId",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserStatusMailSingle",
+    "RelativePath": "api/User/UserStatusMailSingle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserStatusMailSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserStatusPhoneSingle",
+    "RelativePath": "api/User/UserStatusPhoneSingle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserStatusPhoneSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserUpdateMailSingle",
+    "RelativePath": "api/User/UserUpdateMailSingle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserUpdateMailSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserUpdatePhoneSingle",
+    "RelativePath": "api/User/UserUpdatePhoneSingle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.UserUpdatePhoneSingle",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

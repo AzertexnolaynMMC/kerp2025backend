@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kerp.Repository.HrRepository.UserRepository
 {
-    public class UserRepository(KerpContext ctx) : IUserRepository
+    public class HrUserRepository(KerpContext ctx) : IHrUserRepository
     {
         private readonly KerpContext _ctx = ctx;
 

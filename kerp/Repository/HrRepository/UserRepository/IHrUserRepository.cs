@@ -7,7 +7,7 @@ using kerp.Prosedur.Hr.Users.User;
 
 namespace kerp.Repository.HrRepository.UserRepository
 {
-    public interface IUserRepository
+    public interface IHrUserRepository
     {
         List<UserSelectAdmin>? Get();
         List<UserSelectStructure>? GetUserSelectStructure();

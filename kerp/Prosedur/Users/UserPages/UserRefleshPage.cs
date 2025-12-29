@@ -1,4 +1,4 @@
-﻿namespace kerp.Prosedur.Users.UserPage
+﻿namespace kerp.Prosedur.Users.UserPages
 {
     public class UserRefleshPage
     {
@@ -11,6 +11,7 @@
         public string? SectionName { get; set; }
 
         public string? StructureName { get; set; }
+        public string? Position { get; set; }
 
         public bool? IsActive { get; set; }
 

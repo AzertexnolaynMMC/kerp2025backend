@@ -12,9 +12,9 @@ namespace kerp.Controllers.Hr
 {
     [Route("api/Hr/[controller]")]
     [ApiController]
-    public class UserController(IUserRepository repository) : ControllerBase
+    public class UserController(IHrUserRepository repository) : ControllerBase
     {
-        private readonly IUserRepository _repository = repository;
+        private readonly IHrUserRepository _repository = repository;
 
         // ===== SELECT =====
 

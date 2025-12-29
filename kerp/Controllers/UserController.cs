@@ -1,4 +1,5 @@
-﻿using kerp.Entities;
+﻿using kerp.Prosedur.Admin.Logs;
+using kerp.Prosedur.Users;
 using kerp.Repository.UserRepository;
 using kerp.Service;
 using kerp.SystemModel;
@@ -103,7 +104,86 @@ namespace kerp.Controllers
                 });
             }
         }
+        [HttpPost("AppLogsInsert")]
+        public IActionResult AppLogsInsert([FromBody] List<AppLogsInsert> model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
 
+                int? userLogin = _repository.AppLogsInsert(model);
+                return userLogin == 1
+                    ? Ok(new CustomerResponseModel<UserLogin>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserLogin>
+                    {
+                        StatusCode = 1,
+                        title = "Xəta baş verdi",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                // TODO: burda öz server log sisteminizə yazın (Serilog, NLog və s.)
+
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPost("UserNameSurnamePositionUpdate")]
+        public IActionResult UserNameSurnamePositionUpdate([FromBody] UserNameSurnamePositionUpdate model)
+        {
+            try
+            {
+                return !ModelState.IsValid
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectShortInfo>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = _repository.UserNameSurnamePositionUpdate(model)
+                    });
+            }
+            catch (Exception ex)
+            {
+                // TODO: burda öz server log sisteminizə yazın (Serilog, NLog və s.)
+
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
         [HttpGet("UserRefleshPage")]
         public IActionResult UserRefleshPage(int userId)
         {
@@ -145,11 +225,305 @@ namespace kerp.Controllers
                 });
             }
         }
+        [HttpPost("UserInsertMailSingle")]
+        public IActionResult UserInsertMailSingle([FromBody] UserInsertMailSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
 
+                UserSelectMailSingle? result = _repository.PostUserInsertMailSingle(model);
 
+                // Title var -> null gəlir
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Bu title artıq mövcuddur",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
 
+                // Uğurlu
+                return Ok(new CustomerResponseModel<UserSelectMailSingle>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("UserUpdateMailSingle")]
+        public IActionResult UserUpdateMailSingle([FromBody] UserUpdateMailSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
 
+                UserSelectMailSingle? result = _repository.PutUserUpdateMailSingle(model);
 
+                // Title var -> null gəlir
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Bu title artıq mövcuddur",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
 
+                // Uğurlu
+                return Ok(new CustomerResponseModel<UserSelectMailSingle>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpDelete("UserStatusMailSingle")]
+        public IActionResult UserStatusMailSingle([FromBody] UserStatusMailSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectMailSingle? result = _repository.DeleteUserStatusMailSingle(model);
+
+                // null gəlibsə -> StatusCode 7
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                // uğurlu -> 0
+                return Ok(new CustomerResponseModel<UserSelectMailSingle>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPost("UserInsertPhoneSingle")]
+        public IActionResult UserInsertPhoneSingle([FromBody] UserInsertPhoneSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserPhoneInfoSelect? result = _repository.PostUserInsertPhoneSingle(model);
+
+                // Title var -> null gəlir
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Bu title artıq mövcuddur",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                // Uğurlu
+                return Ok(new CustomerResponseModel<UserPhoneInfoSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("UserUpdatePhoneSingle")]
+        public IActionResult UserUpdatePhoneSingle([FromBody] UserUpdatePhoneSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserPhoneInfoSelect? result = _repository.PutUserUpdatePhoneSingle(model);
+
+                // Title var -> null gəlir
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Bu title artıq mövcuddur",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                // Uğurlu
+                return Ok(new CustomerResponseModel<UserPhoneInfoSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpDelete("UserStatusPhoneSingle")]
+        public IActionResult UserStatusPhoneSingle([FromBody] UserStatusPhoneSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserPhoneInfoSelect? result = _repository.DeleteUserStatusPhoneSingle(model);
+
+                // null gəlibsə -> StatusCode 7
+                if (result == null)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                // uğurlu -> 0
+                return Ok(new CustomerResponseModel<UserPhoneInfoSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
     }
 }

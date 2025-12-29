@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace kerp.Prosedur.Users.UserPage
+namespace kerp.Prosedur.Users.UserPages
 {
     public class UserPage
     {
@@ -10,6 +10,6 @@ namespace kerp.Prosedur.Users.UserPage
         public int? PageId { get; set; }      // pu.PageId
         public string? LangRoute { get; set; }// p.LangRoute
         [NotMapped]
-        public List<UserPage>? UserPages { get; set; }
+        public List<UserPage>? UserPagess { get; set; }
     }
 }
