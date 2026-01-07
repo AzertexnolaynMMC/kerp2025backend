@@ -955,6 +955,54 @@
   },
   {
     "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserInsertConMachineSingle",
+    "RelativePath": "api/User/UserInsertConMachineSingle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Asset.UserInsertConMachineSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserInsertEmployerSingle",
+    "RelativePath": "api/User/UserInsertEmployerSingle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Employer.UserInsertEmployerSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserInsertLoginSingle",
+    "RelativePath": "api/User/UserInsertLoginSingle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Login.UserInsertLoginSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
     "Method": "UserInsertMailSingle",
     "RelativePath": "api/User/UserInsertMailSingle",
     "HttpMethod": "POST",
@@ -963,7 +1011,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserInsertMailSingle",
+        "Type": "kerp.Prosedur.Users.Mail.UserInsertMailSingle",
         "IsRequired": true
       }
     ],
@@ -979,7 +1027,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserInsertPhoneSingle",
+        "Type": "kerp.Prosedur.Users.phone.UserInsertPhoneSingle",
         "IsRequired": true
       }
     ],
@@ -1019,6 +1067,84 @@
   },
   {
     "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserSelectAssets",
+    "RelativePath": "api/User/UserSelectAssets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserSelectEmployerMulti",
+    "RelativePath": "api/User/UserSelectEmployerMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserSelectLoginTypeMulti",
+    "RelativePath": "api/User/UserSelectLoginTypeMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserStatusConMachineSingle",
+    "RelativePath": "api/User/UserStatusConMachineSingle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Asset.UserStatusConMachineSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserStatusEmployerSingle",
+    "RelativePath": "api/User/UserStatusEmployerSingle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Employer.UserStatusEmployerSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserStatusLoginSingle",
+    "RelativePath": "api/User/UserStatusLoginSingle",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Login.UserStatusLoginSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
     "Method": "UserStatusMailSingle",
     "RelativePath": "api/User/UserStatusMailSingle",
     "HttpMethod": "DELETE",
@@ -1027,7 +1153,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserStatusMailSingle",
+        "Type": "kerp.Prosedur.Users.Mail.UserStatusMailSingle",
         "IsRequired": true
       }
     ],
@@ -1043,7 +1169,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserStatusPhoneSingle",
+        "Type": "kerp.Prosedur.Users.phone.UserStatusPhoneSingle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserController",
+    "Method": "UserUpdateLoginSingle",
+    "RelativePath": "api/User/UserUpdateLoginSingle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Users.Login.UserUpdateLoginSingle",
         "IsRequired": true
       }
     ],
@@ -1059,7 +1201,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserUpdateMailSingle",
+        "Type": "kerp.Prosedur.Users.Mail.UserUpdateMailSingle",
         "IsRequired": true
       }
     ],
@@ -1075,7 +1217,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.Users.UserUpdatePhoneSingle",
+        "Type": "kerp.Prosedur.Users.phone.UserUpdatePhoneSingle",
         "IsRequired": true
       }
     ],

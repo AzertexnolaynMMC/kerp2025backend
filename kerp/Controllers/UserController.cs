@@ -1,5 +1,10 @@
 ﻿using kerp.Prosedur.Admin.Logs;
 using kerp.Prosedur.Users;
+using kerp.Prosedur.Users.Asset;
+using kerp.Prosedur.Users.Employer;
+using kerp.Prosedur.Users.Login;
+using kerp.Prosedur.Users.Mail;
+using kerp.Prosedur.Users.phone;
 using kerp.Repository.UserRepository;
 using kerp.Service;
 using kerp.SystemModel;
@@ -525,5 +530,463 @@ namespace kerp.Controllers
                 });
             }
         }
+
+        // =========================
+        // CON MACHINE SINGLE - INSERT
+        // =========================
+        [HttpPost("UserInsertConMachineSingle")]
+        public IActionResult UserInsertConMachineSingle([FromBody] UserInsertConMachineSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectConMachineSingle? result = _repository.PostUserInsertConMachineSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectConMachineSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // CON MACHINE SINGLE - STATUS/DELETE
+        // =========================
+        [HttpDelete("UserStatusConMachineSingle")]
+        public IActionResult UserStatusConMachineSingle([FromBody] UserStatusConMachineSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectConMachineSingle? result = _repository.DeleteUserStatusConMachineSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectConMachineSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // ASSETS - SELECT LIST
+        // =========================
+        [HttpGet("UserSelectAssets")]
+        public IActionResult UserSelectAssets()
+        {
+            try
+            {
+                List<UserSelectAssets>? result = _repository.GetUserSelectAssets();
+
+                return result == null || result.Count == 0
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 5,
+                        title = "Tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<List<UserSelectAssets>>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // EMPLOYER SINGLE - INSERT
+        // =========================
+        [HttpPost("UserInsertEmployerSingle")]
+        public IActionResult UserInsertEmployerSingle([FromBody] UserInsertEmployerSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectEmployerSingle? result = _repository.PostUserInsertEmployerSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectEmployerSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // EMPLOYER SINGLE - STATUS/DELETE
+        // =========================
+        [HttpDelete("UserStatusEmployerSingle")]
+        public IActionResult UserStatusEmployerSingle([FromBody] UserStatusEmployerSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectEmployerSingle? result = _repository.DeleteUserStatusEmployerSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectEmployerSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // EMPLOYER MULTI - SELECT LIST
+        // =========================
+        [HttpGet("UserSelectEmployerMulti")]
+        public IActionResult UserSelectEmployerMulti()
+        {
+            try
+            {
+                List<UserSelectEmployerMulti>? result = _repository.GetUserSelectEmployerMulti();
+
+                return result == null || result.Count == 0
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 5,
+                        title = "Tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<List<UserSelectEmployerMulti>>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // LOGIN SINGLE - INSERT
+        // =========================
+        [HttpPost("UserInsertLoginSingle")]
+        public IActionResult UserInsertLoginSingle([FromBody] UserInsertLoginSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectLoginSingle? result = _repository.PostUserInsertLoginSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectLoginSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // LOGIN SINGLE - UPDATE
+        // =========================
+        [HttpPut("UserUpdateLoginSingle")]
+        public IActionResult UserUpdateLoginSingle([FromBody] UserUpdateLoginSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectLoginSingle? result = _repository.PutUserUpdateLoginSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectLoginSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // LOGIN SINGLE - STATUS/DELETE
+        // =========================
+        [HttpDelete("UserStatusLoginSingle")]
+        public IActionResult UserStatusLoginSingle([FromBody] UserStatusLoginSingle model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 4,
+                        title = "Model is not valid",
+                        AccessToken = null,
+                        Data = null
+                    });
+                }
+
+                UserSelectLoginSingle? result = _repository.DeleteUserStatusLoginSingle(model);
+
+                return result == null
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 7,
+                        title = "Əməliyyat icra olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<UserSelectLoginSingle>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        // =========================
+        // LOGIN TYPE MULTI - SELECT LIST
+        // =========================
+        [HttpGet("UserSelectLoginTypeMulti")]
+        public IActionResult UserSelectLoginTypeMulti()
+        {
+            try
+            {
+                List<UserSelectLoginTypeMulti>? result = _repository.GetUserSelectLoginTypeMulti();
+
+                return result == null || result.Count == 0
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 5,
+                        title = "Tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<List<UserSelectLoginTypeMulti>>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = result
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
     }
 }

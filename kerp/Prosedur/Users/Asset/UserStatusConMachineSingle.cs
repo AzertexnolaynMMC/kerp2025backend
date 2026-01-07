@@ -1,6 +1,6 @@
-﻿namespace kerp.Prosedur.Users
+﻿namespace kerp.Prosedur.Users.Asset
 {
-    public class UserStatusPhoneSingle
+    public class UserStatusConMachineSingle
     {
         public int Id { get; set; }
         public int Status { get; set; }

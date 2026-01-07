@@ -1,6 +1,11 @@
 ﻿using kerp.Contexts;
 using kerp.Prosedur.Admin.Logs;
 using kerp.Prosedur.Users;
+using kerp.Prosedur.Users.Asset;
+using kerp.Prosedur.Users.Employer;
+using kerp.Prosedur.Users.Login;
+using kerp.Prosedur.Users.Mail;
+using kerp.Prosedur.Users.phone;
 using kerp.Prosedur.Users.UserPages;
 using kerp.SystemModel;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +15,6 @@ namespace kerp.Repository.UserRepository
     public class UserRepository(KerpContext ctx) : IUserRepository
     {
         private readonly KerpContext _ctx = ctx;
-
         public int? AppLogsInsert(List<AppLogsInsert> model)
         {
             try
@@ -48,7 +52,6 @@ namespace kerp.Repository.UserRepository
             }
 
         }
-
         public UserSelectMailSingle? DeleteUserStatusMailSingle(UserStatusMailSingle StructureStatus)
         {
             return _ctx.UserSelectMailSingle.FromSqlRaw(
@@ -58,7 +61,6 @@ namespace kerp.Repository.UserRepository
                 StructureStatus.UserId
             ).AsNoTracking().AsEnumerable().FirstOrDefault();
         }
-
         public UserPhoneInfoSelect? DeleteUserStatusPhoneSingle(UserStatusPhoneSingle StructureStatus)
         {
             return _ctx.UserPhoneInfoSelect.FromSqlRaw(
@@ -68,7 +70,6 @@ namespace kerp.Repository.UserRepository
      StructureStatus.UserId
  ).AsNoTracking().AsEnumerable().FirstOrDefault();
         }
-
         public UserLogin? LoginUser(LoginModel model)
         {
             UserLogin userLogin = _ctx.UserLogin.FromSqlRaw(
@@ -91,9 +92,6 @@ namespace kerp.Repository.UserRepository
 
             return userLogin;
         }
-
-
-
         public UserSelectMailSingle? PostUserInsertMailSingle(UserInsertMailSingle pageInsert)
         {
             return pageInsert == null || string.IsNullOrWhiteSpace(pageInsert.Title)
@@ -109,7 +107,6 @@ namespace kerp.Repository.UserRepository
                 .AsEnumerable()
                 .FirstOrDefault();
         }
-
         public UserPhoneInfoSelect? PostUserInsertPhoneSingle(UserInsertPhoneSingle pageInsert)
         {
             return pageInsert == null || string.IsNullOrWhiteSpace(pageInsert.Title)
@@ -125,7 +122,6 @@ namespace kerp.Repository.UserRepository
                 .AsEnumerable()
                 .FirstOrDefault();
         }
-
         public UserSelectMailSingle? PutUserUpdateMailSingle(UserUpdateMailSingle structureUpdate)
         {
             return structureUpdate == null || string.IsNullOrWhiteSpace(structureUpdate.Title)
@@ -142,7 +138,6 @@ namespace kerp.Repository.UserRepository
                 .AsEnumerable()
                 .FirstOrDefault();
         }
-
         public UserPhoneInfoSelect? PutUserUpdatePhoneSingle(UserUpdatePhoneSingle structureUpdate)
         {
             return structureUpdate == null || string.IsNullOrWhiteSpace(structureUpdate.Title)
@@ -159,7 +154,6 @@ namespace kerp.Repository.UserRepository
                 .AsEnumerable()
                 .FirstOrDefault();
         }
-
         public UserSelectShortInfo? UserNameSurnamePositionUpdate(UserNameSurnamePositionUpdate model)
         {
             return _ctx.UserSelectShortInfo.FromSqlRaw(
@@ -170,11 +164,6 @@ namespace kerp.Repository.UserRepository
       model.UserId
   ).AsEnumerable().FirstOrDefault();
         }
-
-
-
-
-
         public UserLogin? UserRefleshPage(int model)
         {
             // 1. SP nəticəsini oxu (UserRefleshPage modelinə map olunur)
@@ -215,7 +204,6 @@ namespace kerp.Repository.UserRepository
             // 4. Nəticəni qaytar
             return userLogin;
         }
-
         private List<UserPage> GetUserPages(int userId, int underPageId)
         {
             List<UserPage> pages = _ctx.UserPage
@@ -234,9 +222,6 @@ namespace kerp.Repository.UserRepository
 
             return pages;
         }
-
-
-
         private bool TitleExistsMail(string title, int? excludeId = null)
         {
             if (string.IsNullOrWhiteSpace(title))
@@ -258,7 +243,6 @@ namespace kerp.Repository.UserRepository
                 (!excludeId.HasValue || x.Id != excludeId.Value)
             );
         }
-
         private static string? NormalizeAzPhone(string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -295,7 +279,6 @@ namespace kerp.Repository.UserRepository
             // Digər halları da olduğu kimi qaytarırıq (istəsən burada sərtləşdirə bilərsən)
             return digits;
         }
-
         private bool TitleExistsPhone(string title, int? excludeId = null)
         {
             string? normalized = NormalizeAzPhone(title);
@@ -320,6 +303,128 @@ namespace kerp.Repository.UserRepository
                 return other != null && other == normalized; // artıq digits-only, Ordinal kifayətdir
             });
         }
+
+
+
+
+
+
+
+        public UserSelectConMachineSingle? DeleteUserStatusConMachineSingle(UserStatusConMachineSingle StructureStatus)
+        {
+            return _ctx.UserSelectConMachineSingle.FromSqlRaw(
+"EXEC dbo.UserConMachineStatus @p0, @p1, @p2",
+StructureStatus.Id,
+StructureStatus.UserId,
+StructureStatus.Status
+
+).ToList().FirstOrDefault();
+        }
+
+        public UserSelectConMachineSingle? PostUserInsertConMachineSingle(UserInsertConMachineSingle PageInsert)
+        {
+            return _ctx.UserSelectConMachineSingle.FromSqlRaw(
+"EXEC dbo.UserInsertConMachineSingle @p0, @p1",
+PageInsert.MachineId,
+PageInsert.UserId
+
+).ToList().FirstOrDefault();
+        }
+
+        public List<UserSelectAssets>? GetUserSelectAssets()
+        {
+            return [.. _ctx.UserSelectAssets
+                .FromSqlRaw("EXEC dbo.UserSelectAssets")
+                .AsNoTracking()
+];
+        }
+
+
+
+
+
+
+
+
+
+
+        public UserSelectEmployerSingle? DeleteUserStatusEmployerSingle(UserStatusEmployerSingle StructureStatus)
+        {
+            return _ctx.UserSelectEmployerSingle.FromSqlRaw(
+"EXEC dbo.UserStatusEmployerSingle @p0, @p1, @p2",
+StructureStatus.Id,
+StructureStatus.UserId,
+StructureStatus.Status
+
+).ToList().FirstOrDefault();
+        }
+
+        public UserSelectEmployerSingle? PostUserInsertEmployerSingle(UserInsertEmployerSingle PageInsert)
+        {
+            return _ctx.UserSelectEmployerSingle.FromSqlRaw(
+"EXEC dbo.UserInsertEmployerSingle @p0, @p1",
+PageInsert.WorkerId,
+PageInsert.UserId
+
+).ToList().FirstOrDefault();
+        }
+
+        public List<UserSelectEmployerMulti>? GetUserSelectEmployerMulti()
+        {
+            return [.. _ctx.UserSelectEmployerMulti
+                .FromSqlRaw("EXEC dbo.UserSelectEmployerMulti")
+                .AsNoTracking()];
+        }
+
+
+
+        public UserSelectLoginSingle? DeleteUserStatusLoginSingle(UserStatusLoginSingle StructureStatus)
+        {
+            return _ctx.UserSelectLoginSingle.FromSqlRaw(
+"EXEC dbo.UserStatusLoginSingle @p0, @p1, @p2",
+StructureStatus.Id,
+StructureStatus.Status,
+StructureStatus.UserId
+
+).ToList().FirstOrDefault();
+        }
+
+        public UserSelectLoginSingle? PostUserInsertLoginSingle(UserInsertLoginSingle PageInsert)
+        {
+            return _ctx.UserSelectLoginSingle.FromSqlRaw(
+"EXEC dbo.UserInsertLoginSingle @p0, @p1, @p2, @p3",
+PageInsert.Title,
+PageInsert.UserId,
+PageInsert.LoginTypeId,
+PageInsert.Password
+
+).ToList().FirstOrDefault();
+        }
+
+        public UserSelectLoginSingle? PutUserUpdateLoginSingle(UserUpdateLoginSingle model)
+        {
+            return _ctx.UserSelectLoginSingle
+                .FromSqlRaw(
+                    "EXEC dbo.UserUpdateLoginSingle @p0, @p1, @p2, @p3, @p4",
+                    model.Title,
+                    model.UserId,
+                    model.LoginTypeId,
+                    model.Password,
+                    model.Id
+                )
+                .AsNoTracking()
+                .ToList()
+                .FirstOrDefault();
+        }
+
+        public List<UserSelectLoginTypeMulti>? GetUserSelectLoginTypeMulti()
+        {
+            return [.. _ctx.UserSelectLoginTypeMulti
+                .FromSqlRaw("EXEC dbo.UserSelectLoginTypeMulti")
+                .AsNoTracking()];
+        }
+
+
 
     }
 }

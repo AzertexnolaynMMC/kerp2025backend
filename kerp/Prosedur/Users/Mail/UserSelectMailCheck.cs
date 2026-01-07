@@ -1,6 +1,6 @@
-﻿namespace kerp.Prosedur.Users
+﻿namespace kerp.Prosedur.Users.Mail
 {
-    public class UserSelectPhoneCheck
+    public class UserSelectMailCheck
     {
         public int Id { get; set; }
 

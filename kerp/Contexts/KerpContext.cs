@@ -19,8 +19,23 @@ using kerp.Prosedur.Hr.Users.Phone;
 using kerp.Prosedur.Hr.Users.Section;
 using kerp.Prosedur.Hr.Users.Structur;
 using kerp.Prosedur.Hr.Users.User;
+using kerp.Prosedur.MachineIncident.Event;
+using kerp.Prosedur.MachineIncident.Group;
+using kerp.Prosedur.MachineIncident.Incident;
+using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
+using kerp.Prosedur.MachineIncident.MachineIncidentTask;
+using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
+using kerp.Prosedur.MachineIncident.Material;
+using kerp.Prosedur.MachineIncident.Section;
+using kerp.Prosedur.MachineIncident.Structure;
+using kerp.Prosedur.MachineIncident.Type;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Users;
+using kerp.Prosedur.Users.Asset;
+using kerp.Prosedur.Users.Employer;
+using kerp.Prosedur.Users.Login;
+using kerp.Prosedur.Users.Mail;
+using kerp.Prosedur.Users.phone;
 using kerp.Prosedur.Users.UserPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +52,22 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<MachineIncidentAssistantSelect> MachineIncidentAssistantSelect { get; set; }
+    public virtual DbSet<MachineIncidentWorkShiftSelect> MachineIncidentWorkShiftSelect { get; set; }
+    public virtual DbSet<MachineIncidentTaskSelect> MachineIncidentTaskSelect { get; set; }
+    public virtual DbSet<MachineIncidentSectionSelect> MachineIncidentSectionSelect { get; set; }
+    public virtual DbSet<MachineIncidentStructureSelect> MachineIncidentStructureSelect { get; set; }
+    public virtual DbSet<MachineIncidentMaterialSelect> MachineIncidentMaterialSelect { get; set; }
+    public virtual DbSet<MachineIncidentEventSelect> MachineIncidentEventSelect { get; set; }
+    public virtual DbSet<MachineIncidentCrashTypeSelect> MachineIncidentCrashTypeSelect { get; set; }
+    public virtual DbSet<MachineIncidentCrashGroupSelect> MachineIncidentCrashGroupSelect { get; set; }
+    public virtual DbSet<MachineIncidentSelectForBackEnd> MachineIncidentSelectForBackEnd { get; set; }
+    public virtual DbSet<UserSelectLoginTypeMulti> UserSelectLoginTypeMulti { get; set; }
+    public virtual DbSet<UserSelectLoginSingle> UserSelectLoginSingle { get; set; }
+    public virtual DbSet<UserSelectEmployerMulti> UserSelectEmployerMulti { get; set; }
+    public virtual DbSet<UserSelectEmployerSingle> UserSelectEmployerSingle { get; set; }
+    public virtual DbSet<UserSelectAssets> UserSelectAssets { get; set; }
+    public virtual DbSet<UserSelectConMachineSingle> UserSelectConMachineSingle { get; set; }
     public virtual DbSet<UserSelectPhoneCheck> UserSelectPhoneCheck { get; set; }
     public virtual DbSet<UserSelectPhoneSingle> UserSelectPhoneSingle { get; set; }
     public virtual DbSet<UserSelectMailSingle> UserSelectMailSingle { get; set; }
@@ -114,6 +145,22 @@ public partial class KerpContext : DbContext
 
         _ = modelBuilder.Entity<AppLog>().HasKey(q => q.LogId);
 
+        _ = modelBuilder.Entity<MachineIncidentSectionSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentCrashTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentStructureSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentTaskSelect>().HasKey(q => q.LangId);
+
+        _ = modelBuilder.Entity<MachineIncidentWorkShiftSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentMaterialSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentEventSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentCrashGroupSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentSelectForBackEnd>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectLoginTypeMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectLoginSingle>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectEmployerMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectEmployerSingle>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectAssets>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserSelectConMachineSingle>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserSelectPhoneCheck>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserSelectPhoneSingle>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserSelectMailCheck>().HasKey(q => q.Id);
