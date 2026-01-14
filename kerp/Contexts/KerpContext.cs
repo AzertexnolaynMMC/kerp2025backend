@@ -12,7 +12,10 @@ using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
 using kerp.Prosedur.Admin.UserConMachine;
 using kerp.Prosedur.Admin.UserLogins;
+using kerp.Prosedur.Admin.UserStructureSee;
+using kerp.Prosedur.Admin.UserWorkOrderSee;
 using kerp.Prosedur.Admin.WorkOrderType;
+using kerp.Prosedur.Canban;
 using kerp.Prosedur.Helpers;
 using kerp.Prosedur.Hr.Users.Mail;
 using kerp.Prosedur.Hr.Users.Phone;
@@ -23,12 +26,17 @@ using kerp.Prosedur.MachineIncident.Event;
 using kerp.Prosedur.MachineIncident.Group;
 using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
+using kerp.Prosedur.MachineIncident.MachineIncidentChat;
+using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
+using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
 using kerp.Prosedur.MachineIncident.MachineIncidentTask;
 using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
 using kerp.Prosedur.MachineIncident.Material;
 using kerp.Prosedur.MachineIncident.Section;
+using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Structure;
 using kerp.Prosedur.MachineIncident.Type;
+using kerp.Prosedur.MachineIncident.WorkOrderType;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Users;
 using kerp.Prosedur.Users.Asset;
@@ -36,6 +44,7 @@ using kerp.Prosedur.Users.Employer;
 using kerp.Prosedur.Users.Login;
 using kerp.Prosedur.Users.Mail;
 using kerp.Prosedur.Users.phone;
+using kerp.Prosedur.Users.See;
 using kerp.Prosedur.Users.UserPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,6 +61,29 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<CanbanCardStructure> CanbanCardStructure { get; set; }
+    public virtual DbSet<CanbanCardSection> CanbanCardSection { get; set; }
+    public virtual DbSet<CanbanCard> CanbanCard { get; set; }
+    public virtual DbSet<CanbanCardCrashType> CanbanCardCrashType { get; set; }
+    public virtual DbSet<CanbanCardWorkOrderType> CanbanCardWorkOrderType { get; set; }
+    public virtual DbSet<UserLoginWorkOrderSelect> UserLoginWorkOrderSelect { get; set; }
+    public virtual DbSet<UserLoginStructureSelect> UserLoginStructureSelect { get; set; }
+    public virtual DbSet<UserWorkOrderSeeSelect> UserWorkOrderSeeSelect { get; set; }
+    public virtual DbSet<UserWorkOrderSeeUsersSelect> UserWorkOrderSeeUsersSelect { get; set; }
+    public virtual DbSet<UserWorkOrderSeeWorkOrderSelect> UserWorkOrderSeeWorkOrderSelect { get; set; }
+    public virtual DbSet<UserStructureSeeStructureSelect> UserStructureSeeStructureSelect { get; set; }
+    public virtual DbSet<UserStructureSeeUserSelect> UserStructureSeeUserSelect { get; set; }
+    public virtual DbSet<UserStructureSeeSelect> UserStructureSeeSelect { get; set; }
+    public virtual DbSet<MachineIncidentWorkShiftSelectMulti> MachineIncidentWorkShiftSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentProjectSelectMulti> MachineIncidentProjectSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentAssetSelectMulti> MachineIncidentAssetSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentWorkOrderTypeSelectMulti> MachineIncidentWorkOrderTypeSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentCrashGroupSelectMulti> MachineIncidentCrashGroupSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentCrashTypeSelectMulti> MachineIncidentCrashTypeSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentLostTimeSelect> MachineIncidentLostTimeSelect { get; set; }
+    public virtual DbSet<MachineIncidentWorkOrderTypeSelect> MachineIncidentWorkOrderTypeSelect { get; set; }
+    public virtual DbSet<MachineIncidentDocumentSelect> MachineIncidentDocumentSelect { get; set; }
+    public virtual DbSet<MachineIncidentChatSelect> MachineIncidentChatSelect { get; set; }
     public virtual DbSet<MachineIncidentAssistantSelect> MachineIncidentAssistantSelect { get; set; }
     public virtual DbSet<MachineIncidentWorkShiftSelect> MachineIncidentWorkShiftSelect { get; set; }
     public virtual DbSet<MachineIncidentTaskSelect> MachineIncidentTaskSelect { get; set; }
@@ -149,7 +181,36 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<MachineIncidentCrashTypeSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentStructureSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentTaskSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentWorkOrderTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<CanbanCardWorkOrderType>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<CanbanCardCrashType>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<CanbanCardSection>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<CanbanCardStructure>().HasKey(q => q.LangId);
 
+        _ = modelBuilder.Entity<UserWorkOrderSeeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserWorkOrderSeeUsersSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserWorkOrderSeeWorkOrderSelect>().HasKey(q => q.Id);
+
+
+
+
+
+
+        _ = modelBuilder.Entity<CanbanCard>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserLoginWorkOrderSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserLoginStructureSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserStructureSeeStructureSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserStructureSeeUserSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserStructureSeeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentWorkShiftSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentProjectSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentAssetSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentWorkOrderTypeSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentCrashGroupSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentCrashTypeSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentLostTimeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentDocumentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentChatSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentWorkShiftSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentMaterialSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentEventSelect>().HasKey(q => q.Id);

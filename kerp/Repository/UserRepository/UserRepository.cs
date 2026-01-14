@@ -88,6 +88,8 @@ namespace kerp.Repository.UserRepository
                 userLogin.UserUserConMachineSelect = [.. _ctx.UserUserConMachineSelect.FromSqlRaw("EXEC dbo.UserUserConMachineSelect @p0", userLogin.UserId)];
                 userLogin.UserUserLoginsSelect = [.. _ctx.UserUserLoginsSelect.FromSqlRaw("EXEC dbo.UserUserLoginsSelect @p0", userLogin.UserId)];
                 userLogin.UserPhoneInfoSelect = [.. _ctx.UserPhoneInfoSelect.FromSqlRaw("EXEC dbo.UserPhoneInfoSelect @p0", userLogin.UserId)];
+                userLogin.UserLoginStructureSelect = [.. _ctx.UserLoginStructureSelect.FromSqlRaw("EXEC dbo.UserLoginStructureSelect @p0", userLogin.UserId)];
+                userLogin.UserLoginWorkOrderSelect = [.. _ctx.UserLoginWorkOrderSelect.FromSqlRaw("EXEC dbo.UserLoginWorkOrderSelect @p0", userLogin.UserId)];
             }
 
             return userLogin;

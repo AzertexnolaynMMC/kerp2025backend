@@ -146,6 +146,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.CanbanController",
+    "Method": "GetCanbanCard",
+    "RelativePath": "api/Canban/CanbanCard",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageInsert",
+        "Type": "kerp.Prosedur.Canban.CanbanModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.Admin.DictionaryController",
     "Method": "DictionaryAdminAll",
     "RelativePath": "api/Dictionary/DictionaryAdminAll",
@@ -505,6 +521,62 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentCrashTypeSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentCrashTypeSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentProjectSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentProjectSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentWorkOrderTypeSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentWorkOrderTypeSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentWorkShiftSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentWorkShiftSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentInsert",
+    "RelativePath": "api/MachineIncident/Post",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MachineIncidentInsert",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.MachineIncident.Incident.MachineIncidentInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1361,6 +1433,130 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserStructureSeeController",
+    "Method": "UserStructureSeeInsert",
+    "RelativePath": "api/UserStructureSee/UserStructureSeeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.UserStructureSee.UserStructureSeeInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserStructureSeeController",
+    "Method": "UserStructureSeeSelect",
+    "RelativePath": "api/UserStructureSee/UserStructureSeeSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserStructureSeeController",
+    "Method": "UserStructureSeeStatus",
+    "RelativePath": "api/UserStructureSee/UserStructureSeeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "kerp.Prosedur.Admin.UserStructureSee.UserStructureSeeStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserStructureSeeController",
+    "Method": "UserStructureSeeStructureSelect",
+    "RelativePath": "api/UserStructureSee/UserStructureSeeStructureSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.UserStructureSeeController",
+    "Method": "UserStructureSeeUserSelect",
+    "RelativePath": "api/UserStructureSee/UserStructureSeeUserSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserWorkOrderSeeController",
+    "Method": "UserWorkOrderSeeInsert",
+    "RelativePath": "api/UserWorkOrderSee/UserWorkOrderSeeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "insert",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Admin.UserWorkOrderSee.UserWorkOrderSeeInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserWorkOrderSeeController",
+    "Method": "UserWorkOrderSeeSelect",
+    "RelativePath": "api/UserWorkOrderSee/UserWorkOrderSeeSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserWorkOrderSeeController",
+    "Method": "UserWorkOrderSeeStatus",
+    "RelativePath": "api/UserWorkOrderSee/UserWorkOrderSeeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "kerp.Prosedur.Admin.UserWorkOrderSee.UserWorkOrderSeeStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserWorkOrderSeeController",
+    "Method": "UserWorkOrderSeeUsersSelect",
+    "RelativePath": "api/UserWorkOrderSee/UserWorkOrderSeeUsersSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.UserWorkOrderSeeController",
+    "Method": "UserWorkOrderSeeWorkOrderSelect",
+    "RelativePath": "api/UserWorkOrderSee/UserWorkOrderSeeWorkOrderSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

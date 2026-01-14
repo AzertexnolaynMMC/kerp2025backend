@@ -251,6 +251,37 @@
         }
       }
     },
+    "/api/Canban/CanbanCard": {
+      "post": {
+        "tags": [
+          "Canban"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CanbanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CanbanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CanbanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Dictionary/DictionaryAdminAll": {
       "get": {
         "tags": [
@@ -529,6 +560,94 @@
         "tags": [
           "Logs"
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentCrashTypeSelectMulti": {
+      "get": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentProjectSelectMulti": {
+      "get": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentWorkOrderTypeSelectMulti": {
+      "get": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentWorkShiftSelectMulti": {
+      "get": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/Post": {
+      "post": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MachineIncidentInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MachineIncidentInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/MachineIncidentInsert"
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -2413,6 +2532,220 @@
         }
       }
     },
+    "/api/UserStructureSee/UserStructureSeeSelect": {
+      "get": {
+        "tags": [
+          "UserStructureSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserStructureSee/UserStructureSeeStructureSelect": {
+      "get": {
+        "tags": [
+          "UserStructureSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserStructureSee/UserStructureSeeUserSelect": {
+      "get": {
+        "tags": [
+          "UserStructureSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserStructureSee/UserStructureSeeInsert": {
+      "post": {
+        "tags": [
+          "UserStructureSee"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserStructureSeeInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserStructureSeeInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserStructureSeeInsert"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserStructureSee/UserStructureSeeStatus": {
+      "delete": {
+        "tags": [
+          "UserStructureSee"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserStructureSeeStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserStructureSeeStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserStructureSeeStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserWorkOrderSee/UserWorkOrderSeeSelect": {
+      "get": {
+        "tags": [
+          "UserWorkOrderSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserWorkOrderSee/UserWorkOrderSeeUsersSelect": {
+      "get": {
+        "tags": [
+          "UserWorkOrderSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserWorkOrderSee/UserWorkOrderSeeWorkOrderSelect": {
+      "get": {
+        "tags": [
+          "UserWorkOrderSee"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserWorkOrderSee/UserWorkOrderSeeInsert": {
+      "post": {
+        "tags": [
+          "UserWorkOrderSee"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserWorkOrderSeeInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserWorkOrderSeeInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/UserWorkOrderSeeInsert"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserWorkOrderSee/UserWorkOrderSeeStatus": {
+      "delete": {
+        "tags": [
+          "UserWorkOrderSee"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserWorkOrderSeeStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserWorkOrderSeeStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserWorkOrderSeeStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -2779,6 +3112,20 @@
         },
         "additionalProperties": false
       },
+      "CanbanModel": {
+        "type": "object",
+        "properties": {
+          "structure": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DictionaryInsertRequest": {
         "type": "object",
         "properties": {
@@ -2948,6 +3295,97 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentCrashTypeInsert": {
+        "type": "object",
+        "properties": {
+          "crashTypeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "asigntUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentCrashTypeInsert": {
+            "$ref": "#/components/schemas/MachineIncidentCrashTypeInsert"
+          },
+          "machineIncidentWorkOrderTypeInsert": {
+            "$ref": "#/components/schemas/MachineIncidentWorkOrderTypeInsert"
+          },
+          "machineIncidentSectionInsert": {
+            "$ref": "#/components/schemas/MachineIncidentSectionInsert"
+          },
+          "machineIncidentStructureInsert": {
+            "$ref": "#/components/schemas/MachineIncidentStructureInsert"
+          },
+          "machineIncidentWorkShiftInsert": {
+            "$ref": "#/components/schemas/MachineIncidentWorkShiftInsert"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentSectionInsert": {
+        "type": "object",
+        "properties": {
+          "sectionId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentStructureInsert": {
+        "type": "object",
+        "properties": {
+          "structureId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentWorkOrderTypeInsert": {
+        "type": "object",
+        "properties": {
+          "workOrderTypeId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentWorkShiftInsert": {
+        "type": "object",
+        "properties": {
+          "workShiftId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3791,6 +4229,42 @@
         },
         "additionalProperties": false
       },
+      "UserStructureSeeInsert": {
+        "type": "object",
+        "properties": {
+          "structureId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "selectUserId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserStructureSeeStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserUpdate": {
         "type": "object",
         "properties": {
@@ -3925,6 +4399,42 @@
           "title": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserWorkOrderSeeInsert": {
+        "type": "object",
+        "properties": {
+          "workOrderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "selectUserId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserWorkOrderSeeStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -1,4 +1,5 @@
-﻿using kerp.Prosedur.Users.UserPages;
+﻿using kerp.Prosedur.Users.See;
+using kerp.Prosedur.Users.UserPages;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kerp.Prosedur.Users
@@ -6,6 +7,8 @@ namespace kerp.Prosedur.Users
     public class UserLogin
     {
         public int UserId { get; set; }
+        public int SectionId { get; set; }
+        public int StructureId { get; set; }
 
         public string? FirstName { get; set; }
 
@@ -32,5 +35,9 @@ namespace kerp.Prosedur.Users
         public List<UserUserLoginsSelect>? UserUserLoginsSelect { get; set; }
         [NotMapped]
         public List<UserPhoneInfoSelect>? UserPhoneInfoSelect { get; set; }
+        [NotMapped]
+        public List<UserLoginWorkOrderSelect>? UserLoginWorkOrderSelect { get; set; }
+        [NotMapped]
+        public List<UserLoginStructureSelect>? UserLoginStructureSelect { get; set; }
     }
 }

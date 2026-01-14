@@ -1,4 +1,5 @@
 ﻿using kerp.Contexts;
+using kerp.Hubs.IncidentHub;
 using kerp.Hubs.PageHub;
 using kerp.Service;
 using kerp.SystemModel;
@@ -128,6 +129,7 @@ namespace kerp
             {
                 _ = endpoints.MapControllers();
                 _ = endpoints.MapHub<PageHub>("/hubs/page");
+                _ = endpoints.MapHub<IncidentHub>("/hubs/IncidentHub");
                 //   _ = endpoints.MapHub<DoneHub>("api/CrashDone");
                 // _ = endpoints.MapHub<ResearchHub>("api/CrashResearch");
             });
