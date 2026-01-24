@@ -180,3 +180,5 @@ E:\2025\kerp\back\kerp\kerp\bin\Debug\net9.0\System.IO.Pipelines.dll
 E:\2025\kerp\back\kerp\kerp\bin\Debug\net9.0\System.Text.Encodings.Web.dll
 E:\2025\kerp\back\kerp\kerp\bin\Debug\net9.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 E:\2025\kerp\back\kerp\kerp\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll
+E:\2025\kerp\back\kerp\kerp\bin\Debug\net9.0\kerp.staticwebassets.runtime.json
+E:\2025\kerp\back\kerp\kerp\obj\Debug\net9.0\compressed\xesg21ijzu-cjagpwzud4.gz

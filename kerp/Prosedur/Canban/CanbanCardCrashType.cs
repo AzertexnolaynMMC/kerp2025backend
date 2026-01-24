@@ -3,6 +3,7 @@
     public class CanbanCardCrashType
     {
         public int LangId { get; set; }
+        public int CrashTypeId { get; set; }
 
         public string? Code { get; set; }
 

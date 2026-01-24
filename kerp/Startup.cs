@@ -2,6 +2,7 @@
 using kerp.Hubs.IncidentHub;
 using kerp.Hubs.PageHub;
 using kerp.Service;
+using kerp.Service.IncidentService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -76,6 +77,8 @@ namespace kerp
                 .AsImplementedInterfaces()
                 .WithScopedLifetime()
             );
+            _ = services.AddScoped<IIncidentService, IncidentService>();
+
             /*
             // Repository servisleri
             _ = services.AddScoped<IUserRepository, UserRepository>();

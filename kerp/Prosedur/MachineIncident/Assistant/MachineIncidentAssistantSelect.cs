@@ -1,4 +1,4 @@
-﻿namespace kerp.Prosedur.MachineIncident.MachineIncidentAssistant
+﻿namespace kerp.Prosedur.MachineIncident.Assistant
 {
     public class MachineIncidentAssistantSelect
     {
@@ -6,5 +6,6 @@
         public int Id { get; set; }      // INT
         public int CrashId { get; set; }      // INT
         public int AssistantId { get; set; }      // INT
+        public int TypeEnum { get; set; }      // INT
     }
 }

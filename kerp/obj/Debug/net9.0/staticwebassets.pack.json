@@ -1,0 +1,73 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\15\\xlsx\\15_230_20260122202247326_121f142a-aa0f-40ef-b261-6d86f20ad0a0.xlsx",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\15\\xlsx\\15_230_20260122202247326_121f142a-aa0f-40ef-b261-6d86f20ad0a0.xlsx"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\doc\\20_230_20260122194306997_3eedfe89-f275-4d5a-9d99-17e334d680db.doc",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\doc\\20_230_20260122194306997_3eedfe89-f275-4d5a-9d99-17e334d680db.doc"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122182111989_12727da8-a224-42e5-a6b7-d7cc4f1c5b97.mp4",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122182111989_12727da8-a224-42e5-a6b7-d7cc4f1c5b97.mp4"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122191832319_10af88da-d03b-4838-8733-f6f835cb72e2.mp4",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122191832319_10af88da-d03b-4838-8733-f6f835cb72e2.mp4"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122194234008_66eeac95-b819-4731-bfd9-fdd5d992afcc.mp4",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\mp4\\20_230_20260122194234008_66eeac95-b819-4731-bfd9-fdd5d992afcc.mp4"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\pdf\\20_230_20260122194830262_13fecb5f-362e-42c2-be41-7ca4590127ef.pdf",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\pdf\\20_230_20260122194830262_13fecb5f-362e-42c2-be41-7ca4590127ef.pdf"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\png\\20_230_20260122181552353_3bc2f42e-df1d-4432-afd2-6f07596677cd.png",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\png\\20_230_20260122181552353_3bc2f42e-df1d-4432-afd2-6f07596677cd.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\pptx\\20_230_20260122194201915_b9d389ea-af48-4593-bcc3-29cea466ad94.pptx",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\pptx\\20_230_20260122194201915_b9d389ea-af48-4593-bcc3-29cea466ad94.pptx"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\txt\\20_230_20260122194145262_0760852d-1600-45d3-91bb-c20d4c1d941a.txt",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\txt\\20_230_20260122194145262_0760852d-1600-45d3-91bb-c20d4c1d941a.txt"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\20\\xlsx\\20_230_20260122194256830_90fc8668-148e-457e-8839-d643353f5b3f.xlsx",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\20\\xlsx\\20_230_20260122194256830_90fc8668-148e-457e-8839-d643353f5b3f.xlsx"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\7\\png\\7_230_20260122201329365_cc322d45-fdde-4e40-8198-c328d915210a.png",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\7\\png\\7_230_20260122201329365_cc322d45-fdde-4e40-8198-c328d915210a.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\7\\xlsx\\7_230_20260122202141447_e9b3cd7f-a0a9-48c8-bc83-d9fe5b360a86.xlsx",
+      "PackagePath": "staticwebassets\\MachineIncidentDocuments\\7\\xlsx\\7_230_20260122202141447_e9b3cd7f-a0a9-48c8-bc83-d9fe5b360a86.xlsx"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.kerp.props",
+      "PackagePath": "build\\kerp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.kerp.props",
+      "PackagePath": "buildMultiTargeting\\kerp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.kerp.props",
+      "PackagePath": "buildTransitive\\kerp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.kerp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.kerp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

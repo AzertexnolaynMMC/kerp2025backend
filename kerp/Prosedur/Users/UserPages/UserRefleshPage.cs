@@ -2,6 +2,8 @@
 {
     public class UserRefleshPage
     {
+        public int SectionId { get; set; }
+        public int StructureId { get; set; }
         public int UserId { get; set; }
 
         public string? FirstName { get; set; }

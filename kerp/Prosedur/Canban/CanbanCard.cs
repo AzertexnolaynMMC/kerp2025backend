@@ -15,6 +15,7 @@ namespace kerp.Prosedur.Canban
         public DateTime? EventDate { get; set; }
 
         public int? CanbanStatus { get; set; }
+        public Guid? Guids { get; set; }
 
         [NotMapped]
         public List<CanbanCardWorkOrderType>? CanbanCardWorkOrderType { get; set; }

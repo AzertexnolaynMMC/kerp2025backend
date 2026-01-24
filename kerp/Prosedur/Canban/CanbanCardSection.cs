@@ -3,6 +3,7 @@
     public class CanbanCardSection
     {
         public int LangId { get; set; }
+        public int SectionId { get; set; }
 
         public string? Code { get; set; }
 

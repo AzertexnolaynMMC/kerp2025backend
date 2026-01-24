@@ -525,8 +525,181 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAccept",
+    "RelativePath": "api/MachineIncident/MachineIncidentAccept",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentAccept",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAssetSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentAssetSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAssetUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentAssetUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentAssetUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAssistantInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentAssistantInsert",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.MachineIncident.MachineIncidentAssistant.MachineIncidentAssistantInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAssistantStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentAssistantStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentAssistant.MachineIncidentAssistantStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentCrashTypeSelectMulti",
     "RelativePath": "api/MachineIncident/MachineIncidentCrashTypeSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentCrashTypeUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentCrashTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Type.MachineIncidentCrashTypeUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentDocumentInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentDocumentInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FilePath",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileNameTitle",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileSize",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "MachineIncidentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentDocumentStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentDocumentStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentDocument.MachineIncidentDocumentStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentMaterialSelectMulti",
+    "RelativePath": "api/MachineIncident/MachineIncidentMaterialSelectMulti",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -545,12 +718,108 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentProjectUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentProjectUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentProjectUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentSelect",
+    "RelativePath": "api/MachineIncident/MachineIncidentSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentStart",
+    "RelativePath": "api/MachineIncident/MachineIncidentStart",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.MachineIncident.MachineIncidentAssistant.MachineIncidentAssistantInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentTaskInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentTaskInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Task.MachineIncidentTaskInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentTitleUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentTitleUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentTitleUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentWorkOrderTypeSelectMulti",
     "RelativePath": "api/MachineIncident/MachineIncidentWorkOrderTypeSelectMulti",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentWorkOrderTypeUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentWorkOrderTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.WorkOrderType.MachineIncidentWorkOrderTypeUpdate",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -565,7 +834,23 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
-    "Method": "MachineIncidentInsert",
+    "Method": "MachineIncidentWorkShiftUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentWorkShiftUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentWorkShift.MachineIncidentWorkShiftUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentInsertAsync",
     "RelativePath": "api/MachineIncident/Post",
     "HttpMethod": "POST",
     "IsController": true,

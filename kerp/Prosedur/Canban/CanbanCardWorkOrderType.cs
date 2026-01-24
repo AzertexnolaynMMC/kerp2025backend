@@ -3,6 +3,7 @@
     public class CanbanCardWorkOrderType
     {
         public int LangId { get; set; }
+        public int WorkOrderTypeId { get; set; }
 
         public string? Code { get; set; }
 

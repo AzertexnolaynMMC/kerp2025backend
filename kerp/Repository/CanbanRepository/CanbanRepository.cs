@@ -59,7 +59,7 @@ namespace kerp.Repository.CanbanRepository
 
         #region Helpers (UserStructureSee ilə EYNİ)
 
-        private List<T>? ExecuteList<T>(string sql, params object[] parameters)
+        public List<T>? ExecuteList<T>(string sql, params object[] parameters)
             where T : class
         {
             return _ctx.Set<T>()
@@ -69,7 +69,7 @@ namespace kerp.Repository.CanbanRepository
                        .ToList();
         }
 
-        private T? ExecuteSingle<T>(string sql, params object[] parameters)
+        public T? ExecuteSingle<T>(string sql, params object[] parameters)
             where T : class
         {
             return _ctx.Set<T>()
@@ -77,6 +77,43 @@ namespace kerp.Repository.CanbanRepository
                        .AsNoTracking()
                        .AsEnumerable()   // 🔥 ÇOX VACİB
                        .FirstOrDefault();
+        }
+
+        public CanbanCardHub? CanbanCardHub(int PageInsert)
+        {
+            CanbanCardHub? card =
+    ExecuteSingle<CanbanCardHub>(
+        "EXEC dbo.CanbanCardHub @p0",
+        PageInsert
+    );
+            if (card == null)
+            {
+                return null;
+            }
+            card.CanbanCardCrashType =
+    ExecuteList<CanbanCardCrashType>(
+        "EXEC dbo.CanbanCardCrashType @p0",
+        card.Id
+    );
+
+            card.CanbanCardSection =
+                ExecuteList<CanbanCardSection>(
+                    "EXEC dbo.CanbanCardSection @p0",
+                    card.Id
+                );
+
+            card.CanbanCardStructure =
+                ExecuteList<CanbanCardStructure>(
+                    "EXEC dbo.CanbanCardStructure @p0",
+                    card.Id
+                );
+
+            card.CanbanCardWorkOrderType =
+                ExecuteList<CanbanCardWorkOrderType>(
+                    "EXEC dbo.CanbanCardWorkOrderType @p0",
+                    card.Id
+                );
+            return card;
         }
 
         #endregion

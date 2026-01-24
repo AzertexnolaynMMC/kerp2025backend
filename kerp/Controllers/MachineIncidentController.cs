@@ -1,7 +1,15 @@
 ﻿using kerp.Prosedur.Admin.Project;
+using kerp.Prosedur.MachineIncident.Document;
 using kerp.Prosedur.MachineIncident.Incident;
+using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
+using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
+using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
 using kerp.Prosedur.MachineIncident.SelectModels;
+using kerp.Prosedur.MachineIncident.Task;
+using kerp.Prosedur.MachineIncident.Type;
+using kerp.Prosedur.MachineIncident.WorkOrderType;
 using kerp.Repository.MachineIncidentRepository;
+using kerp.Service.IncidentService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +17,10 @@ namespace kerp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MachineIncidentController(IMachineIncidentRepository repository) : ControllerBase
+    public class MachineIncidentController(IMachineIncidentRepository repository, IIncidentService incidentService) : ControllerBase
     {
         private readonly IMachineIncidentRepository _repository = repository;
+        private readonly IIncidentService _incidentService = incidentService;
         [HttpGet("MachineIncidentCrashTypeSelectMulti")]
         public IActionResult MachineIncidentCrashTypeSelectMulti()
         {
@@ -137,16 +146,46 @@ namespace kerp.Controllers
         }
 
 
-
-
-        [HttpPost("Post")]
-        public IActionResult MachineIncidentInsert([FromBody] List<MachineIncidentInsert> MachineIncidentInsert)
+        [HttpGet("MachineIncidentSelect")]
+        public IActionResult MachineIncidentSelect(int Id)
         {
             try
             {
-                int? result = _repository.Post(MachineIncidentInsert);
 
-                return result == 1
+
+                return Ok(new CustomerResponseModel<MachineIncidentSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.MachineIncidentSelect(Id)
+                });
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+
+            }
+
+        }
+
+
+        [HttpPost("Post")]
+        public async Task<IActionResult> MachineIncidentInsertAsync([FromBody] List<MachineIncidentInsert> MachineIncidentInsert)
+        {
+            try
+            {
+                List<MachineIncidentSelectForBackEnd> result =
+    await _incidentService.InsertAsync(MachineIncidentInsert);
+
+                return result.Count > 1
                     ? (IActionResult)Ok(new CustomerResponseModel<ProjectSelectAdmin>
                     {
                         StatusCode = 0,
@@ -176,5 +215,590 @@ namespace kerp.Controllers
             }
 
         }
+
+        [HttpPut("MachineIncidentTitleUpdate")]
+        public async Task<IActionResult> MachineIncidentTitleUpdate(
+    [FromBody] MachineIncidentTitleUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentTitleUpdateAsync(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+
+        [HttpPut("MachineIncidentProjectUpdate")]
+        public async Task<IActionResult> MachineIncidentProjectUpdate(
+ [FromBody] MachineIncidentProjectUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentProjectUpdate(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("MachineIncidentAssetUpdate")]
+        public async Task<IActionResult> MachineIncidentAssetUpdate(
+ [FromBody] MachineIncidentAssetUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentAssetUpdate(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("MachineIncidentCrashTypeUpdate")]
+        public async Task<IActionResult> MachineIncidentCrashTypeUpdate(
+ [FromBody] MachineIncidentCrashTypeUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentCrashTypeUpdate(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("MachineIncidentWorkOrderTypeUpdate")]
+        public async Task<IActionResult> MachineIncidentWorkOrderTypeUpdate(
+ [FromBody] MachineIncidentWorkOrderTypeUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentWorkOrderTypeUpdate(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("MachineIncidentWorkShiftUpdate")]
+        public async Task<IActionResult> MachineIncidentWorkShiftUpdate(
+ [FromBody] MachineIncidentWorkShiftUpdate model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentWorkShiftUpdate(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("MachineIncidentAccept")]
+        public async Task<IActionResult> MachineIncidentAccept(
+ [FromBody] MachineIncidentAccept model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentAccept(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }     
+        
+
+        
+        [HttpPut("MachineIncidentAssistantInsert")]
+        public async Task<IActionResult> MachineIncidentAssistantInsert(
+ [FromBody] List<MachineIncidentAssistantInsert>  model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentAssistantInsert(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+                [HttpPut("MachineIncidentStart")]
+        public async Task<IActionResult> MachineIncidentStart(
+ [FromBody] List<MachineIncidentAssistantInsert>  model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentStart(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPost("MachineIncidentDocumentInsert")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> MachineIncidentDocumentInsert(
+            [FromForm] MachineIncidentDocumentInsert model)
+        {
+            try
+            {
+                if (model.File == null || model.File.Length == 0)
+                    return BadRequest("File boşdur");
+
+                // 🔹 Extension (pdf, png, xls və s.)
+                string extension = Path.GetExtension(model.File.FileName)
+                                        .Replace(".", "")
+                                        .ToLowerInvariant();
+
+                // 🔹 Root folder (wwwroot YOXDURSA – avtomatik yaradılacaq)
+                string uploadRoot = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    "MachineIncidentDocuments",
+                    model.MachineIncidentId.ToString(),
+                    extension
+                );
+
+                Directory.CreateDirectory(uploadRoot); // varsa toxunmur
+
+                // 🔹 UNIQ FileName
+                string uniqueFileName =
+                    $"{model.MachineIncidentId}_{model.UserId}_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{Guid.NewGuid()}.{extension}";
+
+                string physicalPath = Path.Combine(uploadRoot, uniqueFileName);
+
+                // 🔹 Fiziki save
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    await model.File.CopyToAsync(stream);
+                }
+
+                // 🔹 Server tərəfindən doldurulan sahələr
+                model.FileName = uniqueFileName;
+                model.FilePath =
+                    $"/MachineIncidentDocuments/{model.MachineIncidentId}/{extension}/{uniqueFileName}";
+                model.ContentType = model.File.ContentType;
+                model.FileSize = model.File.Length;
+
+                int result = await _incidentService.MachineIncidentDocumentInsert(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+
+
+
+
+
+
+        [HttpDelete("MachineIncidentAssistantStatus")]
+
+        public async Task<IActionResult> MachineIncidentAssistantStatus(
+ [FromBody] MachineIncidentAssistantStatus model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentAssistantStatus(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }      
+        
+        [HttpDelete("MachineIncidentDocumentStatus")]
+
+        public async Task<IActionResult> MachineIncidentDocumentStatus(
+ [FromBody] MachineIncidentDocumentStatus model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentDocumentStatus(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+
+
+
+        [HttpGet("MachineIncidentAssetSelectMulti")]
+        public IActionResult MachineIncidentAssetSelectMulti(int Id)
+        {
+            try
+            {
+
+
+                return Ok(new CustomerResponseModel<List<MachineIncidentAssetSelectMulti>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.MachineIncidentAssetSelectMulti(Id)
+                });
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+
+            }
+
+        }
+                [HttpGet("MachineIncidentMaterialSelectMulti")]
+        public IActionResult MachineIncidentMaterialSelectMulti()
+        {
+            try
+            {
+
+
+                return Ok(new CustomerResponseModel<List<MachineIncidentMaterialSelectMulti>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.MachineIncidentMaterialSelectMulti()
+                });
+            }
+            catch (Exception ex)
+            {
+
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+
+            }
+
+        }
+
+        
+                    [HttpPost("MachineIncidentTaskInsert")]
+
+        public async Task<IActionResult> MachineIncidentTaskInsert(
+ [FromBody] MachineIncidentTaskInsert model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentTaskInsert(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
     }
 }

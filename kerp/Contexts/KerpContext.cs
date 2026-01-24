@@ -22,21 +22,21 @@ using kerp.Prosedur.Hr.Users.Phone;
 using kerp.Prosedur.Hr.Users.Section;
 using kerp.Prosedur.Hr.Users.Structur;
 using kerp.Prosedur.Hr.Users.User;
+using kerp.Prosedur.MachineIncident.Assistant;
+using kerp.Prosedur.MachineIncident.Chat;
 using kerp.Prosedur.MachineIncident.Event;
 using kerp.Prosedur.MachineIncident.Group;
 using kerp.Prosedur.MachineIncident.Incident;
-using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
-using kerp.Prosedur.MachineIncident.MachineIncidentChat;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
 using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
-using kerp.Prosedur.MachineIncident.MachineIncidentTask;
-using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
 using kerp.Prosedur.MachineIncident.Material;
 using kerp.Prosedur.MachineIncident.Section;
 using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Structure;
+using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
 using kerp.Prosedur.MachineIncident.WorkOrderType;
+using kerp.Prosedur.MachineIncident.WorkShift;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Users;
 using kerp.Prosedur.Users.Asset;
@@ -61,6 +61,9 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<MachineIncidentMaterialSelectMulti> MachineIncidentMaterialSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentSelect> MachineIncidentSelect { get; set; }
+    public virtual DbSet<CanbanCardHub> CanbanCardHub { get; set; }
     public virtual DbSet<CanbanCardStructure> CanbanCardStructure { get; set; }
     public virtual DbSet<CanbanCardSection> CanbanCardSection { get; set; }
     public virtual DbSet<CanbanCard> CanbanCard { get; set; }
@@ -196,6 +199,9 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<MachineIncidentMaterialSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<CanbanCardHub>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<CanbanCard>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLoginWorkOrderSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserLoginStructureSelect>().HasKey(q => q.Id);

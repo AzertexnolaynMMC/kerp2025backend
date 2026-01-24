@@ -190,6 +190,9 @@ namespace kerp.Repository.UserRepository
                 IsActive = spResult.IsActive,
                 CanLogin = spResult.CanLogin,
                 Position = spResult.Position,
+                StructureId = spResult.StructureId,
+                SectionId = spResult.SectionId,
+
 
                 // Status int? olduğuna görə cast eləmək lazımdır
                 // əgər null gəlirsə false kimi götürürük
@@ -203,6 +206,8 @@ namespace kerp.Repository.UserRepository
             userLogin.UserUserConMachineSelect = [.. _ctx.UserUserConMachineSelect.FromSqlRaw("EXEC dbo.UserUserConMachineSelect @p0", userLogin.UserId)];
             userLogin.UserUserLoginsSelect = [.. _ctx.UserUserLoginsSelect.FromSqlRaw("EXEC dbo.UserUserLoginsSelect @p0", userLogin.UserId)];
             userLogin.UserPhoneInfoSelect = [.. _ctx.UserPhoneInfoSelect.FromSqlRaw("EXEC dbo.UserPhoneInfoSelect @p0", userLogin.UserId)];
+            userLogin.UserLoginStructureSelect = [.. _ctx.UserLoginStructureSelect.FromSqlRaw("EXEC dbo.UserLoginStructureSelect @p0", userLogin.UserId)];
+            userLogin.UserLoginWorkOrderSelect = [.. _ctx.UserLoginWorkOrderSelect.FromSqlRaw("EXEC dbo.UserLoginWorkOrderSelect @p0", userLogin.UserId)];
             // 4. Nəticəni qaytar
             return userLogin;
         }
