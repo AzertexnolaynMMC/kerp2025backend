@@ -49,7 +49,7 @@ item.Id,
 item.Title,
 item.CrashTypeId
 );
-
+"s"
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskUpdated, item.UserId);
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
