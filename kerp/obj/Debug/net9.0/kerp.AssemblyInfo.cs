@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("kerp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+147f64ffb27b312353f483bd5fe662b7ea481517")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a37911afb8a32c54e248dced0a473e9f39da174")]
 [assembly: System.Reflection.AssemblyProductAttribute("kerp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("kerp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

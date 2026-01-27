@@ -9,8 +9,10 @@ using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
 using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
+using kerp.Prosedur.MachineIncident.MachineIncidentTask;
 using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
 using kerp.Prosedur.MachineIncident.Material;
+using kerp.Prosedur.MachineIncident.Record;
 using kerp.Prosedur.MachineIncident.Section;
 using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Structure;
@@ -22,13 +24,33 @@ using Microsoft.EntityFrameworkCore;
 
 namespace kerp.Repository.MachineIncidentRepository
 {
-    public class MachineIncidentRepository : IMachineIncidentRepository
+    public class MachineIncidentRepository(KerpContext ctx) : IMachineIncidentRepository
     {
-        private readonly KerpContext _ctx;
+        private readonly KerpContext _ctx = ctx;
 
-        public MachineIncidentRepository(KerpContext ctx)
+
+
+        public MachineIncidentSelect? MachineIncidentTaskStatus(MachineIncidentTaskStatus item)
         {
-            _ctx = ctx;
+            MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
+"EXEC dbo.MachineIncidentTaskStatus @p0, @p1",
+item.UserId,
+item.Id
+);
+            InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskRemoved, item.UserId);
+            return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
+        }
+        public MachineIncidentSelect? MachineIncidentTaskTitleCrashTypeUpdate(MachineIncidentTaskTitleCrashTypeUpdate item)
+        {
+            MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
+"EXEC dbo.MachineIncidentTaskTitleCrashTypeUpdate @p0, @p1, @p2, @p3",
+item.UserId,
+item.Id,
+item.Title,
+item.CrashTypeId
+);
+            InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskUpdated, item.UserId);
+            return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
 
         public MachineIncidentSelect? MachineIncidentDocumentStatus(MachineIncidentDocumentStatus item)
@@ -37,8 +59,6 @@ namespace kerp.Repository.MachineIncidentRepository
 "EXEC dbo.MachineIncidentDocumentStatus @p0, @p1",
 item.UserId,
 item.Id
-
-
 );
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.DocumentRemoved, item.UserId);
 
@@ -64,6 +84,33 @@ item.MachineIncidentId
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
 
+
+        public MachineIncidentSelect? MachineIncidentMaterialStatus(MachineIncidentMaterialStatus item)
+        {
+            MachineIncidentMaterialSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentMaterialSelect>(
+"EXEC dbo.MachineIncidentMaterialStatus @p0, @p1",
+item.Id,
+item.UserId
+
+);
+            InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialRemoved, item.UserId);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+        }
+
+        public MachineIncidentSelect? MachineIncidentMaterialInsert(MachineIncidentMaterialInsert item)
+        {
+            MachineIncidentMaterialSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentMaterialSelect>(
+"EXEC dbo.MachineIncidentMaterialInsert @p0, @p1, @p2, @p3",
+item.MaterialId,
+item.UserId,
+item.MachineIncidentTaskId,
+item.Amount
+
+);
+            InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialAdded, item.UserId);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
         public MachineIncidentSelect? MachineIncidentTaskInsert(MachineIncidentTaskInsert item)
         {
             MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
@@ -117,6 +164,69 @@ item.UserId
             }
 
             return MachineIncidentSelect(MachineIncidentAssistantSelect.CrashId);
+        }
+
+        public MachineIncidentSelect? MachineIncidentReject(MachineIncidentReject item)
+        {
+            _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+"EXEC dbo.MachineIncidentReject @p0, @p1 , @p2, @p3",
+item.Id,
+item.UserId,
+item.TypeEnum,
+item.Title
+);
+            if (item.TypeEnum == 1)
+            {
+                InsertEvent(item.Id, item.UserId, MachineIncidentEventType.RejectedByCounterParty, item.UserId);
+            }
+            else
+            {
+                InsertEvent(item.Id, item.UserId, MachineIncidentEventType.RejectedByReceiver, item.UserId);
+            }
+            return MachineIncidentSelect(item.Id);
+
+        }
+
+        public MachineIncidentSelect? MachineIncidentResolved(MachineIncidentResolved item)
+        {
+            _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+"EXEC dbo.MachineIncidentResolved @p0, @p1",
+item.Id,
+item.UserId
+);
+            InsertEvent(item.Id, item.UserId, MachineIncidentEventType.ApprovedByForeman, item.UserId);
+            return MachineIncidentSelect(item.Id);
+        }
+
+        public MachineIncidentSelect? MachineIncidentAwaitingApproval(MachineIncidentAwaitingApproval item)
+        {
+            _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+"EXEC dbo.MachineIncidentAwaitingApproval @p0, @p1",
+item.Id,
+item.UserId
+);
+            InsertEvent(item.Id, item.UserId, MachineIncidentEventType.ApprovedByCounterParty, item.UserId);
+            return MachineIncidentSelect(item.Id);
+        }
+        public MachineIncidentSelect? MachineIncidentClosed(MachineIncidentClosed item)
+        {
+            _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+"EXEC dbo.MachineIncidentClosed @p0, @p1",
+item.Id,
+item.UserId
+);
+            InsertEvent(item.Id, item.UserId, MachineIncidentEventType.Closed, item.UserId);
+            return MachineIncidentSelect(item.Id);
+        }
+        public MachineIncidentSelect? MachineIncidentCanceled(MachineIncidentCanceled item)
+        {
+            _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+"EXEC dbo.MachineIncidentCanceled @p0, @p1",
+item.Id,
+item.UserId
+);
+            InsertEvent(item.Id, item.UserId, MachineIncidentEventType.CancelledByCounterParty, item.UserId);
+            return MachineIncidentSelect(item.Id);
         }
         public MachineIncidentSelect? MachineIncidentStart(List<MachineIncidentAssistantInsert> item)
         {
@@ -372,6 +482,8 @@ item.UserId
             model.MachineIncidentWorkShiftSelect =
                 ExecuteList<MachineIncidentWorkShiftSelect>(
                     "EXEC dbo.MachineIncidentWorkShiftSelect @p0", Id);
+            model.MachineIncidentRecordSelect = ExecuteList<MachineIncidentRecordSelect>(
+                    "EXEC dbo.MachineIncidentRecordSelect @p0", Id);
 
             return model;
         }
@@ -551,6 +663,17 @@ item.UserId
                        .AsNoTracking()
                        .AsEnumerable()];
         }
+
+
+
+
+
+
+
+
+
+
+
 
 
 

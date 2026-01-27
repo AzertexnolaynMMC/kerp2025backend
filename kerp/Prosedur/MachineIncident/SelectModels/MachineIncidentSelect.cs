@@ -5,6 +5,7 @@ using kerp.Prosedur.MachineIncident.Group;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
 using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
 using kerp.Prosedur.MachineIncident.Material;
+using kerp.Prosedur.MachineIncident.Record;
 using kerp.Prosedur.MachineIncident.Section;
 using kerp.Prosedur.MachineIncident.Structure;
 using kerp.Prosedur.MachineIncident.Task;
@@ -73,6 +74,8 @@ namespace kerp.Prosedur.MachineIncident.SelectModels
 
         [NotMapped]
         public List<MachineIncidentWorkShiftSelect>? MachineIncidentWorkShiftSelect { get; set; }
+        [NotMapped]
+        public List<MachineIncidentRecordSelect>? MachineIncidentRecordSelect { get; set; }
 
     }
 }

@@ -605,6 +605,54 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentAwaitingApproval",
+    "RelativePath": "api/MachineIncident/MachineIncidentAwaitingApproval",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentAwaitingApproval",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentCanceled",
+    "RelativePath": "api/MachineIncident/MachineIncidentCanceled",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentCanceled",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentClosed",
+    "RelativePath": "api/MachineIncident/MachineIncidentClosed",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentClosed",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentCrashTypeSelectMulti",
     "RelativePath": "api/MachineIncident/MachineIncidentCrashTypeSelectMulti",
     "HttpMethod": "GET",
@@ -698,12 +746,44 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentMaterialInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentMaterialInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Material.MachineIncidentMaterialInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentMaterialSelectMulti",
     "RelativePath": "api/MachineIncident/MachineIncidentMaterialSelectMulti",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentMaterialStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentMaterialStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Material.MachineIncidentMaterialStatus",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -727,6 +807,38 @@
       {
         "Name": "model",
         "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentProjectUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentReject",
+    "RelativePath": "api/MachineIncident/MachineIncidentReject",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentReject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentResolved",
+    "RelativePath": "api/MachineIncident/MachineIncidentResolved",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentResolved",
         "IsRequired": true
       }
     ],
@@ -775,6 +887,38 @@
       {
         "Name": "model",
         "Type": "kerp.Prosedur.MachineIncident.Task.MachineIncidentTaskInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentTaskStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentTaskStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentTask.MachineIncidentTaskStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentTaskTitleCrashTypeUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentTaskTitleCrashTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentTask.MachineIncidentTaskTitleCrashTypeUpdate",
         "IsRequired": true
       }
     ],

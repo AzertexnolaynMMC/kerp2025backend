@@ -2,7 +2,9 @@
 using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
+using kerp.Prosedur.MachineIncident.MachineIncidentTask;
 using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
+using kerp.Prosedur.MachineIncident.Material;
 using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
@@ -33,5 +35,14 @@ namespace kerp.Repository.MachineIncidentRepository
         MachineIncidentSelect? MachineIncidentDocumentInsert(MachineIncidentDocumentInsert item);
         MachineIncidentSelect? MachineIncidentDocumentStatus(MachineIncidentDocumentStatus item);
         MachineIncidentSelect? MachineIncidentTaskInsert(MachineIncidentTaskInsert item);
+        MachineIncidentSelect? MachineIncidentTaskTitleCrashTypeUpdate(MachineIncidentTaskTitleCrashTypeUpdate item);
+        MachineIncidentSelect? MachineIncidentTaskStatus(MachineIncidentTaskStatus item);
+        MachineIncidentSelect? MachineIncidentMaterialInsert(MachineIncidentMaterialInsert item);
+        MachineIncidentSelect? MachineIncidentMaterialStatus(MachineIncidentMaterialStatus item);
+        MachineIncidentSelect? MachineIncidentResolved(MachineIncidentResolved item);
+        MachineIncidentSelect? MachineIncidentAwaitingApproval(MachineIncidentAwaitingApproval item);
+        MachineIncidentSelect? MachineIncidentClosed(MachineIncidentClosed item);
+        MachineIncidentSelect? MachineIncidentCanceled(MachineIncidentCanceled item);
+        MachineIncidentSelect? MachineIncidentReject(MachineIncidentReject item);
     }
 }

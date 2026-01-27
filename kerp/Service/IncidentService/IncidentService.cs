@@ -4,7 +4,9 @@ using kerp.Prosedur.MachineIncident.Document;
 using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
+using kerp.Prosedur.MachineIncident.MachineIncidentTask;
 using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
+using kerp.Prosedur.MachineIncident.Material;
 using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
@@ -266,6 +268,144 @@ namespace kerp.Service.IncidentService
                 return 1;
             }
 
+            return 0;
+        }
+
+        public async Task<int> MachineIncidentTaskTitleCrashTypeUpdate(MachineIncidentTaskTitleCrashTypeUpdate item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentTaskTitleCrashTypeUpdate(item);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "MachineIncidentTitleUpdate",
+                    result
+                );
+
+                return 1;
+            }
+
+            return 0; ;
+        }
+
+        public async Task<int> MachineIncidentTaskStatus(MachineIncidentTaskStatus item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentTaskStatus(item);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "MachineIncidentTitleUpdate",
+                    result
+                );
+
+                return 1;
+            }
+
+            return 0; ;
+        }
+
+        public async Task<int> MachineIncidentMaterialInsert(MachineIncidentMaterialInsert item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentMaterialInsert(item);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "MachineIncidentTitleUpdate",
+                    result
+                );
+
+                return 1;
+            }
+
+            return 0; ;
+        }
+        public async Task<int> MachineIncidentMaterialStatus(MachineIncidentMaterialStatus item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentMaterialStatus(item);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync(
+                    "MachineIncidentTitleUpdate",
+                    result
+                );
+
+                return 1;
+            }
+
+            return 0; ;
+        }
+
+        public async Task<int> MachineIncidentResolved(MachineIncidentResolved item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentResolved(item);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> MachineIncidentAwaitingApproval(MachineIncidentAwaitingApproval item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentAwaitingApproval(item);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> MachineIncidentClosed(MachineIncidentClosed item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentClosed(item);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> MachineIncidentCanceled(MachineIncidentCanceled item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentCanceled(item);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> MachineIncidentReject(MachineIncidentReject item)
+        {
+            MachineIncidentSelect result = _incidentRepository.MachineIncidentReject(item);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
+
+                return 1;
+            }
             return 0;
         }
     }

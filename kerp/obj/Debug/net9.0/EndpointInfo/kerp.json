@@ -1178,6 +1178,285 @@
         }
       }
     },
+    "/api/MachineIncident/MachineIncidentTaskTitleCrashTypeUpdate": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskTitleCrashTypeUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskTitleCrashTypeUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskTitleCrashTypeUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentTaskStatus": {
+      "delete": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentTaskStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentMaterialInsert": {
+      "post": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentMaterialStatus": {
+      "delete": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentMaterialStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentResolved": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentResolved"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentResolved"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentResolved"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentAwaitingApproval": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentAwaitingApproval"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentAwaitingApproval"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentAwaitingApproval"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentClosed": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentClosed"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentClosed"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentClosed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentCanceled": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentCanceled"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentCanceled"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentCanceled"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentReject": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ManagerEmploye/ManagerEmployeSelect": {
       "get": {
         "tags": [
@@ -3890,6 +4169,48 @@
         },
         "additionalProperties": false
       },
+      "MachineIncidentAwaitingApproval": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentCanceled": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentClosed": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "MachineIncidentCrashTypeInsert": {
         "type": "object",
         "properties": {
@@ -3995,6 +4316,20 @@
         },
         "additionalProperties": false
       },
+      "MachineIncidentMaterialStatus": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "MachineIncidentProjectUpdate": {
         "type": "object",
         "properties": {
@@ -4003,6 +4338,42 @@
             "format": "int32"
           },
           "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentReject": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeEnum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentResolved": {
+        "type": "object",
+        "properties": {
+          "userId": {
             "type": "integer",
             "format": "int32"
           },
@@ -4062,6 +4433,42 @@
               "$ref": "#/components/schemas/MachineIncidentMaterialInsert"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentTaskStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentTaskTitleCrashTypeUpdate": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "crashTypeId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

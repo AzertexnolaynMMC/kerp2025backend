@@ -30,6 +30,7 @@ using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
 using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
 using kerp.Prosedur.MachineIncident.Material;
+using kerp.Prosedur.MachineIncident.Record;
 using kerp.Prosedur.MachineIncident.Section;
 using kerp.Prosedur.MachineIncident.SelectModels;
 using kerp.Prosedur.MachineIncident.Structure;
@@ -61,6 +62,7 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<MachineIncidentRecordSelect> MachineIncidentRecordSelect { get; set; }
     public virtual DbSet<MachineIncidentMaterialSelectMulti> MachineIncidentMaterialSelectMulti { get; set; }
     public virtual DbSet<MachineIncidentSelect> MachineIncidentSelect { get; set; }
     public virtual DbSet<CanbanCardHub> CanbanCardHub { get; set; }
@@ -199,6 +201,7 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<MachineIncidentRecordSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentMaterialSelectMulti>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<CanbanCardHub>().HasKey(q => q.Id);

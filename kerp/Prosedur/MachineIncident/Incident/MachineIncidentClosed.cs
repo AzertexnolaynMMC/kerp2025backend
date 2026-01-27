@@ -1,10 +1,8 @@
 ﻿namespace kerp.Prosedur.MachineIncident.Incident
 {
-    public class MachineIncidentReject
+    public class MachineIncidentClosed
     {
         public int UserId { get; set; }      // INT
         public int Id { get; set; }
-        public int TypeEnum { get; set; }
-        public string? Title { get; set; }
     }
 }
