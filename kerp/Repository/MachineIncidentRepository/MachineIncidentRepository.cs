@@ -7,6 +7,7 @@ using kerp.Prosedur.MachineIncident.Event;
 using kerp.Prosedur.MachineIncident.Group;
 using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
+using kerp.Prosedur.MachineIncident.MachineIncidentChat;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
 using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
 using kerp.Prosedur.MachineIncident.MachineIncidentTask;
@@ -40,6 +41,17 @@ item.Id
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskRemoved, item.UserId);
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
+
+        public MailMachineIncidentResult? MailMachineIncidentResult(int Id)
+        {
+            MailMachineIncidentResult MachineIncidentAssistantSelect = ExecuteSingle<MailMachineIncidentResult>(
+"EXEC dbo.MailMachineIncidentResult @p0",
+Id
+);
+            return MachineIncidentAssistantSelect;
+
+        }
+
         public MachineIncidentSelect? MachineIncidentTaskTitleCrashTypeUpdate(MachineIncidentTaskTitleCrashTypeUpdate item)
         {
             MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
@@ -111,6 +123,116 @@ item.Amount
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialAdded, item.UserId);
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
 
+        }
+        public MachineIncidentSelect? MachineIncidentRecordInsert(MachineIncidentRecordInsert item)
+        {
+            MachineIncidentRecordSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentRecordSelect>(
+"EXEC dbo.MachineIncidentRecordInsert @p0, @p1, @p2",
+item.Title,
+item.UserId,
+item.MachineIncidentId
+
+
+);
+            InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordAdd, item.UserId);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
+        public MachineIncidentSelect? MachineIncidentLostTimeInsert(MachineIncidentLostTimeInsert item)
+        {
+            MachineIncidentLostTimeSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentLostTimeSelect>(
+"EXEC dbo.MachineIncidentLostTimeInsert @p0, @p1, @p2, @p3",
+item.Title,
+item.UserId,
+item.MachineIncidentId,
+item.Second
+);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
+        public MachineIncidentSelect? MachineIncidentLostTimeStatus(MachineIncidentLostTimeStatus item)
+        {
+            MachineIncidentLostTimeSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentLostTimeSelect>(
+"EXEC dbo.MachineIncidentLostTimeStatus @p0, @p1",
+item.Id,
+item.UserId
+);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
+        public MachineIncidentSelect? MachineIncidentRecordUpdate(MachineIncidentRecordUpdate item)
+        {
+            MachineIncidentRecordSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentRecordSelect>(
+"EXEC dbo.MachineIncidentRecordUpdate @p0, @p1, @p2",
+item.Id,
+item.Title,
+item.UserId
+
+
+);
+            InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordEdit, item.UserId);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
+
+        public MachineIncidentSelect? MachineIncidentEventUpdate(MachineIncidentEventUpdate item)
+        {
+            _ = ExecuteSingle<MachineIncidentEventSelect>(
+"EXEC dbo.MachineIncidentEventUpdateDate @p0, @p1, @p2",
+item.Id,
+item.NewEventDate,
+item.UserId
+);
+            switch (item.EnumType)
+            {
+                case 1:
+                    InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.OpenDate, item.UserId);
+                    break;
+                case 3:
+                    InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.AcceptDate, item.UserId);
+                    break;
+                case 6:
+                    InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.StartDate, item.UserId);
+                    break;
+                case 7:
+                    InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.EndDate, item.UserId);
+                    break;
+                case 9:
+                    InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.ConfirmDate, item.UserId);
+                    break;
+                default:
+                    break;
+            }
+
+
+            return MachineIncidentSelect(item.MachineIncidentId);
+        }
+        public MachineIncidentSelect? MachineIncidentRecordStatus(MachineIncidentRecordStatus item)
+        {
+            MachineIncidentRecordSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentRecordSelect>(
+"EXEC dbo.MachineIncidentRecordStatus @p0, @p1",
+item.Id,
+item.UserId
+
+
+);
+            InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordDelete, item.UserId);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+
+        }
+
+
+        public MachineIncidentSelect? MachineIncidentChatInsert(MachineIncidentChatInsert item)
+        {
+            MachineIncidentChatSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentChatSelect>(
+"EXEC dbo.MachineIncidentChatInsert @p0, @p1, @p2",
+item.Title,
+item.UserId,
+item.MachineIncidentId
+
+
+);
+            return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
         }
         public MachineIncidentSelect? MachineIncidentTaskInsert(MachineIncidentTaskInsert item)
         {
@@ -366,12 +488,13 @@ item.UserId
         public MachineIncidentSelect? MachineIncidentWorkOrderTypeUpdate(MachineIncidentWorkOrderTypeUpdate item)
         {
             MachineIncidentWorkOrderTypeSelect MachineIncidentSelectForBackEnd = ExecuteSingle<MachineIncidentWorkOrderTypeSelect>(
-"EXEC dbo.MachineIncidentWorkOrderTypeUpdate @p0, @p1, @p2",
-item.Id,
-item.WorkOrderTypeId,
-item.UserId
-);
-
+                "EXEC dbo.MachineIncidentWorkOrderTypeUpdate @p0, @p1, @p2, @p3, @p4",
+                item.Id,
+                item.WorkOrderTypeId,
+                item.UserId,
+                item.PlannedDate,   // ✅ YENİ
+                item.DeadlineHours  // ✅ YENİ
+            );
 
             InsertEvent(MachineIncidentSelectForBackEnd.CrashId, item.UserId, MachineIncidentEventType.ServiceTypeChanged, item.UserId);
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.CrashId);
@@ -485,6 +608,9 @@ item.UserId
                     "EXEC dbo.MachineIncidentWorkShiftSelect @p0", Id);
             model.MachineIncidentRecordSelect = ExecuteList<MachineIncidentRecordSelect>(
                     "EXEC dbo.MachineIncidentRecordSelect @p0", Id);
+            model.MachineIncidentEventSelectMulti = ExecuteList<MachineIncidentEventSelectMulti>(
+                    "EXEC dbo.MachineIncidentEventSelectMulti @p0", Id);
+
 
             return model;
         }
@@ -499,29 +625,47 @@ item.UserId
             List<MachineIncidentInsert> inserts)
         {
             List<MachineIncidentSelectForBackEnd> insertedIncidents = [];
-
             using Microsoft.EntityFrameworkCore.Storage.IDbContextTransaction transaction =
                 _ctx.Database.BeginTransaction();
-
             try
             {
                 foreach (MachineIncidentInsert item in inserts)
                 {
-                    // 1️⃣ MAIN INSERT
-                    MachineIncidentSelectForBackEnd? incident =
-                        InsertMachineIncident(item) ?? throw new Exception("MachineIncidentInsert failed");
+                    // CM validation
+                    if (item.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002)
+                    {
+                        if (item.PlannedDate == null)
+                            throw new Exception("CM seçildikdə PlannedDate məcburidir.");
+                        if (item.DeadlineHours == null)
+                            throw new Exception("CM seçildikdə DeadlineHours məcburidir.");
+                    }
 
-                    // 🔥 ÇOX VACİB – list-ə yığırıq
+                    // 1️⃣ MAIN INSERT
+                    MachineIncidentSelectForBackEnd? incident = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+                        "EXEC dbo.MachineIncidentInsert @p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10",
+                        item.Title,
+                        item.UserId,
+                        item.AssetId,
+                        item.ProjectId,
+                        item.MachineIncidentCrashTypeInsert?.CrashTypeId,
+                        item.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId,
+                        item.MachineIncidentSectionInsert?.SectionId,
+                        item.MachineIncidentStructureInsert?.StructureId,
+                        item.MachineIncidentWorkShiftInsert?.WorkShiftId,
+                        item.PlannedDate,    // @p9
+                        item.DeadlineHours   // @p10
+                    );
+
+                    incident.MachineIncidentSelectForBackEndCrashType = ExecuteList<MachineIncidentSelectForBackEndCrashType>(
+                        "EXEC dbo.MachineIncidentSelectForBackEndCrashType @p0", incident.Id);
+
+                    incident.MachineIncidentSelectForBackEndWorkOrderType = ExecuteList<MachineIncidentSelectForBackEndWorkOrderType>(
+                        "EXEC dbo.MachineIncidentSelectForBackEndWorkOrderType @p0", incident.Id);
+
+                    // 🔥 list-ə yığırıq
                     insertedIncidents.Add(incident);
 
-                    // 2️⃣ RELATIONS
-                    InsertCrashType(incident.Id, item);
-                    InsertWorkOrderType(incident.Id, item);
-                    InsertSection(incident.Id, item);
-                    InsertStructure(incident.Id, item);
-                    InsertWorkShift(incident.Id, item);
-
-                    // 3️⃣ EVENTS
+                    // 2️⃣ EVENTS
                     InsertCreatedEvent(incident.Id, item.UserId);
                     InsertAssignedEvent(
                         incident.Id,
@@ -529,19 +673,15 @@ item.UserId
                         item.AsigntUserId
                     );
                 }
-
                 transaction.Commit();
-
-                // ✅ ARTIQ DÜZGÜN QAYTARIR
                 return insertedIncidents;
             }
             catch
             {
                 transaction.Rollback();
-                throw; // ❗ Service bunu tutacaq
+                throw;
             }
         }
-
         #endregion
 
         #region Insert Methods
@@ -664,6 +804,11 @@ item.UserId
                        .AsNoTracking()
                        .AsEnumerable()];
         }
+
+
+
+
+
 
 
 

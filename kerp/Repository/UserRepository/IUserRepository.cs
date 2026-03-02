@@ -49,5 +49,6 @@ namespace kerp.Repository.UserRepository
         UserSelectLoginSingle? PutUserUpdateLoginSingle(UserUpdateLoginSingle StructureUpdate);
 
         List<UserSelectLoginTypeMulti>? GetUserSelectLoginTypeMulti();
+        Task<List<UserFcmToken>> GetUserFcmTokens(int workOrderTypeId, int structureId, int creatorUserId);
     }
 }

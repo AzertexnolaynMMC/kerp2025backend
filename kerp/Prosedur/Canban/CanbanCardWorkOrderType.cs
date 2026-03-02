@@ -8,5 +8,6 @@
         public string? Code { get; set; }
 
         public string? LangTitle { get; set; }
+        public string? Keys { get; set; }
     }
 }

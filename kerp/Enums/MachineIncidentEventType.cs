@@ -45,6 +45,14 @@
         Started = 33,                     // Is emrini baslatdi
 
         DocumentAdded = 34,               // Sened elave etdi
-        DocumentRemoved = 35              // Senedi sildi
+        DocumentRemoved = 35,              // Senedi sildi
+        RecordAdd = 36,            // Senedi sildi
+        RecordEdit = 37,              // Senedi sildi
+        RecordDelete = 38,           // Senedi sildi
+        OpenDate = 39,           // Senedi sildi
+        AcceptDate = 40,           // Senedi sildi
+        StartDate = 41,           // Senedi sildi
+        EndDate = 42,           // Senedi sildi
+        ConfirmDate = 43,           // Senedi sildi
     }
 }

@@ -14,11 +14,12 @@ namespace kerp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController(IUserRepository repository, TokenService tokenService) : ControllerBase
+    public class UserController(IUserRepository repository, TokenService tokenService, LdapService ldapService) : ControllerBase
     {
 
         private readonly IUserRepository _repository = repository;
         private readonly TokenService _tokenService = tokenService;
+        private readonly LdapService _ldapService = ldapService;
 
         [HttpPost("LoginUser")]
         public IActionResult LoginUser([FromBody] LoginModel model)
@@ -36,19 +37,59 @@ namespace kerp.Controllers
                     });
                 }
 
-                UserLogin? userLogin = _repository.LoginUser(model);
+                UserLogin? userLogin = null;
 
-                if (userLogin == null)
+                // 🔹 LDAP LOGIN
+                if (model.LoginType == 2)
                 {
-                    return Ok(new CustomerResponseModel<object>
+                    bool ldapOk = _ldapService.Authenticate(
+                        model.UserName!,
+                        model.Password!
+                    );
+
+                    if (!ldapOk)
                     {
-                        StatusCode = 5,
-                        title = "Tapılmadı",
-                        AccessToken = null,
-                        Data = null
-                    });
+                        return Ok(new CustomerResponseModel<object>
+                        {
+                            StatusCode = 5,
+                            title = "LDAP istifadəçisi tapılmadı və ya şifrə yanlışdır",
+                            AccessToken = null,
+                            Data = null
+                        });
+                    }
+
+                    // ✅ LDAP OK → DB-ə BAX
+                    userLogin = _repository.LoginUser(model);
+
+                    if (userLogin == null)
+                    {
+                        return Ok(new CustomerResponseModel<object>
+                        {
+                            StatusCode = 6,
+                            title = "LDAP istifadəçisi var, amma sistemdə qeydiyyatda deyil",
+                            AccessToken = null,
+                            Data = null
+                        });
+                    }
+                }
+                else
+                {
+                    // 🔹 KÖHNƏ DB LOGIN (SƏN NECƏ YAZMISANS AYNISI)
+                    userLogin = _repository.LoginUser(model);
+
+                    if (userLogin == null)
+                    {
+                        return Ok(new CustomerResponseModel<object>
+                        {
+                            StatusCode = 5,
+                            title = "Tapılmadı",
+                            AccessToken = null,
+                            Data = null
+                        });
+                    }
                 }
 
+                // 🔐 ORTAQ YOXLAMALAR
                 if (userLogin.IsActive == false)
                 {
                     return Ok(new CustomerResponseModel<object>
@@ -65,7 +106,7 @@ namespace kerp.Controllers
                     return Ok(new CustomerResponseModel<object>
                     {
                         StatusCode = 2,
-                        title = "Giriş icazeniz yoxdur",
+                        title = "Giriş icazəniz yoxdur",
                         AccessToken = null,
                         Data = null
                     });
@@ -82,7 +123,7 @@ namespace kerp.Controllers
                     });
                 }
 
-                // ✅ UĞURLU HAL
+                // ✅ TOKEN
                 string token = _tokenService.GenerateToken(
                     model.UserName!,
                     userLogin.UserId.ToString()
@@ -96,19 +137,21 @@ namespace kerp.Controllers
                     Data = userLogin
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // TODO: burda öz server log sisteminizə yazın (Serilog, NLog və s.)
-
                 return Ok(new CustomerResponseModel<object>
                 {
                     StatusCode = 500,
-                    title = "Internal server error: " + ex,
+                    title = "Internal server error",
                     AccessToken = null,
                     Data = null
                 });
             }
         }
+
+
+
+
         [HttpPost("AppLogsInsert")]
         public IActionResult AppLogsInsert([FromBody] List<AppLogsInsert> model)
         {

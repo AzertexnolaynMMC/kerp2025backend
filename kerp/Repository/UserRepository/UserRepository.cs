@@ -90,6 +90,18 @@ namespace kerp.Repository.UserRepository
                 userLogin.UserPhoneInfoSelect = [.. _ctx.UserPhoneInfoSelect.FromSqlRaw("EXEC dbo.UserPhoneInfoSelect @p0", userLogin.UserId)];
                 userLogin.UserLoginStructureSelect = [.. _ctx.UserLoginStructureSelect.FromSqlRaw("EXEC dbo.UserLoginStructureSelect @p0", userLogin.UserId)];
                 userLogin.UserLoginWorkOrderSelect = [.. _ctx.UserLoginWorkOrderSelect.FromSqlRaw("EXEC dbo.UserLoginWorkOrderSelect @p0", userLogin.UserId)];
+                userLogin.MachineIncidentPermissionSelect = _ctx.UserMachineIncidentPermissionSelect.FromSqlRaw("EXEC dbo.UserMachineIncidentPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+                userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+                userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+
+                if (!string.IsNullOrEmpty(model.FcmToken))
+                {
+                    _ctx.Database.ExecuteSqlRaw(
+                        "EXEC dbo.UserFcmTokenUpdate @p0, @p1",
+                        userLogin.UserId,
+                        model.FcmToken
+                    );
+                }
             }
 
             return userLogin;
@@ -208,6 +220,9 @@ namespace kerp.Repository.UserRepository
             userLogin.UserPhoneInfoSelect = [.. _ctx.UserPhoneInfoSelect.FromSqlRaw("EXEC dbo.UserPhoneInfoSelect @p0", userLogin.UserId)];
             userLogin.UserLoginStructureSelect = [.. _ctx.UserLoginStructureSelect.FromSqlRaw("EXEC dbo.UserLoginStructureSelect @p0", userLogin.UserId)];
             userLogin.UserLoginWorkOrderSelect = [.. _ctx.UserLoginWorkOrderSelect.FromSqlRaw("EXEC dbo.UserLoginWorkOrderSelect @p0", userLogin.UserId)];
+            userLogin.MachineIncidentPermissionSelect = _ctx.UserMachineIncidentPermissionSelect.FromSqlRaw("EXEC dbo.UserMachineIncidentPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+            userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+            userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             // 4. Nəticəni qaytar
             return userLogin;
         }
@@ -431,7 +446,17 @@ PageInsert.Password
                 .AsNoTracking()];
         }
 
-
+        public async Task<List<UserFcmToken>> GetUserFcmTokens(int workOrderTypeId, int structureId, int creatorUserId)
+        {
+            return await _ctx.UserFcmToken
+                .FromSqlRaw(
+                    "EXEC dbo.GetUserFcmTokensByWorkOrderAndStructure @p0, @p1, @p2",
+                    workOrderTypeId,
+                    structureId,
+                    creatorUserId
+                )
+                .ToListAsync();
+        }
 
     }
 }

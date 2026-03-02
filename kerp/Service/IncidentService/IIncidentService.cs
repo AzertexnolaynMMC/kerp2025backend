@@ -1,11 +1,15 @@
 ﻿
 using kerp.Prosedur.MachineIncident.Document;
+using kerp.Prosedur.MachineIncident.Event;
 using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.MachineIncident.MachineIncidentAssistant;
+using kerp.Prosedur.MachineIncident.MachineIncidentChat;
 using kerp.Prosedur.MachineIncident.MachineIncidentDocument;
+using kerp.Prosedur.MachineIncident.MachineIncidentLostTime;
 using kerp.Prosedur.MachineIncident.MachineIncidentTask;
 using kerp.Prosedur.MachineIncident.MachineIncidentWorkShift;
 using kerp.Prosedur.MachineIncident.Material;
+using kerp.Prosedur.MachineIncident.Record;
 using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
 using kerp.Prosedur.MachineIncident.WorkOrderType;
@@ -39,5 +43,12 @@ namespace kerp.Service.IncidentService
         Task<int> MachineIncidentClosed(MachineIncidentClosed item);
         Task<int> MachineIncidentCanceled(MachineIncidentCanceled item);
         Task<int> MachineIncidentReject(MachineIncidentReject item);
+        Task<int> MachineIncidentRecordInsert(MachineIncidentRecordInsert item);
+        Task<int> MachineIncidentRecordUpdate(MachineIncidentRecordUpdate item);
+        Task<int> MachineIncidentRecordStatus(MachineIncidentRecordStatus item);
+        Task<int> MachineIncidentChatInsert(MachineIncidentChatInsert item);
+        Task<int> MachineIncidentLostTimeInsert(MachineIncidentLostTimeInsert item);
+        Task<int> MachineIncidentLostTimeStatus(MachineIncidentLostTimeStatus item);
+        Task<int> MachineIncidentEventUpdate(MachineIncidentEventUpdate item);
     }
 }

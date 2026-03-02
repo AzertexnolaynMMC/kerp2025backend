@@ -12,7 +12,8 @@ namespace kerp.Prosedur.MachineIncident.Incident
         public int UserId { get; set; }      // INT
         public int AssetId { get; set; }     // INT
         public int ProjectId { get; set; }     // INT
-
+        public DateTime? PlannedDate { get; set; }
+        public int? DeadlineHours { get; set; }
 
         // =========================
         // Burda qezani kim acibsa hemin adam oz iscisini secir Event ucun lazimdir.

@@ -8,6 +8,9 @@ using kerp.Prosedur.Admin.ManagerEmploye;
 using kerp.Prosedur.Admin.Material;
 using kerp.Prosedur.Admin.Pages;
 using kerp.Prosedur.Admin.PageUser;
+using kerp.Prosedur.Admin.Permission.MachineIncidentPermission;
+using kerp.Prosedur.Admin.Permission.MachineIncidentReportPermission;
+using kerp.Prosedur.Admin.Permission.ProfilePermission;
 using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
 using kerp.Prosedur.Admin.UserConMachine;
@@ -38,12 +41,22 @@ using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
 using kerp.Prosedur.MachineIncident.WorkOrderType;
 using kerp.Prosedur.MachineIncident.WorkShift;
+using kerp.Prosedur.MachineIncidentReport;
+using kerp.Prosedur.Pm.PMChecklistTemplate;
+using kerp.Prosedur.Pm.PmGroup;
+using kerp.Prosedur.Pm.PMSchedule;
+using kerp.Prosedur.Pm.PMScheduleAssignees;
+using kerp.Prosedur.Pm.PMScheduleStructure;
+using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.SmtpSettings;
 using kerp.Prosedur.Structure;
+using kerp.Prosedur.Translation;
 using kerp.Prosedur.Users;
 using kerp.Prosedur.Users.Asset;
 using kerp.Prosedur.Users.Employer;
 using kerp.Prosedur.Users.Login;
 using kerp.Prosedur.Users.Mail;
+using kerp.Prosedur.Users.Permission;
 using kerp.Prosedur.Users.phone;
 using kerp.Prosedur.Users.See;
 using kerp.Prosedur.Users.UserPages;
@@ -62,6 +75,33 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<PMScheduleWorkOrderTypeSelectMulti> PMPMScheduleWorkOrderTypeSelectMulti { get; set; }
+    public virtual DbSet<PMScheduleSelect> PMScheduleSelect { get; set; }
+    public virtual DbSet<PMScheduleAssigneesSelect> PMScheduleAssigneesSelect { get; set; }
+    public virtual DbSet<PMScheduleWorkOrderTypeSelect> PMScheduleWorkOrderTypeSelect { get; set; }
+    public virtual DbSet<PMScheduleStructureSelect> PMScheduleStructureSelect { get; set; }
+    public virtual DbSet<PMChecklistTemplateSelect> PMChecklistTemplateSelect { get; set; }
+    public virtual DbSet<PMChecklistGroupSelect> PMChecklistGroupSelect { get; set; }
+    public virtual DbSet<TranslationGetByLang> TranslationGetByLang { get; set; }
+    public virtual DbSet<UserFcmToken> UserFcmToken { get; set; }
+    public virtual DbSet<MachineIncidentSelectForBackEndWorkOrderType> MachineIncidentSelectForBackEndWorkOrderType { get; set; }
+    public virtual DbSet<MachineIncidentSelectForBackEndCrashType> MachineIncidentSelectForBackEndCrashType { get; set; }
+    public virtual DbSet<MachineIncidentReportPermissionSelect> MachineIncidentReportPermissionSelect { get; set; }
+    public virtual DbSet<GetMachineIncidentReportPermission> GetMachineIncidentReportPermission { get; set; }
+    public virtual DbSet<MailMachineIncidentResult> MailMachineIncidentResult { get; set; }
+    public virtual DbSet<SmtpSettingsResult> SmtpSettingsResult { get; set; }
+    public virtual DbSet<MachineIncidentReportWorkShiftSelect> MachineIncidentReportWorkShiftSelect { get; set; }
+    public virtual DbSet<MachineIncidentEventSelectMulti> MachineIncidentEventSelectMulti { get; set; }
+    public virtual DbSet<MachineIncidentReportYear> MachineIncidentReportYear { get; set; }
+    public virtual DbSet<MachineIncidentReportWorkOrderTypeSelect> MachineIncidentReportWorkOrderTypeSelect { get; set; }
+    public virtual DbSet<MachineIncidentReportStructureSelect> MachineIncidentReportStructureSelect { get; set; }
+    public virtual DbSet<MachineIncidentReportSectionSelect> MachineIncidentReportSectionSelect { get; set; }
+    public virtual DbSet<MachineIncidentReportCrashTypeSelect> MachineIncidentReportCrashTypeSelect { get; set; }
+    public virtual DbSet<MachineIncidentReportSelect> MachineIncidentReportSelect { get; set; }
+    public virtual DbSet<UserProfilePermissionSelect> UserProfilePermissionSelect { get; set; }
+    public virtual DbSet<ProfilePermissionSelect> ProfilePermissionSelect { get; set; }
+    public virtual DbSet<MachineIncidentPermissionSelect> MachineIncidentPermissionSelect { get; set; }
+    public virtual DbSet<UserMachineIncidentPermissionSelect> UserMachineIncidentPermissionSelect { get; set; }
     public virtual DbSet<MachineIncidentRecordSelect> MachineIncidentRecordSelect { get; set; }
     public virtual DbSet<MachineIncidentMaterialSelectMulti> MachineIncidentMaterialSelectMulti { get; set; }
     public virtual DbSet<MachineIncidentSelect> MachineIncidentSelect { get; set; }
@@ -182,6 +222,9 @@ public partial class KerpContext : DbContext
 
         _ = modelBuilder.Entity<AppLog>().HasKey(q => q.LogId);
 
+        _ = modelBuilder.Entity<PMScheduleWorkOrderTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<PMScheduleStructureSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentSelectForBackEndWorkOrderType>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentSectionSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentCrashTypeSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentStructureSelect>().HasKey(q => q.LangId);
@@ -191,16 +234,51 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<CanbanCardCrashType>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<CanbanCardSection>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<CanbanCardStructure>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentReportWorkOrderTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentReportStructureSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentReportSectionSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentReportCrashTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<MachineIncidentSelectForBackEndCrashType>().HasKey(q => q.LangId);
 
+
+
+
+
+
+        _ = modelBuilder.Entity<TranslationGetByLang>().HasKey(q => q.Key);
+
+
+
+
+        _ = modelBuilder.Entity<PMScheduleWorkOrderTypeSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMScheduleSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMScheduleAssigneesSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMChecklistTemplateSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMChecklistGroupSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserFcmToken>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<GetMachineIncidentReportPermission>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MailMachineIncidentResult>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentReportSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserWorkOrderSeeSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserWorkOrderSeeUsersSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserWorkOrderSeeWorkOrderSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentReportPermissionSelect>().HasKey(q => q.Id);
 
 
 
 
 
 
+        _ = modelBuilder.Entity<SmtpSettingsResult>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentReportWorkShiftSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentEventSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentReportYear>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserProfilePermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<ProfilePermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserMachineIncidentPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentRecordSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<MachineIncidentRecordSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentRecordSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentMaterialSelectMulti>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentSelect>().HasKey(q => q.Id);

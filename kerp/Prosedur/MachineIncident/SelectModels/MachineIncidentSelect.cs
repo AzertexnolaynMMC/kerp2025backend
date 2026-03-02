@@ -36,6 +36,9 @@ namespace kerp.Prosedur.MachineIncident.SelectModels
         public int? AssetId { get; set; }
 
         public int? ProjectId { get; set; }
+        public DateTime? PlannedDate { get; set; }  // ✅ YENİ
+        public int? DeadlineHours { get; set; }     // ✅ YENİ
+        public DateTime? DeadlineDate { get; set; } // ✅ YENİ
         [NotMapped]
         public List<MachineIncidentCrashTypeSelect>? MachineIncidentCrashTypeSelect { get; set; }
 
@@ -76,6 +79,8 @@ namespace kerp.Prosedur.MachineIncident.SelectModels
         public List<MachineIncidentWorkShiftSelect>? MachineIncidentWorkShiftSelect { get; set; }
         [NotMapped]
         public List<MachineIncidentRecordSelect>? MachineIncidentRecordSelect { get; set; }
+        [NotMapped]
+        public List<MachineIncidentEventSelectMulti>? MachineIncidentEventSelectMulti { get; set; }
 
     }
 }

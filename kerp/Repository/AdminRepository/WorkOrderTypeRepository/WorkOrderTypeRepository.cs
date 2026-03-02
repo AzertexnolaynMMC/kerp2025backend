@@ -28,23 +28,23 @@ StructureStatus.UserId
         public WorkOrderTypeSelectAdmin? Post(WorkOrderTypeInsert PageInsert)
         {
             return _ctx.WorkOrderTypeSelectAdmin.FromSqlRaw(
-"EXEC dbo.WorkOrderTypeInsert @p0, @p1, @p2",
-PageInsert.Title,
-PageInsert.UserId,
-PageInsert.Status
-
-).ToList().FirstOrDefault();
+                "EXEC dbo.WorkOrderTypeInsert @p0, @p1, @p2, @p3",
+                PageInsert.Title,
+                PageInsert.UserId,
+                PageInsert.Status,
+                PageInsert.Keys ?? ""   // ✅ @Keys əlavə edildi
+            ).ToList().FirstOrDefault();
         }
-
         public WorkOrderTypeSelectAdmin? Put(WorkOrderTypeUpdate StructureUpdate)
         {
             return _ctx.WorkOrderTypeSelectAdmin.FromSqlRaw(
-"EXEC dbo.WorkOrderTypeUpdate @p0, @p1, @p2",
-StructureUpdate.Title,
-StructureUpdate.Id,
-StructureUpdate.UserId
-
-).ToList().FirstOrDefault();
+                "EXEC dbo.WorkOrderTypeUpdate @p0, @p1, @p2, @p3",
+                StructureUpdate.Title,
+                StructureUpdate.Id,
+                StructureUpdate.UserId,
+                StructureUpdate.Keys ?? ""   // ✅ @Keys əlavə edildi
+            ).ToList().FirstOrDefault();
         }
+
     }
 }

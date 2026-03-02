@@ -637,6 +637,22 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentChatInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentChatInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentChat.MachineIncidentChatInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentClosed",
     "RelativePath": "api/MachineIncident/MachineIncidentClosed",
     "HttpMethod": "PUT",
@@ -746,6 +762,54 @@
   },
   {
     "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentEventUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentEventUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Event.MachineIncidentEventUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentLostTimeInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentLostTimeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentLostTime.MachineIncidentLostTimeInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentLostTimeStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentLostTimeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.MachineIncidentLostTime.MachineIncidentLostTimeStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
     "Method": "MachineIncidentMaterialInsert",
     "RelativePath": "api/MachineIncident/MachineIncidentMaterialInsert",
     "HttpMethod": "POST",
@@ -807,6 +871,54 @@
       {
         "Name": "model",
         "Type": "kerp.Prosedur.MachineIncident.Incident.MachineIncidentProjectUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentRecordInsert",
+    "RelativePath": "api/MachineIncident/MachineIncidentRecordInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Record.MachineIncidentRecordInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentRecordStatus",
+    "RelativePath": "api/MachineIncident/MachineIncidentRecordStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Record.MachineIncidentRecordStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentController",
+    "Method": "MachineIncidentRecordUpdate",
+    "RelativePath": "api/MachineIncident/MachineIncidentRecordUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.MachineIncident.Record.MachineIncidentRecordUpdate",
         "IsRequired": true
       }
     ],
@@ -1003,6 +1115,105 @@
       {
         "Name": "MachineIncidentInsert",
         "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.MachineIncident.Incident.MachineIncidentInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MachineIncidentPermissionController",
+    "Method": "Select",
+    "RelativePath": "api/MachineIncidentPermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MachineIncidentPermissionController",
+    "Method": "Update",
+    "RelativePath": "api/MachineIncidentPermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Permission.MachineIncidentPermission.MachineIncidentPermissionUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentReportController",
+    "Method": "MachineIncidentReportSelect",
+    "RelativePath": "api/MachineIncidentReport/MachineIncidentReportSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "month",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MachineIncidentReportController",
+    "Method": "MachineIncidentReportYear",
+    "RelativePath": "api/MachineIncidentReport/MachineIncidentReportYear",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MachineIncidentReportPermissionController",
+    "Method": "Select",
+    "RelativePath": "api/MachineIncidentReportPermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.MachineIncidentReportPermissionController",
+    "Method": "Update",
+    "RelativePath": "api/MachineIncidentReportPermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Admin.Permission.MachineIncidentReportPermission.MachineIncidentReportPermissionUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.MailController",
+    "Method": "Send",
+    "RelativePath": "api/Mail/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "kerp.SystemModel.SendMailDto",
         "IsRequired": true
       }
     ],
@@ -1239,6 +1450,170 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistGroupInsert",
+    "RelativePath": "api/PM/PMChecklistGroupInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PmGroup.PMChecklistGroupInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistGroupSelect",
+    "RelativePath": "api/PM/PMChecklistGroupSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistGroupStatusUpdate",
+    "RelativePath": "api/PM/PMChecklistGroupStatusUpdate",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PmGroup.PMChecklistGroupStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistGroupUpdate",
+    "RelativePath": "api/PM/PMChecklistGroupUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PmGroup.PMChecklistGroupUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistTemplateInsert",
+    "RelativePath": "api/PM/PMChecklistTemplateInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMChecklistTemplate.PMChecklistTemplateInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistTemplateReorder",
+    "RelativePath": "api/PM/PMChecklistTemplateReorder",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMChecklistTemplate.PMChecklistTemplateReorderRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistTemplateSelect",
+    "RelativePath": "api/PM/PMChecklistTemplateSelect/{groupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistTemplateStatusUpdate",
+    "RelativePath": "api/PM/PMChecklistTemplateStatusUpdate",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMChecklistTemplate.PMChecklistTemplateStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMChecklistTemplateUpdate",
+    "RelativePath": "api/PM/PMChecklistTemplateUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMChecklistTemplate.PMChecklistTemplateUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.ProfilePermissionController",
+    "Method": "Select",
+    "RelativePath": "api/ProfilePermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.ProfilePermissionController",
+    "Method": "Update",
+    "RelativePath": "api/ProfilePermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PagesActiveAndDeactive",
+        "Type": "kerp.Prosedur.Admin.Permission.ProfilePermission.ProfilePermissionUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.ProjectController",
     "Method": "ProjectInsert",
     "RelativePath": "api/Project/ProjectInsert",
@@ -1417,6 +1792,38 @@
       {
         "Name": "PagesActiveAndDeactive",
         "Type": "kerp.Prosedur.Structure.StructureUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.TranslationController",
+    "Method": "GetByLang",
+    "RelativePath": "api/Translation/GetByLang/{langCode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "langCode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.TranslationController",
+    "Method": "Import",
+    "RelativePath": "api/Translation/Import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Translation.TranslationImportRequest",
         "IsRequired": true
       }
     ],

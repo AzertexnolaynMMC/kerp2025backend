@@ -1457,6 +1457,382 @@
         }
       }
     },
+    "/api/MachineIncident/MachineIncidentRecordUpdate": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentRecordStatus": {
+      "delete": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentLostTimeStatus": {
+      "delete": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentRecordInsert": {
+      "post": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentRecordInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentChatInsert": {
+      "post": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentChatInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentChatInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentChatInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentLostTimeInsert": {
+      "post": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentLostTimeInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncident/MachineIncidentEventUpdate": {
+      "put": {
+        "tags": [
+          "MachineIncident"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentEventUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentEventUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentEventUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentPermission/Select": {
+      "get": {
+        "tags": [
+          "MachineIncidentPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentPermission/Update": {
+      "put": {
+        "tags": [
+          "MachineIncidentPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentPermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentPermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentPermissionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentReport/MachineIncidentReportSelect": {
+      "get": {
+        "tags": [
+          "MachineIncidentReport"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentReport/MachineIncidentReportYear": {
+      "get": {
+        "tags": [
+          "MachineIncidentReport"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentReportPermission/Select": {
+      "get": {
+        "tags": [
+          "MachineIncidentReportPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MachineIncidentReportPermission/Update": {
+      "put": {
+        "tags": [
+          "MachineIncidentReportPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReportPermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReportPermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MachineIncidentReportPermissionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Mail/send": {
+      "post": {
+        "tags": [
+          "Mail"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMailDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMailDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ManagerEmploye/ManagerEmployeSelect": {
       "get": {
         "tags": [
@@ -1869,6 +2245,301 @@
         }
       }
     },
+    "/api/PM/PMChecklistGroupSelect": {
+      "get": {
+        "tags": [
+          "PM"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistGroupInsert": {
+      "post": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistGroupUpdate": {
+      "put": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistGroupStatusUpdate": {
+      "delete": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupStatusUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupStatusUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistGroupStatusUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistTemplateSelect/{groupId}": {
+      "get": {
+        "tags": [
+          "PM"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistTemplateInsert": {
+      "post": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistTemplateUpdate": {
+      "put": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistTemplateStatusUpdate": {
+      "delete": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateStatusUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateStatusUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateStatusUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMChecklistTemplateReorder": {
+      "put": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateReorderRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateReorderRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChecklistTemplateReorderRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ProfilePermission/Select": {
+      "get": {
+        "tags": [
+          "ProfilePermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ProfilePermission/Update": {
+      "put": {
+        "tags": [
+          "ProfilePermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfilePermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfilePermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfilePermissionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Project/ProjectSelectAdmin": {
       "get": {
         "tags": [
@@ -2185,6 +2856,59 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/StructureUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Translation/GetByLang/{langCode}": {
+      "get": {
+        "tags": [
+          "Translation"
+        ],
+        "parameters": [
+          {
+            "name": "langCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Translation/Import": {
+      "post": {
+        "tags": [
+          "Translation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslationImportRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslationImportRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TranslationImportRequest"
               }
             }
           }
@@ -4097,6 +4821,10 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          },
+          "fcmToken": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4197,6 +4925,24 @@
         },
         "additionalProperties": false
       },
+      "MachineIncidentChatInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "MachineIncidentClosed": {
         "type": "object",
         "properties": {
@@ -4253,6 +4999,32 @@
         },
         "additionalProperties": false
       },
+      "MachineIncidentEventUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "newEventDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "MachineIncidentInsert": {
         "type": "object",
         "properties": {
@@ -4272,6 +5044,16 @@
             "type": "integer",
             "format": "int32"
           },
+          "plannedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deadlineHours": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
           "asigntUserId": {
             "type": "integer",
             "format": "int32"
@@ -4290,6 +5072,42 @@
           },
           "machineIncidentWorkShiftInsert": {
             "$ref": "#/components/schemas/MachineIncidentWorkShiftInsert"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentLostTimeInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "second": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentLostTimeStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -4330,6 +5148,27 @@
         },
         "additionalProperties": false
       },
+      "MachineIncidentPermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "MachineIncidentProjectUpdate": {
         "type": "object",
         "properties": {
@@ -4342,6 +5181,56 @@
             "format": "int32"
           },
           "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentRecordInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentRecordStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentRecordUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
             "type": "integer",
             "format": "int32"
           }
@@ -4366,6 +5255,27 @@
           "title": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MachineIncidentReportPermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -4515,6 +5425,16 @@
           "workOrderTypeId": {
             "type": "integer",
             "format": "int32"
+          },
+          "plannedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deadlineHours": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4543,6 +5463,40 @@
           "workShiftId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MailMachineIncidentResult": {
+        "type": "object",
+        "properties": {
+          "userTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "crashTypeTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "workOrderTypeTitle": {
+            "type": "string",
+            "nullable": true
+          },
+          "workShiftTile": {
+            "type": "string",
+            "nullable": true
+          },
+          "descriptions": {
+            "type": "string",
+            "nullable": true
+          },
+          "assetTitle": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4657,6 +5611,199 @@
           "measure": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistGroupInsert": {
+        "type": "object",
+        "properties": {
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistGroupStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistGroupUpdate": {
+        "required": [
+          "groupName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistTemplateInsert": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "responseType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRequired": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "expectedValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "minValue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maxValue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "outOfRangeAction": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistTemplateReorderItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "orderNo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistTemplateReorderRequest": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PMChecklistTemplateReorderItem"
+            },
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistTemplateStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMChecklistTemplateUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "responseType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isRequired": {
+            "type": "boolean"
+          },
+          "expectedValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "minValue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "maxValue": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "outOfRangeAction": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -4786,6 +5933,27 @@
         },
         "additionalProperties": false
       },
+      "ProfilePermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProjectInsert": {
         "type": "object",
         "properties": {
@@ -4904,6 +6072,26 @@
         },
         "additionalProperties": false
       },
+      "SendMailDto": {
+        "type": "object",
+        "properties": {
+          "mailMachineIncidentResult": {
+            "$ref": "#/components/schemas/MailMachineIncidentResult"
+          },
+          "toEmails": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "attachmentPath": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "StructureInsert": {
         "type": "object",
         "properties": {
@@ -4962,6 +6150,17 @@
             "type": "string",
             "nullable": true
           }
+        },
+        "additionalProperties": false
+      },
+      "TranslationImportRequest": {
+        "type": "object",
+        "properties": {
+          "langCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "json": { }
         },
         "additionalProperties": false
       },
@@ -5633,6 +6832,10 @@
           "status": {
             "type": "integer",
             "format": "int32"
+          },
+          "keys": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5669,6 +6872,10 @@
           "userId": {
             "type": "integer",
             "format": "int32"
+          },
+          "keys": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

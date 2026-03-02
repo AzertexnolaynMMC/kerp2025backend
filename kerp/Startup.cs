@@ -1,8 +1,11 @@
-﻿using kerp.Contexts;
+﻿using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
+using kerp.Contexts;
 using kerp.Hubs.IncidentHub;
 using kerp.Hubs.PageHub;
 using kerp.Service;
 using kerp.Service.IncidentService;
+using kerp.Service.MailService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +22,10 @@ namespace kerp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _ = FirebaseApp.Create(new AppOptions()
+            {
+                Credential = GoogleCredential.FromFile("firebase-adminsdk.json")
+            });
 
             // Veritabanı bağlantısı
             _ = services.AddDbContext<KerpContext>(options =>
@@ -78,6 +85,8 @@ namespace kerp
                 .WithScopedLifetime()
             );
             _ = services.AddScoped<IIncidentService, IncidentService>();
+            _ = services.AddScoped<IMailService, MailService>();
+            _ = services.AddScoped<LdapService>();
 
             /*
             // Repository servisleri

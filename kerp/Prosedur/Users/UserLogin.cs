@@ -1,4 +1,5 @@
-﻿using kerp.Prosedur.Users.See;
+﻿using kerp.Prosedur.Users.Permission;
+using kerp.Prosedur.Users.See;
 using kerp.Prosedur.Users.UserPages;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -39,5 +40,11 @@ namespace kerp.Prosedur.Users
         public List<UserLoginWorkOrderSelect>? UserLoginWorkOrderSelect { get; set; }
         [NotMapped]
         public List<UserLoginStructureSelect>? UserLoginStructureSelect { get; set; }
+        [NotMapped]
+        public UserMachineIncidentPermissionSelect? MachineIncidentPermissionSelect { get; set; }
+        [NotMapped]
+        public UserProfilePermissionSelect? UserProfilePermissionSelect { get; set; }
+        [NotMapped]
+        public GetMachineIncidentReportPermission? GetMachineIncidentReportPermission { get; set; }
     }
 }

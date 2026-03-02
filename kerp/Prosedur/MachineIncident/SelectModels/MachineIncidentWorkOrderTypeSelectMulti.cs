@@ -6,5 +6,6 @@
         public string? Code { get; set; }        // Language.Title
         public int WorkOrderTypeId { get; set; }
         public string? Title { get; set; }       // WorkOrderTypeLang.Title
+        public string? Keys { get; set; }       // WorkOrderTypeLang.Title
     }
 }
