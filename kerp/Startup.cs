@@ -6,6 +6,7 @@ using kerp.Hubs.PageHub;
 using kerp.Service;
 using kerp.Service.IncidentService;
 using kerp.Service.MailService;
+using kerp.Service.PmOrderService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -86,6 +87,7 @@ namespace kerp
             );
             _ = services.AddScoped<IIncidentService, IncidentService>();
             _ = services.AddScoped<IMailService, MailService>();
+            _ = services.AddScoped<IPmOrderService, PmOrderService>();
             _ = services.AddScoped<LdapService>();
 
             /*

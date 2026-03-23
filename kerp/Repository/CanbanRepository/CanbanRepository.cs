@@ -29,26 +29,26 @@ namespace kerp.Repository.CanbanRepository
             {
                 card.CanbanCardCrashType =
                     ExecuteList<CanbanCardCrashType>(
-                        "EXEC dbo.CanbanCardCrashType @p0",
-                        card.Id
+                        "EXEC dbo.CanbanCardCrashType @p0, @p1",
+                        card.Id, card.Keys
                     );
 
                 card.CanbanCardSection =
                     ExecuteList<CanbanCardSection>(
-                        "EXEC dbo.CanbanCardSection @p0",
-                        card.Id
+                        "EXEC dbo.CanbanCardSection @p0, @p1",
+                        card.Id, card.Keys
                     );
 
                 card.CanbanCardStructure =
                     ExecuteList<CanbanCardStructure>(
-                        "EXEC dbo.CanbanCardStructure @p0",
-                        card.Id
+                        "EXEC dbo.CanbanCardStructure @p0, @p1",
+                        card.Id, card.Keys
                     );
 
                 card.CanbanCardWorkOrderType =
                     ExecuteList<CanbanCardWorkOrderType>(
-                        "EXEC dbo.CanbanCardWorkOrderType @p0",
-                        card.Id
+                        "EXEC dbo.CanbanCardWorkOrderType @p0, @p1",
+                        card.Id, card.Keys
                     );
             }
 
@@ -79,12 +79,13 @@ namespace kerp.Repository.CanbanRepository
                        .FirstOrDefault();
         }
 
-        public CanbanCardHub? CanbanCardHub(int PageInsert)
+        public CanbanCardHub? CanbanCardHub(int PageInsert, int t)
         {
             CanbanCardHub? card =
     ExecuteSingle<CanbanCardHub>(
-        "EXEC dbo.CanbanCardHub @p0",
-        PageInsert
+        "EXEC dbo.CanbanCardHub @p0, @p1",
+        PageInsert,
+        t
     );
             if (card == null)
             {
@@ -92,26 +93,26 @@ namespace kerp.Repository.CanbanRepository
             }
             card.CanbanCardCrashType =
     ExecuteList<CanbanCardCrashType>(
-        "EXEC dbo.CanbanCardCrashType @p0",
-        card.Id
+        "EXEC dbo.CanbanCardCrashType @p0, @p1",
+                        card.Id, card.Keys
     );
 
             card.CanbanCardSection =
                 ExecuteList<CanbanCardSection>(
-                    "EXEC dbo.CanbanCardSection @p0",
-                    card.Id
+                    "EXEC dbo.CanbanCardSection @p0, @p1",
+                        card.Id, card.Keys
                 );
 
             card.CanbanCardStructure =
                 ExecuteList<CanbanCardStructure>(
-                    "EXEC dbo.CanbanCardStructure @p0",
-                    card.Id
+                    "EXEC dbo.CanbanCardStructure @p0, @p1",
+                        card.Id, card.Keys
                 );
 
             card.CanbanCardWorkOrderType =
                 ExecuteList<CanbanCardWorkOrderType>(
-                    "EXEC dbo.CanbanCardWorkOrderType @p0",
-                    card.Id
+                    "EXEC dbo.CanbanCardWorkOrderType @p0, @p1",
+                        card.Id, card.Keys
                 );
             return card;
         }

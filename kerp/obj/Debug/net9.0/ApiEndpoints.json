@@ -1451,6 +1451,16 @@
   },
   {
     "ContainingType": "kerp.Controllers.PMController",
+    "Method": "GetPMScheduleWorkOrderTypeSelectMulti",
+    "RelativePath": "api/PM/GetPMScheduleWorkOrderTypeSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
     "Method": "PMChecklistGroupInsert",
     "RelativePath": "api/PM/PMChecklistGroupInsert",
     "HttpMethod": "POST",
@@ -1582,6 +1592,435 @@
       {
         "Name": "request",
         "Type": "kerp.Prosedur.Pm.PMChecklistTemplate.PMChecklistTemplateUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssigneesInsert",
+    "RelativePath": "api/PM/PMScheduleAssigneesInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Pm.PMScheduleAssignees.PMScheduleAssigneesInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssigneesRoleUpdate",
+    "RelativePath": "api/PM/PMScheduleAssigneesRoleUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMScheduleAssignees.PMScheduleAssigneesRoleUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssigneesStatusUpdate",
+    "RelativePath": "api/PM/PMScheduleAssigneesStatusUpdate",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMScheduleAssignees.PMScheduleAssigneesStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleInsert",
+    "RelativePath": "api/PM/PMScheduleInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMSchedule.PMScheduleInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleSelect",
+    "RelativePath": "api/PM/PMScheduleSelect/{structureId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "structureId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleStatusUpdate",
+    "RelativePath": "api/PM/PMScheduleStatusUpdate",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMSchedule.PMScheduleStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleStructureUpdate",
+    "RelativePath": "api/PM/PMScheduleStructureUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMScheduleStructure.PMScheduleStructureUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleUpdate",
+    "RelativePath": "api/PM/PMScheduleUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMSchedule.PMScheduleUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleWorkOrderTypeUpdate",
+    "RelativePath": "api/PM/PMScheduleWorkOrderTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Pm.PMScheduleWorkOrderType.PMScheduleWorkOrderTypeUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMAssigneesInsert",
+    "RelativePath": "api/PMOrders/PMAssigneesInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.PMAssigneesInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMAssigneesStatus",
+    "RelativePath": "api/PMOrders/PMAssigneesStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMAssigneesStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMChecklistExecutionUpdate",
+    "RelativePath": "api/PMOrders/PMChecklistExecutionUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.PMChecklistExecutionUpdate, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMDocumentsInsert",
+    "RelativePath": "api/PMOrders/PMDocumentsInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FilePath",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileNameTitle",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileSize",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PmOrderId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMDocumentsStatus",
+    "RelativePath": "api/PMOrders/PMDocumentsStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMDocumentsStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMDocumentsUpdate",
+    "RelativePath": "api/PMOrders/PMDocumentsUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMDocumentsUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMMaterialInsert",
+    "RelativePath": "api/PMOrders/PMMaterialInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMMaterialInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMMaterialSelectMulti",
+    "RelativePath": "api/PMOrders/PMMaterialSelectMulti",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMMaterialStatus",
+    "RelativePath": "api/PMOrders/PMMaterialStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMMaterialStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMMaterialUpdate",
+    "RelativePath": "api/PMOrders/PMMaterialUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMMaterialUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderControllerLifeCrcyle",
+    "RelativePath": "api/PMOrders/PMOrderControllerLifeCrcyle",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMOrderControllerLifeCrcyle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderSend",
+    "RelativePath": "api/PMOrders/PMOrderSend",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMOrderControllerLifeCrcyle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrdersSelect",
+    "RelativePath": "api/PMOrders/PMOrdersSelect/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMRecordInsert",
+    "RelativePath": "api/PMOrders/PMRecordInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMRecordInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMRecordStatus",
+    "RelativePath": "api/PMOrders/PMRecordStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMRecordStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMRecordUpdate",
+    "RelativePath": "api/PMOrders/PMRecordUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.PMRecordUpdate",
         "IsRequired": true
       }
     ],

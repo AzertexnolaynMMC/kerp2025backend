@@ -16,7 +16,7 @@ namespace kerp.Prosedur.Pm.PMSchedule
         public int FrequencyDays { get; set; }
         public DateTime? LastDone { get; set; }
         public DateOnly? NextDueDate { get; set; }
-        public int? RecommendedCondition { get; set; }
+        public string? RecommendedCondition { get; set; }
         public bool Status { get; set; }
         public int CreatedUserId { get; set; }
         public string? UserTitle { get; set; }

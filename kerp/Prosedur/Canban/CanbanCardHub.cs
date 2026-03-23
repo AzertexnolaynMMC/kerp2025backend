@@ -11,6 +11,7 @@ namespace kerp.Prosedur.Canban
         public bool IsRejected { get; set; }
 
         public string? Title { get; set; }
+        public string? Keys { get; set; }
 
         public DateTime? EventDate { get; set; }
 

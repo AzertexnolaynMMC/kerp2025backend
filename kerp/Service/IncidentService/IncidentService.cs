@@ -45,12 +45,12 @@ namespace kerp.Service.IncidentService
             // 🔥 HUB üçün list
             List<CanbanCardHub> hubCards = [];
 
-       
+
 
             // 2️⃣ CanbanCardHub-ları yığ və mail task-larını hazırla
             foreach (MachineIncidentSelectForBackEnd incident in incidents)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(incident.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(incident.Id, 1);
                 /*
                 // Mail məlumatlarını al
                 MailMachineIncidentResult? mailResult = _incidentRepository.MailMachineIncidentResult(incident.Id);
@@ -134,7 +134,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(Id.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(Id.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -150,7 +150,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(Id.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(Id.Id, 1);
                 await _hubContext.Clients.All.SendAsync(
     "IncidentCardUpdate",
     card
@@ -172,7 +172,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                _ = _canbanRepository.CanbanCardHub(Id.Id);
+                _ = _canbanRepository.CanbanCardHub(Id.Id, 1);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
                 return 1;
@@ -186,7 +186,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -219,7 +219,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -265,7 +265,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -431,7 +431,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -445,7 +445,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -459,7 +459,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -473,7 +473,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -487,7 +487,7 @@ namespace kerp.Service.IncidentService
 
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 
@@ -587,7 +587,7 @@ namespace kerp.Service.IncidentService
             MachineIncidentSelect result = _incidentRepository.MachineIncidentEventUpdate(item);
             if (result != null)
             {
-                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id);
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 1);
                 await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
                 await _hubContext.Clients.All.SendAsync("MachineIncidentTitleUpdate", result);
 

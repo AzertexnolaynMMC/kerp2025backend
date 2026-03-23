@@ -9,7 +9,7 @@ namespace kerp.Prosedur.Pm.PMSchedule
         public int FrequencyDays { get; set; }
         public string Title { get; set; } = string.Empty;
         public int UserId { get; set; }
-        public int? RecommendedCondition { get; set; }
+        public string? RecommendedCondition { get; set; }
         public DateOnly? NextDueDate { get; set; }
     }
 }

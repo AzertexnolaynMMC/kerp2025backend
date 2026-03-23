@@ -48,6 +48,7 @@ using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PMOrders;
 using kerp.Prosedur.SmtpSettings;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Translation;
@@ -75,6 +76,17 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<PMMaterialSelectMulti> PMOrderMaterialSelectMulti { get; set; }
+    public virtual DbSet<PMChecklistExecutionSelect> PMChecklistExecutionSelect { get; set; }
+    public virtual DbSet<PMEventSelectMulti> PMEventSelectMulti { get; set; }
+    public virtual DbSet<PMEventSelect> PMEventSelect { get; set; }
+    public virtual DbSet<PMChatSelect> PMChatSelect { get; set; }
+    public virtual DbSet<PMAssigneesSelect> PMAssigneesSelect { get; set; }
+    public virtual DbSet<PMDocumentsSelect> PMDocumentsSelect { get; set; }
+    public virtual DbSet<PMMaterialSelect> PMMaterialSelect { get; set; }
+    public virtual DbSet<PMRecordSelect> PMRecordSelect { get; set; }
+    public virtual DbSet<PMOrderWorkOrderTypeSelect> PMOrderWorkOrderTypeSelect { get; set; }
+    public virtual DbSet<PMOrdersSelect> PMOrdersSelect { get; set; }
     public virtual DbSet<PMScheduleWorkOrderTypeSelectMulti> PMPMScheduleWorkOrderTypeSelectMulti { get; set; }
     public virtual DbSet<PMScheduleSelect> PMScheduleSelect { get; set; }
     public virtual DbSet<PMScheduleAssigneesSelect> PMScheduleAssigneesSelect { get; set; }
@@ -239,6 +251,7 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<MachineIncidentReportSectionSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentReportCrashTypeSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentSelectForBackEndCrashType>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<PMOrderWorkOrderTypeSelect>().HasKey(q => q.LangId);
 
 
 
@@ -250,6 +263,11 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<PMMaterialSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMChecklistExecutionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMEventSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMAssigneesSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMDocumentsSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMScheduleWorkOrderTypeSelectMulti>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMScheduleSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMScheduleAssigneesSelect>().HasKey(q => q.Id);
@@ -269,6 +287,11 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<PMEventSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMChatSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMMaterialSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMRecordSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMOrdersSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<SmtpSettingsResult>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentReportWorkShiftSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<MachineIncidentEventSelectMulti>().HasKey(q => q.Id);

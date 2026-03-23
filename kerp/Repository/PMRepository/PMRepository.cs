@@ -155,7 +155,7 @@ namespace kerp.Repository.PMRepository
         public List<PMScheduleWorkOrderTypeSelectMulti>? GetPMScheduleWorkOrderTypeSelectMulti()
         {
             return ExecuteList<PMScheduleWorkOrderTypeSelectMulti>(
-                "EXEC dbo.PMScheduleWorkOrderTypeSelectMulti @p0"
+                "EXEC dbo.PMScheduleWorkOrderTypeSelectMulti"
             );
         }
         public PMScheduleWorkOrderTypeSelect? InsertScheduleWorkOrderType(PMScheduleWorkOrderTypeInsert request)

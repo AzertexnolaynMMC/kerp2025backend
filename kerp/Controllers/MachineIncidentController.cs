@@ -632,10 +632,42 @@ namespace kerp.Controllers
             }
         }
 
+        [HttpDelete("MachineIncidentDocumentStatus")]
 
+        public async Task<IActionResult> MachineIncidentDocumentStatus(
+ [FromBody] MachineIncidentDocumentStatus model)
+        {
+            try
+            {
+                int result = await _incidentService.MachineIncidentDocumentStatus(model);
 
-
-
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : (IActionResult)Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
 
 
 
@@ -676,42 +708,6 @@ namespace kerp.Controllers
             }
         }
 
-        [HttpDelete("MachineIncidentDocumentStatus")]
-
-        public async Task<IActionResult> MachineIncidentDocumentStatus(
- [FromBody] MachineIncidentDocumentStatus model)
-        {
-            try
-            {
-                int result = await _incidentService.MachineIncidentDocumentStatus(model);
-
-                return result == 1
-                    ? Ok(new CustomerResponseModel<object>
-                    {
-                        StatusCode = 0,
-                        title = "Uğurlu əməliyyat",
-                        AccessToken = null,
-                        Data = null
-                    })
-                    : (IActionResult)Ok(new CustomerResponseModel<object>
-                    {
-                        StatusCode = 404,
-                        title = "Məlumat tapılmadı",
-                        AccessToken = null,
-                        Data = null
-                    });
-            }
-            catch (Exception ex)
-            {
-                return Ok(new CustomerResponseModel<object>
-                {
-                    StatusCode = 500,
-                    title = "Internal server error: " + ex.Message,
-                    AccessToken = null,
-                    Data = null
-                });
-            }
-        }
 
 
 
