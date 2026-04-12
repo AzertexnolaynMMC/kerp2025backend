@@ -10,7 +10,11 @@ using kerp.Prosedur.Admin.Pages;
 using kerp.Prosedur.Admin.PageUser;
 using kerp.Prosedur.Admin.Permission.MachineIncidentPermission;
 using kerp.Prosedur.Admin.Permission.MachineIncidentReportPermission;
+using kerp.Prosedur.Admin.Permission.PMOrderPermission;
 using kerp.Prosedur.Admin.Permission.ProfilePermission;
+using kerp.Prosedur.Admin.PreCheckGroup;
+using kerp.Prosedur.Admin.PreCheckResultType;
+using kerp.Prosedur.Admin.PreCheckTemplate;
 using kerp.Prosedur.Admin.Project;
 using kerp.Prosedur.Admin.Section;
 using kerp.Prosedur.Admin.UserConMachine;
@@ -48,7 +52,16 @@ using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PM.PMScheduleAsset;
 using kerp.Prosedur.PMOrders;
+using kerp.Prosedur.PMOrders.Asset;
+using kerp.Prosedur.PMOrders.CheckList;
+using kerp.Prosedur.PMOrders.Doc;
+using kerp.Prosedur.PMOrders.Event;
+using kerp.Prosedur.PMOrders.Material;
+using kerp.Prosedur.PMOrders.Order;
+using kerp.Prosedur.PMOrders.Record;
+using kerp.Prosedur.PMOrders.WorkOrder;
 using kerp.Prosedur.SmtpSettings;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Translation;
@@ -76,6 +89,14 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<PMOrderAssetSelect> PMOrderAssetSelect { get; set; }
+    public virtual DbSet<PMScheduleAssetSelect> PMScheduleAssetSelect { get; set; }
+    public virtual DbSet<PreCheckResultTypeSelect> PreCheckResultTypeSelect { get; set; }
+    public virtual DbSet<PreCheckTemplateGroupSelect> PreCheckTemplateGroupSelect { get; set; }
+    public virtual DbSet<PreCheckTemplateSelect> PreCheckTemplateSelect { get; set; }
+    public virtual DbSet<PreCheckGroupSelect> PreCheckGroupSelect { get; set; }
+    public virtual DbSet<UserPMOrderPermissionSelect> UserPMOrderPermissionSelect { get; set; }
+    public virtual DbSet<PMOrderPermissionSelect> PMOrderPermissionSelect { get; set; }
     public virtual DbSet<PMMaterialSelectMulti> PMOrderMaterialSelectMulti { get; set; }
     public virtual DbSet<PMChecklistExecutionSelect> PMChecklistExecutionSelect { get; set; }
     public virtual DbSet<PMEventSelectMulti> PMEventSelectMulti { get; set; }
@@ -263,6 +284,14 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<PMOrderAssetSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMScheduleAssetSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckResultTypeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckGroupSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckTemplateSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckTemplateGroupSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserPMOrderPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PMOrderPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMMaterialSelectMulti>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMChecklistExecutionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMEventSelectMulti>().HasKey(q => q.Id);

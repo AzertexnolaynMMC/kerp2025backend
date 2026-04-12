@@ -2,6 +2,7 @@
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PM.PMScheduleAsset;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace kerp.Prosedur.Pm.PMSchedule
@@ -9,8 +10,6 @@ namespace kerp.Prosedur.Pm.PMSchedule
     public class PMScheduleSelect
     {
         public int Id { get; set; }
-        public int AssetId { get; set; }
-        public string? AssetTitle { get; set; }
         public int GroupId { get; set; }
         public string? GroupName { get; set; }
         public int FrequencyDays { get; set; }
@@ -29,5 +28,7 @@ namespace kerp.Prosedur.Pm.PMSchedule
         public List<PMScheduleWorkOrderTypeSelect>? PMScheduleWorkOrderTypeSelect { get; set; }
         [NotMapped]
         public List<PMScheduleAssigneesSelect>? PMScheduleAssigneesSelect { get; set; }
+        [NotMapped]
+        public List<PMScheduleAssetSelect>? PMScheduleAssetSelect { get; set; }
     }
 }

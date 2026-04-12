@@ -56,5 +56,7 @@ namespace kerp.Repository.MachineIncidentRepository
         MachineIncidentSelect? MachineIncidentLostTimeInsert(MachineIncidentLostTimeInsert item);
         MachineIncidentSelect? MachineIncidentLostTimeStatus(MachineIncidentLostTimeStatus item);
         MachineIncidentSelect? MachineIncidentEventUpdate(MachineIncidentEventUpdate item);
+
+        MachineIncidentSelectForBackEnd? GetMachineIncidentForBackEnd(int id);
     }
 }

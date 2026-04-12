@@ -1,4 +1,12 @@
 ﻿using kerp.Prosedur.PMOrders;
+using kerp.Prosedur.PMOrders.Asset;
+using kerp.Prosedur.PMOrders.Assigness;
+using kerp.Prosedur.PMOrders.Chat;
+using kerp.Prosedur.PMOrders.CheckList;
+using kerp.Prosedur.PMOrders.Doc;
+using kerp.Prosedur.PMOrders.Material;
+using kerp.Prosedur.PMOrders.Order;
+using kerp.Prosedur.PMOrders.Record;
 using kerp.Repository.PMOrdersRepository;
 using kerp.Service.PmOrderService;
 using kerp.SystemModel;
@@ -73,6 +81,33 @@ namespace kerp.Controllers
             try
             {
                 int result = await _service.PMOrderSend(model);
+
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("PMOrderConfirm")]
+        public async Task<IActionResult> PMOrderConfirm([FromBody] PMOrderControllerLifeCrcyle model)
+        {
+            try
+            {
+                int result = await _service.PMOrderConfirm(model);
 
                 return Ok(new CustomerResponseModel<int>
                 {
@@ -659,6 +694,146 @@ namespace kerp.Controllers
                 });
             }
         }
+
+        [HttpPost("PMOrdersCreateCM")]
+        public async Task<IActionResult> PMOrdersCreateCM([FromBody] PMOrdersCreateCM model)
+        {
+            try
+            {
+                int result = await _service.PMOrdersCreateCM(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat əlavə olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("PMOrderClosed")]
+        public async Task<IActionResult> PMOrderClosed([FromBody] PMOrderClosed model)
+        {
+            try
+            {
+                int result = await _service.PMOrderClosed(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPost("PMOrderAssetInsert")]
+        public async Task<IActionResult> PMOrderAssetInsert([FromBody] List<PMOrderAssetInsert> model)
+        {
+            try
+            {
+                int result = await _service.PMOrderAssetInsert(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat əlavə olunmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("PMOrderAssetStatus")]
+        public async Task<IActionResult> PMOrderAssetStatus([FromBody] PMOrderAssetStatus model)
+        {
+            try
+            {
+                int result = await _service.PMOrderAssetStatus(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Uğurlu əməliyyat",
+                        AccessToken = null,
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        AccessToken = null,
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
     }
 
 }

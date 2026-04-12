@@ -19,7 +19,11 @@
         MaterialUpdate = 15,
         AssigneesAdded = 16,
         AssigneesDeleted = 17,
-        ChatAdded = 18,
+        CMAdded = 18,
+        CMEMAdded = 19,
+        AssetAdded = 20,
+        AssetDeleted = 21
+
 
     }
 }

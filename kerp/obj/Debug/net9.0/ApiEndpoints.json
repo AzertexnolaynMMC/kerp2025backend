@@ -1599,6 +1599,70 @@
   },
   {
     "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssetInsert",
+    "RelativePath": "api/PM/PMScheduleAssetInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.PM.PMScheduleAsset.PMScheduleAssetInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssetSelect",
+    "RelativePath": "api/PM/PMScheduleAssetSelect/{pmScheduleId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pmScheduleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssetStatusUpdate",
+    "RelativePath": "api/PM/PMScheduleAssetStatusUpdate",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.PM.PMScheduleAsset.PMScheduleAssetStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
+    "Method": "PMScheduleAssetUpdate",
+    "RelativePath": "api/PM/PMScheduleAssetUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.PM.PMScheduleAsset.PMScheduleAssetUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMController",
     "Method": "PMScheduleAssigneesInsert",
     "RelativePath": "api/PM/PMScheduleAssigneesInsert",
     "HttpMethod": "POST",
@@ -1742,6 +1806,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.Admin.PMOrderPermissionController",
+    "Method": "Select",
+    "RelativePath": "api/PMOrderPermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PMOrderPermissionController",
+    "Method": "Update",
+    "RelativePath": "api/PMOrderPermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Admin.Permission.PMOrderPermission.PMOrderPermissionUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.PMOrdersController",
     "Method": "PMAssigneesInsert",
     "RelativePath": "api/PMOrders/PMAssigneesInsert",
@@ -1751,7 +1841,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.PMAssigneesInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.Assigness.PMAssigneesInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -1767,7 +1857,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMAssigneesStatus",
+        "Type": "kerp.Prosedur.PMOrders.Assigness.PMAssigneesStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMChatInsert",
+    "RelativePath": "api/PMOrders/PMChatInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.Chat.PMChatInsert",
         "IsRequired": true
       }
     ],
@@ -1783,7 +1889,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.PMChecklistExecutionUpdate, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.CheckList.PMChecklistExecutionUpdate, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": false
       }
     ],
@@ -1866,7 +1972,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMDocumentsUpdate",
+        "Type": "kerp.Prosedur.PMOrders.Doc.PMDocumentsUpdate",
         "IsRequired": true
       }
     ],
@@ -1882,7 +1988,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMMaterialInsert",
+        "Type": "kerp.Prosedur.PMOrders.Material.PMMaterialInsert",
         "IsRequired": true
       }
     ],
@@ -1908,7 +2014,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMMaterialStatus",
+        "Type": "kerp.Prosedur.PMOrders.Material.PMMaterialStatus",
         "IsRequired": true
       }
     ],
@@ -1924,7 +2030,71 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMMaterialUpdate",
+        "Type": "kerp.Prosedur.PMOrders.Material.PMMaterialUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderAssetInsert",
+    "RelativePath": "api/PMOrders/PMOrderAssetInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PMOrders.Asset.PMOrderAssetInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderAssetStatus",
+    "RelativePath": "api/PMOrders/PMOrderAssetStatus",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.Asset.PMOrderAssetStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderClosed",
+    "RelativePath": "api/PMOrders/PMOrderClosed",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.Order.PMOrderClosed",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrderConfirm",
+    "RelativePath": "api/PMOrders/PMOrderConfirm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.Order.PMOrderControllerLifeCrcyle",
         "IsRequired": true
       }
     ],
@@ -1940,7 +2110,23 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMOrderControllerLifeCrcyle",
+        "Type": "kerp.Prosedur.PMOrders.Order.PMOrderControllerLifeCrcyle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PMOrdersController",
+    "Method": "PMOrdersCreateCM",
+    "RelativePath": "api/PMOrders/PMOrdersCreateCM",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PMOrders.Order.PMOrdersCreateCM",
         "IsRequired": true
       }
     ],
@@ -1956,7 +2142,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMOrderControllerLifeCrcyle",
+        "Type": "kerp.Prosedur.PMOrders.Order.PMOrderControllerLifeCrcyle",
         "IsRequired": true
       }
     ],
@@ -1988,7 +2174,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMRecordInsert",
+        "Type": "kerp.Prosedur.PMOrders.Record.PMRecordInsert",
         "IsRequired": true
       }
     ],
@@ -2004,7 +2190,7 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMRecordStatus",
+        "Type": "kerp.Prosedur.PMOrders.Record.PMRecordStatus",
         "IsRequired": true
       }
     ],
@@ -2020,7 +2206,191 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "kerp.Prosedur.PMOrders.PMRecordUpdate",
+        "Type": "kerp.Prosedur.PMOrders.Record.PMRecordUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PostPreCheckGroup",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckGroupInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckGroup.PreCheckGroupInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "GetPreCheckGroups",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "DeletePreCheckGroup",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckGroupStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckGroup.PreCheckGroupStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PutPreCheckGroup",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckGroupUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckGroup.PreCheckGroupUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PostPreCheckResultType",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckResultTypeInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckResultType.PreCheckResultTypeInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "GetPreCheckResultTypes",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckResultTypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "DeletePreCheckResultType",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckResultTypeStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckResultType.PreCheckResultTypeStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PutPreCheckResultType",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckResultTypeUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckResultType.PreCheckResultTypeUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "GetPreCheckTemplateGroups",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckTemplateGroups",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PostPreCheckTemplate",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckTemplateInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckTemplate.PreCheckTemplateInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "GetPreCheckTemplates",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckTemplates",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "DeletePreCheckTemplate",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckTemplateStatus",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckTemplate.PreCheckTemplateStatusUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
+    "Method": "PutPreCheckTemplate",
+    "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckTemplateUpdate",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.Admin.PreCheckTemplate.PreCheckTemplateUpdate",
         "IsRequired": true
       }
     ],

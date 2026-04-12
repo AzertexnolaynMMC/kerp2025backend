@@ -1,9 +1,0 @@
-﻿namespace kerp.Prosedur.PMOrders
-{
-    public class PMOrderControllerLifeCrcyle
-    {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public int Status { get; set; }
-    }
-}

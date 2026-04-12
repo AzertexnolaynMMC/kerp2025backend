@@ -4,6 +4,7 @@ using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PM.PMScheduleAsset;
 
 namespace kerp.Repository.PMRepository
 {
@@ -42,5 +43,12 @@ namespace kerp.Repository.PMRepository
         PMScheduleSelect? InsertSchedule(PMScheduleInsert request);
         PMScheduleSelect? UpdateSchedule(PMScheduleUpdate request);
         PMScheduleSelect? StatusUpdateSchedule(PMScheduleStatusUpdate request);
+
+
+        // PMScheduleAsset
+        List<PMScheduleAssetSelect>? GetScheduleAssets(int pmScheduleId);
+        PMScheduleAssetSelect? InsertScheduleAsset(PMScheduleAssetInsert request);
+        PMScheduleAssetSelect? UpdateScheduleAsset(PMScheduleAssetUpdate request);
+        PMScheduleAssetSelect? StatusUpdateScheduleAsset(PMScheduleAssetStatus request);
     }
 }

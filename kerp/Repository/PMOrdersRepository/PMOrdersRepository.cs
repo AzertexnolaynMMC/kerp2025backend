@@ -1,14 +1,27 @@
 ﻿using kerp.Contexts;
 using kerp.Enums;
+using kerp.Prosedur.MachineIncident.Incident;
+using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.PMOrders;
+using kerp.Prosedur.PMOrders.Asset;
+using kerp.Prosedur.PMOrders.Assigness;
+using kerp.Prosedur.PMOrders.Chat;
+using kerp.Prosedur.PMOrders.CheckList;
+using kerp.Prosedur.PMOrders.Doc;
+using kerp.Prosedur.PMOrders.Event;
+using kerp.Prosedur.PMOrders.Material;
+using kerp.Prosedur.PMOrders.Order;
+using kerp.Prosedur.PMOrders.Record;
+using kerp.Prosedur.PMOrders.WorkOrder;
+using kerp.Repository.MachineIncidentRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace kerp.Repository.PMOrdersRepository
 {
-    public class PMOrdersRepository(KerpContext ctx) : IPMOrdersRepository
+    public class PMOrdersRepository(KerpContext ctx, IMachineIncidentRepository machineIncidentRepository) : IPMOrdersRepository
     {
         private readonly KerpContext _ctx = ctx;
-
+        private readonly IMachineIncidentRepository _machineIncidentRepo = machineIncidentRepository;
         public PMOrdersSelect? GetPMOrder(int id)
         {
             PMOrdersSelect? order = ExecuteSingle<PMOrdersSelect>(
@@ -47,6 +60,8 @@ namespace kerp.Repository.PMOrdersRepository
 
             order.PMChecklistExecutionSelect = ExecuteList<PMChecklistExecutionSelect>(
                 "EXEC dbo.PMChecklistExecutionSelect @p0", id);
+            order.PMOrderAssetSelect = ExecuteList<PMOrderAssetSelect>(
+        "EXEC dbo.PMOrderAssetSelect @p0", id);
 
             return order;
         }
@@ -114,6 +129,7 @@ namespace kerp.Repository.PMOrdersRepository
 
             foreach (PMChecklistExecutionUpdate item in model)
             {
+#pragma warning disable CS8604 // Possible null reference argument.
                 PMChecklistExecutionSelect? result = ExecuteSingle<PMChecklistExecutionSelect>(
                     "EXEC dbo.PMChecklistExecutionUpdate @p0,@p1,@p2,@p3,@p4,@p5",
                     item.ResponseValue,
@@ -123,6 +139,7 @@ namespace kerp.Repository.PMOrdersRepository
                     item.PhotoPath,
                     item.Id
                 );
+#pragma warning restore CS8604 // Possible null reference argument.
 
                 if (result != null)
                 {
@@ -211,6 +228,7 @@ namespace kerp.Repository.PMOrdersRepository
         public PMOrdersSelect? PMDocumentsInsert(PMDocumentsInsert model)
         {
             // Insert prosedurunu çağır
+#pragma warning disable CS8604 // Possible null reference argument.
             PMDocumentsSelect? result = ExecuteSingle<PMDocumentsSelect>(
                 "EXEC dbo.PMDocumentsInsert @p0,@p1,@p2,@p3,@p4,@p5,@p6",
                 model.FileName,
@@ -221,6 +239,7 @@ namespace kerp.Repository.PMOrdersRepository
                 model.UserId,
                 model.PmOrderId
             );
+#pragma warning restore CS8604 // Possible null reference argument.
 
             if (result != null)
             {
@@ -396,10 +415,196 @@ namespace kerp.Repository.PMOrdersRepository
             if (result != null)
             {
                 // Event əlavə etmək istəyirsənsə, burada edə bilərsən, məsələn:
-                InsertPMEvent(model.PmOrderId, model.UserId, PMOrderEventType.ChatAdded, model.UserId);
+
 
                 // Yenilənmiş PMOrder qaytar
                 return GetPMOrder(model.PmOrderId);
+            }
+
+            return null;
+        }
+
+        public PMOrdersSelect? PMOrderConfirm(PMOrderControllerLifeCrcyle model)
+        {
+            PMOrdersSelect? result = ExecuteSingle<PMOrdersSelect>(
+"EXEC dbo.PMOrderControllerLifeCrcyle @p0, @p1, @p2",
+model.Id,
+model.UserId,
+model.Status
+);
+
+            if (result != null)
+            {
+                InsertPMEvent(model.Id, model.UserId, PMOrderEventType.Closed, model.UserId);
+                return GetPMOrder(model.Id);
+            }
+
+            return null;
+        }
+
+        public PMOrdersSelect? PMOrdersCreateCM(PMOrdersCreateCM model)
+        {
+            // 🛡️ Validation — yalnız WorkOrderTypeId == 1002 (CM) olduqda
+            if (model.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002)
+            {
+                if (model.PlannedDate == null)
+                {
+                    throw new Exception("CM seçildikdə PlannedDate məcburidir.");
+                }
+
+                if (model.DeadlineHours == null)
+                {
+                    throw new Exception("CM seçildikdə DeadlineHours məcburidir.");
+                }
+            }
+
+            // 1️⃣ MachineIncidentInsert yarat
+            MachineIncidentInsert insert = new()
+            {
+                Title = model.Title,
+                UserId = model.UserId,
+                AssetId = model.AssetId,
+                ProjectId = model.ProjectId,
+                PlannedDate = model.PlannedDate,
+                DeadlineHours = model.DeadlineHours,
+                AsigntUserId = model.AsigntUserId,
+                MachineIncidentCrashTypeInsert = model.MachineIncidentCrashTypeInsert,
+                MachineIncidentWorkOrderTypeInsert = model.MachineIncidentWorkOrderTypeInsert,
+                MachineIncidentSectionInsert = model.MachineIncidentSectionInsert,
+                MachineIncidentStructureInsert = model.MachineIncidentStructureInsert,
+                MachineIncidentWorkShiftInsert = model.MachineIncidentWorkShiftInsert,
+            };
+
+            // 2️⃣ MachineIncident yarat
+            List<MachineIncidentSelectForBackEnd> result = _machineIncidentRepo.Post([insert]);
+            MachineIncidentSelectForBackEnd incident = result.First();
+
+            // 3️⃣ CmStatus və CreatedCmId çıxar
+            int createdCmId = incident.Id;
+
+
+            // 4️⃣ PMChecklistExecution-u update et
+            PMChecklistExecutionSelect? execution = ExecuteSingle<PMChecklistExecutionSelect>(
+                "EXEC dbo.PMChecklistExecutionCMUpdate @p0, @p1, @p2, @p3",
+                model.CmStatus!,
+                createdCmId,
+                model.UserId,
+                model.PMChecklistExecutionId
+            );
+
+            if (execution != null)
+            {
+                // 5️⃣ WorkOrderTypeId-ə görə event seç
+                PMOrderEventType eventType = model.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002
+                    ? PMOrderEventType.CMAdded      // 18
+                    : PMOrderEventType.CMEMAdded;   // 19
+
+                InsertPMEvent(execution.PmOrderId ?? 0, model.UserId, eventType, model.UserId);
+
+                return GetPMOrder(execution.PmOrderId ?? 0);
+            }
+
+            return null;
+        }
+
+        public PMOrdersSelect? PMOrderClosed(PMOrderClosed model)
+        {
+            if (model == null || model.PMOrderControllerLifeCrcyle == null)
+            {
+                return null;
+            }
+
+            // 1️⃣ Order status dəyiş (Closed et)
+            PMOrdersSelect? lifecycleResult = ExecuteSingle<PMOrdersSelect>(
+                "EXEC dbo.PMOrderControllerLifeCrcyle @p0, @p1, @p2",
+                model.PMOrderControllerLifeCrcyle.Id,
+                model.PMOrderControllerLifeCrcyle.UserId,
+                model.PMOrderControllerLifeCrcyle.Status
+            );
+
+            if (lifecycleResult == null)
+            {
+                return null;
+            }
+
+            // 2️⃣ PMSchedule update et (LastDone + NextDueDate)
+            _ = ExecuteSingle<PMScheduleSelect>(
+                "EXEC dbo.PMScheduleUpdateNext @p0, @p1, @p2",
+                model.Id,                    // PMSchedule Id
+                model.NextDueDate,
+                model.PMOrderControllerLifeCrcyle.UserId
+            );
+
+            // 3️⃣ Event yaz (Closed)
+            InsertPMEvent(
+                model.PMOrderControllerLifeCrcyle.Id,
+                model.PMOrderControllerLifeCrcyle.UserId,
+                PMOrderEventType.Closed,
+                model.PMOrderControllerLifeCrcyle.UserId
+            );
+
+            // 4️⃣ Yenilənmiş order qaytar
+            return GetPMOrder(model.PMOrderControllerLifeCrcyle.Id);
+        }
+
+        public List<PMOrderAssetSelect>? PMOrderAssetSelect(int pmOrderId)
+        {
+            return ExecuteList<PMOrderAssetSelect>(
+                "EXEC dbo.PMOrderAssetSelect @p0",
+                pmOrderId
+            );
+        }
+
+        public PMOrdersSelect? PMOrderAssetInsert(List<PMOrderAssetInsert> models)
+        {
+            if (models == null || models.Count == 0)
+                return null;
+
+            int orderId = models[0].PMScheduleId; // hamısı eyni order-dir
+            int userId = models[0].UserId;
+
+            foreach (var model in models)
+            {
+                PMOrderAssetSelect? result = ExecuteSingle<PMOrderAssetSelect>(
+                    "EXEC dbo.PMOrderAssetInsert @p0, @p1, @p2",
+                    model.PMScheduleId,
+                    model.AssetId,
+                    model.UserId
+                );
+
+                if (result != null)
+                {
+                    // 🔥 EVENT (hər asset üçün ayrıca yazılır)
+                    InsertPMEvent(
+                        result.PMOrdersId,
+                        model.UserId,
+                        PMOrderEventType.AssetAdded,
+                        model.UserId
+                    );
+                }
+            }
+
+            return GetPMOrder(orderId);
+        }
+        public PMOrdersSelect? PMOrderAssetStatus(PMOrderAssetStatus model)
+        {
+            PMOrderAssetSelect? result = ExecuteSingle<PMOrderAssetSelect>(
+                "EXEC dbo.PMOrderAssetStatus @p0, @p1",
+                model.Id,
+                model.UserId
+            );
+
+            if (result != null)
+            {
+                // 🔥 EVENT
+                InsertPMEvent(
+                    result.PMOrdersId,
+                    model.UserId,
+                    PMOrderEventType.AssetDeleted,
+                    model.UserId
+                );
+
+                return GetPMOrder(result.PMOrdersId);
             }
 
             return null;

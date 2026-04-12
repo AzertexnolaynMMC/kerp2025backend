@@ -2788,6 +2788,165 @@
         }
       }
     },
+    "/api/PM/PMScheduleAssetSelect/{pmScheduleId}": {
+      "get": {
+        "tags": [
+          "PM"
+        ],
+        "parameters": [
+          {
+            "name": "pmScheduleId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMScheduleAssetInsert": {
+      "post": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMScheduleAssetUpdate": {
+      "put": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PM/PMScheduleAssetStatusUpdate": {
+      "delete": {
+        "tags": [
+          "PM"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMScheduleAssetStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrderPermission/Select": {
+      "get": {
+        "tags": [
+          "PMOrderPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrderPermission/Update": {
+      "put": {
+        "tags": [
+          "PMOrderPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderPermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderPermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderPermissionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/PMOrders/PMOrdersSelect/{id}": {
       "get": {
         "tags": [
@@ -2843,6 +3002,37 @@
       }
     },
     "/api/PMOrders/PMOrderSend": {
+      "put": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderControllerLifeCrcyle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderControllerLifeCrcyle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderControllerLifeCrcyle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMOrderConfirm": {
       "put": {
         "tags": [
           "PMOrders"
@@ -3304,6 +3494,497 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/PMAssigneesStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMChatInsert": {
+      "post": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChatInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChatInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMChatInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMOrdersCreateCM": {
+      "post": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrdersCreateCM"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrdersCreateCM"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrdersCreateCM"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMOrderClosed": {
+      "put": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderClosed"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderClosed"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderClosed"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMOrderAssetInsert": {
+      "post": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PMOrderAssetInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PMOrderAssetInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PMOrderAssetInsert"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PMOrders/PMOrderAssetStatus": {
+      "put": {
+        "tags": [
+          "PMOrders"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderAssetStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderAssetStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PMOrderAssetStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckGroups": {
+      "get": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckGroupStatus": {
+      "delete": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupStatusUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupStatusUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupStatusUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckGroupInsert": {
+      "post": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckGroupUpdate": {
+      "put": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckGroupUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckTemplates": {
+      "get": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckTemplateStatus": {
+      "delete": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateStatusUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateStatusUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateStatusUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckTemplateInsert": {
+      "post": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckTemplateUpdate": {
+      "put": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckTemplateUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckTemplateGroups": {
+      "get": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckResultTypes": {
+      "get": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckResultTypeStatus": {
+      "delete": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeStatusUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeStatusUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeStatusUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckResultTypeInsert": {
+      "post": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckGroupTemplateAndType/PreCheckResultTypeUpdate": {
+      "put": {
+        "tags": [
+          "PreCheckGroupTemplateAndType"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckResultTypeUpdate"
               }
             }
           }
@@ -6469,6 +7150,27 @@
         },
         "additionalProperties": false
       },
+      "PMChatInsert": {
+        "required": [
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pmOrderId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PMChecklistExecutionUpdate": {
         "type": "object",
         "properties": {
@@ -6790,6 +7492,56 @@
         },
         "additionalProperties": false
       },
+      "PMOrderAssetInsert": {
+        "type": "object",
+        "properties": {
+          "pmScheduleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMOrderAssetStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMOrderClosed": {
+        "type": "object",
+        "properties": {
+          "pmOrderControllerLifeCrcyle": {
+            "$ref": "#/components/schemas/PMOrderControllerLifeCrcyle"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nextDueDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PMOrderControllerLifeCrcyle": {
         "type": "object",
         "properties": {
@@ -6804,6 +7556,91 @@
           "status": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMOrderPermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMOrdersCreateCM": {
+        "type": "object",
+        "properties": {
+          "cmStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdCmId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "pmChecklistExecutionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "plannedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deadlineHours": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "asigntUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "machineIncidentCrashTypeInsert": {
+            "$ref": "#/components/schemas/MachineIncidentCrashTypeInsert"
+          },
+          "machineIncidentWorkOrderTypeInsert": {
+            "$ref": "#/components/schemas/MachineIncidentWorkOrderTypeInsert"
+          },
+          "machineIncidentSectionInsert": {
+            "$ref": "#/components/schemas/MachineIncidentSectionInsert"
+          },
+          "machineIncidentStructureInsert": {
+            "$ref": "#/components/schemas/MachineIncidentStructureInsert"
+          },
+          "machineIncidentWorkShiftInsert": {
+            "$ref": "#/components/schemas/MachineIncidentWorkShiftInsert"
           }
         },
         "additionalProperties": false
@@ -6856,6 +7693,62 @@
           "note": {
             "type": "string",
             "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMScheduleAssetInsert": {
+        "type": "object",
+        "properties": {
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pmScheduleId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMScheduleAssetStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PMScheduleAssetUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
           },
           "userId": {
             "type": "integer",
@@ -6922,10 +7815,6 @@
       "PMScheduleInsert": {
         "type": "object",
         "properties": {
-          "assetId": {
-            "type": "integer",
-            "format": "int32"
-          },
           "groupId": {
             "type": "integer",
             "format": "int32"
@@ -6961,6 +7850,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/PMScheduleAssigneesInsert"
+            },
+            "nullable": true
+          },
+          "pmScheduleAssetInsert": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PMScheduleAssetInsert"
             },
             "nullable": true
           }
@@ -7021,10 +7917,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "assetId": {
             "type": "integer",
             "format": "int32"
           },
@@ -7211,6 +8103,168 @@
             "format": "int32"
           },
           "status": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckGroupInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckGroupStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckGroupUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckResultTypeInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "descreption": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isComment": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckResultTypeStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckResultTypeUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "descreption": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isComment": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckTemplateInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "preCheckGroupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckTemplateStatusUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckTemplateUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "preCheckGroupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
             "type": "integer",
             "format": "int32"
           }

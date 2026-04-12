@@ -5,6 +5,7 @@ using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PM.PMScheduleAsset;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -24,11 +25,13 @@ namespace kerp.Repository.PMRepository
 
         public PMChecklistGroupSelect? PostGroup(PMChecklistGroupInsert request)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             return ExecuteSingle<PMChecklistGroupSelect>(
                 "EXEC dbo.PMChecklistGroupInsert @p0, @p1",
                 request.GroupName,
                 request.UserId
             );
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         public PMChecklistGroupSelect? PutGroup(PMChecklistGroupUpdate request)
@@ -244,6 +247,7 @@ namespace kerp.Repository.PMRepository
                 schedule.PMScheduleStructureSelect = GetScheduleStructures(schedule.Id);
                 schedule.PMScheduleWorkOrderTypeSelect = GetScheduleWorkOrderTypes(schedule.Id);
                 schedule.PMScheduleAssigneesSelect = GetScheduleAssignees(schedule.Id);
+                schedule.PMScheduleAssetSelect = GetScheduleAssets(schedule.Id);
             }
 
             return schedules;
@@ -252,8 +256,7 @@ namespace kerp.Repository.PMRepository
         public PMScheduleSelect? InsertSchedule(PMScheduleInsert request)
         {
             PMScheduleSelect? schedule = ExecuteSingle<PMScheduleSelect>(
-                "EXEC dbo.PMScheduleInsert @p0, @p1, @p2, @p3, @p4, @p5, @p6",
-                request.AssetId,
+                "EXEC dbo.PMScheduleInsert @p0, @p1, @p2, @p3, @p4, @p5",
                 request.GroupId,
                 request.FrequencyDays,
                 request.Title,
@@ -288,19 +291,29 @@ namespace kerp.Repository.PMRepository
                 }
             }
 
+            if (request.PMScheduleAssetInsert != null && request.PMScheduleAssetInsert.Any())
+            {
+                foreach (PMScheduleAssetInsert asset in request.PMScheduleAssetInsert)
+                {
+                    asset.PmScheduleId = schedule.Id;     // 🔥 burada set edirik
+                    asset.UserId = request.UserId;        // 🔥 burada set edirik
+
+                    _ = InsertScheduleAsset(asset);
+                }
+            }
+
             schedule.PMScheduleStructureSelect = GetScheduleStructures(schedule.Id);
             schedule.PMScheduleWorkOrderTypeSelect = GetScheduleWorkOrderTypes(schedule.Id);
             schedule.PMScheduleAssigneesSelect = GetScheduleAssignees(schedule.Id);
-
+            schedule.PMScheduleAssetSelect = GetScheduleAssets(schedule.Id);
             return schedule;
         }
 
         public PMScheduleSelect? UpdateSchedule(PMScheduleUpdate request)
         {
             PMScheduleSelect? schedule = ExecuteSingle<PMScheduleSelect>(
-                "EXEC dbo.PMScheduleUpdate @p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7",
+                "EXEC dbo.PMScheduleUpdate @p0, @p1, @p2, @p3, @p4, @p5, @p6",
                 request.Id,
-                request.AssetId,
                 request.GroupId,
                 request.FrequencyDays,
                 request.Title,
@@ -317,6 +330,7 @@ namespace kerp.Repository.PMRepository
             schedule.PMScheduleStructureSelect = GetScheduleStructures(schedule.Id);
             schedule.PMScheduleWorkOrderTypeSelect = GetScheduleWorkOrderTypes(schedule.Id);
             schedule.PMScheduleAssigneesSelect = GetScheduleAssignees(schedule.Id);
+            schedule.PMScheduleAssetSelect = GetScheduleAssets(schedule.Id);
 
             return schedule;
         }
@@ -366,5 +380,47 @@ namespace kerp.Repository.PMRepository
                        .AsEnumerable()];
         }
         #endregion
+
+        #region PMScheduleAsset
+
+        public List<PMScheduleAssetSelect>? GetScheduleAssets(int pmScheduleId)
+        {
+            return ExecuteList<PMScheduleAssetSelect>(
+                "EXEC dbo.PMScheduleAssetSelect @p0",
+                pmScheduleId
+            );
+        }
+
+        public PMScheduleAssetSelect? InsertScheduleAsset(PMScheduleAssetInsert request)
+        {
+            return ExecuteSingle<PMScheduleAssetSelect>(
+                "EXEC dbo.PMScheduleAssetInsert @p0, @p1, @p2",
+                request.PmScheduleId,
+                request.AssetId,
+                request.UserId
+            );
+        }
+
+        public PMScheduleAssetSelect? UpdateScheduleAsset(PMScheduleAssetUpdate request)
+        {
+            return ExecuteSingle<PMScheduleAssetSelect>(
+                "EXEC dbo.PMScheduleAssetUpdate @p0, @p1, @p2",
+                request.Id,
+                request.AssetId,
+                request.UserId
+            );
+        }
+
+        public PMScheduleAssetSelect? StatusUpdateScheduleAsset(PMScheduleAssetStatus request)
+        {
+            return ExecuteSingle<PMScheduleAssetSelect>(
+                "EXEC dbo.PMScheduleAssetStatus @p0, @p1",
+                request.Id,
+                request.UserId
+            );
+        }
+
+        #endregion
+
     }
 }

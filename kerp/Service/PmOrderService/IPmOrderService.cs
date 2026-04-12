@@ -1,4 +1,12 @@
 ﻿using kerp.Prosedur.PMOrders;
+using kerp.Prosedur.PMOrders.Asset;
+using kerp.Prosedur.PMOrders.Assigness;
+using kerp.Prosedur.PMOrders.Chat;
+using kerp.Prosedur.PMOrders.CheckList;
+using kerp.Prosedur.PMOrders.Doc;
+using kerp.Prosedur.PMOrders.Material;
+using kerp.Prosedur.PMOrders.Order;
+using kerp.Prosedur.PMOrders.Record;
 
 namespace kerp.Service.PmOrderService
 {
@@ -6,6 +14,8 @@ namespace kerp.Service.PmOrderService
     {
         Task<int> PMOrderControllerLifeCrcyle(PMOrderControllerLifeCrcyle Id);
         Task<int> PMOrderSend(PMOrderControllerLifeCrcyle Id);
+        Task<int> PMOrderConfirm(PMOrderControllerLifeCrcyle Id);
+        Task<int> PMOrderClosed(PMOrderClosed Id);
         Task<int> PMRecordInsert(PMRecordInsert Id);
         Task<int> PMRecordStatus(PMRecordStatus Id);
         Task<int> PMRecordUpdate(PMRecordUpdate Id);
@@ -18,6 +28,10 @@ namespace kerp.Service.PmOrderService
         Task<int> PMChecklistExecutionUpdate(List<PMChecklistExecutionUpdate> Id);
         Task<int> PMAssigneesStatus(PMAssigneesStatus Id);
         Task<int> PMChatInsert(PMChatInsert Id);
+        Task<int> PMOrdersCreateCM(PMOrdersCreateCM Id);
         Task<int> PMAssigneesInsert(List<PMAssigneesInsert> Id);
+
+        Task<int> PMOrderAssetInsert(List<PMOrderAssetInsert> model);
+        Task<int> PMOrderAssetStatus(PMOrderAssetStatus model);
     }
 }

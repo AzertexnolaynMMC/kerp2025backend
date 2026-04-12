@@ -38,7 +38,9 @@ namespace kerp.Repository.MachineIncidentRepository
 item.UserId,
 item.Id
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskRemoved, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
 
@@ -54,6 +56,7 @@ Id
 
         public MachineIncidentSelect? MachineIncidentTaskTitleCrashTypeUpdate(MachineIncidentTaskTitleCrashTypeUpdate item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
 "EXEC dbo.MachineIncidentTaskTitleCrashTypeUpdate @p0, @p1, @p2, @p3",
 item.UserId,
@@ -61,8 +64,11 @@ item.Id,
 item.Title,
 item.CrashTypeId
 );
+#pragma warning restore CS8604 // Possible null reference argument.
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskUpdated, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
 
@@ -73,13 +79,16 @@ item.CrashTypeId
 item.UserId,
 item.Id
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.DocumentRemoved, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
         }
         public MachineIncidentSelect? MachineIncidentDocumentInsert(MachineIncidentDocumentInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentDocumentSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentDocumentSelect>(
 "EXEC dbo.MachineIncidentDocumentInsert @p0, @p1, @p2, @p3, @p4, @p5, @p6",
 item.FileName,
@@ -91,7 +100,10 @@ item.UserId,
 item.MachineIncidentId
 
 );
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentAssistantSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.DocumentAdded, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 
             return MachineIncidentSelect(MachineIncidentAssistantSelect.MachineIncidentId);
@@ -106,7 +118,9 @@ item.Id,
 item.UserId
 
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialRemoved, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
         }
 
@@ -120,12 +134,15 @@ item.MachineIncidentTaskId,
 item.Amount
 
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialAdded, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
 
         }
         public MachineIncidentSelect? MachineIncidentRecordInsert(MachineIncidentRecordInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentRecordSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentRecordSelect>(
 "EXEC dbo.MachineIncidentRecordInsert @p0, @p1, @p2",
 item.Title,
@@ -134,12 +151,16 @@ item.MachineIncidentId
 
 
 );
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordAdd, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
 
         }
         public MachineIncidentSelect? MachineIncidentLostTimeInsert(MachineIncidentLostTimeInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentLostTimeSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentLostTimeSelect>(
 "EXEC dbo.MachineIncidentLostTimeInsert @p0, @p1, @p2, @p3",
 item.Title,
@@ -147,7 +168,10 @@ item.UserId,
 item.MachineIncidentId,
 item.Second
 );
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         }
         public MachineIncidentSelect? MachineIncidentLostTimeStatus(MachineIncidentLostTimeStatus item)
@@ -157,11 +181,14 @@ item.Second
 item.Id,
 item.UserId
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
         }
         public MachineIncidentSelect? MachineIncidentRecordUpdate(MachineIncidentRecordUpdate item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentRecordSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentRecordSelect>(
 "EXEC dbo.MachineIncidentRecordUpdate @p0, @p1, @p2",
 item.Id,
@@ -170,7 +197,10 @@ item.UserId
 
 
 );
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordEdit, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
 
         }
@@ -216,7 +246,9 @@ item.UserId
 
 
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.RecordDelete, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
 
         }
@@ -224,6 +256,7 @@ item.UserId
 
         public MachineIncidentSelect? MachineIncidentChatInsert(MachineIncidentChatInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentChatSelect MachineIncidentMaterialSelect = ExecuteSingle<MachineIncidentChatSelect>(
 "EXEC dbo.MachineIncidentChatInsert @p0, @p1, @p2",
 item.Title,
@@ -232,10 +265,14 @@ item.MachineIncidentId
 
 
 );
+#pragma warning restore CS8604 // Possible null reference argument.
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentMaterialSelect.MachineIncidentId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentTaskInsert(MachineIncidentTaskInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentTaskSelect MachineIncidentAssistantSelect = ExecuteSingle<MachineIncidentTaskSelect>(
 "EXEC dbo.MachineIncidentTaskInsert @p0, @p1, @p2, @p3, @p4",
 item.Title,
@@ -245,6 +282,7 @@ item.MachineIncidentId,
 item.CrashTypeId
 
 );
+#pragma warning restore CS8604 // Possible null reference argument.
             InsertEvent(item.MachineIncidentId, item.UserId, MachineIncidentEventType.TaskAdded, item.UserId);
             if (item.MachineIncidentMaterialInsert != null)
             {
@@ -258,7 +296,9 @@ MachineIncidentAssistantSelect!.Id,
 item1.Amount
 
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     InsertEvent(MachineIncidentMaterialSelect.MachineIncidentId, item.UserId, MachineIncidentEventType.MaterialAdded, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
 
                 }
@@ -275,6 +315,7 @@ item.Id,
 item.UserId
 
 );
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (MachineIncidentAssistantSelect.TypeEnum == 1)
             {
                 InsertEvent(MachineIncidentAssistantSelect.CrashId, item.UserId, MachineIncidentEventType.MasterRemoved, MachineIncidentAssistantSelect.AssistantId);
@@ -285,12 +326,14 @@ item.UserId
                 InsertEvent(MachineIncidentAssistantSelect.CrashId, item.UserId, MachineIncidentEventType.HelperRemoved, MachineIncidentAssistantSelect.AssistantId);
 
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
             return MachineIncidentSelect(MachineIncidentAssistantSelect.CrashId);
         }
 
         public MachineIncidentSelect? MachineIncidentReject(MachineIncidentReject item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             _ = ExecuteSingle<MachineIncidentSelectForBackEnd>(
 "EXEC dbo.MachineIncidentReject @p0, @p1 , @p2, @p3",
 item.Id,
@@ -298,6 +341,7 @@ item.UserId,
 item.TypeEnum,
 item.Title
 );
+#pragma warning restore CS8604 // Possible null reference argument.
             if (item.TypeEnum == 1)
             {
                 InsertEvent(item.Id, item.UserId, MachineIncidentEventType.RejectedByCounterParty, item.UserId);
@@ -382,7 +426,9 @@ item[0].UserId
                 }
             }
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentAssistantInsert(List<MachineIncidentAssistantInsert> item)
         {
@@ -409,7 +455,9 @@ item[0].UserId
                 }
             }
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentAssistantSelect.CrashId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentAccept(MachineIncidentAccept item)
         {
@@ -419,18 +467,24 @@ item[0].UserId
      item.UserId
  );
             InsertEvent(item.Id, item.UserId, MachineIncidentEventType.Accepted, item.UserId);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentTitleUpdate(MachineIncidentTitleUpdate item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentSelectForBackEnd MachineIncidentSelectForBackEnd = ExecuteSingle<MachineIncidentSelectForBackEnd>(
                 "EXEC dbo.MachineIncidentTitleUpdate @p0, @p1, @p2",
                 item.Id,
                 item.Title,
                 item.UserId
             );
+#pragma warning restore CS8604 // Possible null reference argument.
             InsertEvent(item.Id, item.UserId, MachineIncidentEventType.DescriptionChanged, item.UserId);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentProjectUpdate(MachineIncidentProjectUpdate item)
         {
@@ -441,7 +495,9 @@ item[0].UserId
     item.UserId
 );
             InsertEvent(item.Id, item.UserId, MachineIncidentEventType.ProjectChanged, item.UserId);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
         public MachineIncidentSelect? MachineIncidentAssetUpdate(MachineIncidentAssetUpdate item)
         {
@@ -452,7 +508,9 @@ item.AssetId,
 item.UserId
 );
             InsertEvent(item.Id, item.UserId, MachineIncidentEventType.AssetChanged, item.UserId);
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
         public MachineIncidentSelect? MachineIncidentWorkShiftUpdate(MachineIncidentWorkShiftUpdate item)
@@ -465,7 +523,9 @@ item.UserId
 );
 
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentSelectForBackEnd.CrashId, item.UserId, MachineIncidentEventType.WorkShiftChanged, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.CrashId);
         }
 
@@ -480,13 +540,16 @@ item.UserId
 );
 
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentSelectForBackEnd.CrashId, item.UserId, MachineIncidentEventType.TypeChanged, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.CrashId);
         }
 
 
         public MachineIncidentSelect? MachineIncidentWorkOrderTypeUpdate(MachineIncidentWorkOrderTypeUpdate item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             MachineIncidentWorkOrderTypeSelect MachineIncidentSelectForBackEnd = ExecuteSingle<MachineIncidentWorkOrderTypeSelect>(
                 "EXEC dbo.MachineIncidentWorkOrderTypeUpdate @p0, @p1, @p2, @p3, @p4",
                 item.Id,
@@ -495,8 +558,11 @@ item.UserId
                 item.PlannedDate,   // ✅ YENİ
                 item.DeadlineHours  // ✅ YENİ
             );
+#pragma warning restore CS8604 // Possible null reference argument.
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             InsertEvent(MachineIncidentSelectForBackEnd.CrashId, item.UserId, MachineIncidentEventType.ServiceTypeChanged, item.UserId);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             return MachineIncidentSelect(MachineIncidentSelectForBackEnd.CrashId);
         }
         #region Select Multi
@@ -635,12 +701,18 @@ item.UserId
                     if (item.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002)
                     {
                         if (item.PlannedDate == null)
+                        {
                             throw new Exception("CM seçildikdə PlannedDate məcburidir.");
+                        }
+
                         if (item.DeadlineHours == null)
+                        {
                             throw new Exception("CM seçildikdə DeadlineHours məcburidir.");
+                        }
                     }
 
                     // 1️⃣ MAIN INSERT
+#pragma warning disable CS8604 // Possible null reference argument.
                     MachineIncidentSelectForBackEnd? incident = ExecuteSingle<MachineIncidentSelectForBackEnd>(
                         "EXEC dbo.MachineIncidentInsert @p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10",
                         item.Title,
@@ -655,9 +727,12 @@ item.UserId
                         item.PlannedDate,    // @p9
                         item.DeadlineHours   // @p10
                     );
+#pragma warning restore CS8604 // Possible null reference argument.
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     incident.MachineIncidentSelectForBackEndCrashType = ExecuteList<MachineIncidentSelectForBackEndCrashType>(
                         "EXEC dbo.MachineIncidentSelectForBackEndCrashType @p0", incident.Id);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
                     incident.MachineIncidentSelectForBackEndWorkOrderType = ExecuteList<MachineIncidentSelectForBackEndWorkOrderType>(
                         "EXEC dbo.MachineIncidentSelectForBackEndWorkOrderType @p0", incident.Id);
@@ -688,6 +763,7 @@ item.UserId
 
         private MachineIncidentSelectForBackEnd? InsertMachineIncident(MachineIncidentInsert item)
         {
+#pragma warning disable CS8604 // Possible null reference argument.
             return ExecuteSingle<MachineIncidentSelectForBackEnd>(
                 "EXEC dbo.MachineIncidentInsert @p0, @p1, @p2, @p3",
                 item.Title,
@@ -695,6 +771,7 @@ item.UserId
                 item.AssetId,
                 item.ProjectId
             );
+#pragma warning restore CS8604 // Possible null reference argument.
         }
 
         private void InsertCrashType(int incidentId, MachineIncidentInsert item)
@@ -803,6 +880,22 @@ item.UserId
                        .FromSqlRaw(sql, parameters)
                        .AsNoTracking()
                        .AsEnumerable()];
+        }
+
+        public MachineIncidentSelectForBackEnd? GetMachineIncidentForBackEnd(int id)
+        {
+            MachineIncidentSelectForBackEnd? incident = ExecuteSingle<MachineIncidentSelectForBackEnd>(
+                "EXEC dbo.MachineIncidentSelectForBackEnd @p0", id);
+
+            if (incident == null) return null;
+
+            incident.MachineIncidentSelectForBackEndCrashType = ExecuteList<MachineIncidentSelectForBackEndCrashType>(
+                "EXEC dbo.MachineIncidentSelectForBackEndCrashType @p0", incident.Id);
+
+            incident.MachineIncidentSelectForBackEndWorkOrderType = ExecuteList<MachineIncidentSelectForBackEndWorkOrderType>(
+                "EXEC dbo.MachineIncidentSelectForBackEndWorkOrderType @p0", incident.Id);
+
+            return incident;
         }
 
 

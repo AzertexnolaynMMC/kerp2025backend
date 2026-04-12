@@ -46,5 +46,7 @@ namespace kerp.Prosedur.Users
         public UserProfilePermissionSelect? UserProfilePermissionSelect { get; set; }
         [NotMapped]
         public GetMachineIncidentReportPermission? GetMachineIncidentReportPermission { get; set; }
+        [NotMapped]
+        public UserPMOrderPermissionSelect? UserPMOrderPermissionSelect { get; set; }
     }
 }

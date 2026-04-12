@@ -4,6 +4,7 @@ using kerp.Prosedur.Pm.PMSchedule;
 using kerp.Prosedur.Pm.PMScheduleAssignees;
 using kerp.Prosedur.Pm.PMScheduleStructure;
 using kerp.Prosedur.Pm.PMScheduleWorkOrderType;
+using kerp.Prosedur.PM.PMScheduleAsset;
 using kerp.Repository.PMRepository;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Mvc;
@@ -497,6 +498,107 @@ namespace kerp.Controllers
         }
 
         #endregion
+        #region PMScheduleAsset
 
+        [HttpGet("PMScheduleAssetSelect/{pmScheduleId}")]
+        public IActionResult PMScheduleAssetSelect(int pmScheduleId)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PMScheduleAssetSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.GetScheduleAssets(pmScheduleId)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPost("PMScheduleAssetInsert")]
+        public IActionResult PMScheduleAssetInsert([FromBody] PMScheduleAssetInsert request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<PMScheduleAssetSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.InsertScheduleAsset(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("PMScheduleAssetUpdate")]
+        public IActionResult PMScheduleAssetUpdate([FromBody] PMScheduleAssetUpdate request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<PMScheduleAssetSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.UpdateScheduleAsset(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpDelete("PMScheduleAssetStatusUpdate")]
+        public IActionResult PMScheduleAssetStatusUpdate([FromBody] PMScheduleAssetStatus request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<PMScheduleAssetSelect>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.StatusUpdateScheduleAsset(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        #endregion
     }
 }
