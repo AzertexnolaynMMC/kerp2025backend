@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("kerp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5240637d46b8ee079fa1940fb29b5f792a423b99")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d7e3f1776aaa341744d30708655f6c92626e5c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("kerp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("kerp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
