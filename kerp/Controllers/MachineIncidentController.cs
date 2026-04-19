@@ -15,6 +15,7 @@ using kerp.Prosedur.MachineIncident.Task;
 using kerp.Prosedur.MachineIncident.Type;
 using kerp.Prosedur.MachineIncident.WorkOrderType;
 using kerp.Repository.MachineIncidentRepository;
+using kerp.Service.FileUploadService;
 using kerp.Service.IncidentService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +24,12 @@ namespace kerp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MachineIncidentController(IMachineIncidentRepository repository, IIncidentService incidentService) : ControllerBase
+    public class MachineIncidentController(IMachineIncidentRepository repository, IIncidentService incidentService, IFileUploadService fileUploadService) : ControllerBase
     {
         private readonly IMachineIncidentRepository _repository = repository;
         private readonly IIncidentService _incidentService = incidentService;
+        private readonly IFileUploadService _fileUploadService = fileUploadService;
+
         [HttpGet("MachineIncidentCrashTypeSelectMulti")]
         public IActionResult MachineIncidentCrashTypeSelectMulti()
         {
@@ -562,75 +565,37 @@ namespace kerp.Controllers
         {
             try
             {
-                if (model.File == null || model.File.Length == 0)
-                {
-                    return BadRequest("File boşdur");
-                }
-
-                // 🔹 Extension (pdf, png, xls və s.)
-                string extension = Path.GetExtension(model.File.FileName)
-                                        .Replace(".", "")
-                                        .ToLowerInvariant();
-
-                // 🔹 Root folder (wwwroot YOXDURSA – avtomatik yaradılacaq)
-                string uploadRoot = Path.Combine(
-                    Directory.GetCurrentDirectory(),
-                    "wwwroot",
+                var fileResult = await _fileUploadService.UploadAsync(
+                    model.File,
                     "MachineIncidentDocuments",
-                    model.MachineIncidentId.ToString(),
-                    extension
+                    model.MachineIncidentId,
+                    model.UserId
                 );
 
-                _ = Directory.CreateDirectory(uploadRoot); // varsa toxunmur
-
-                // 🔹 UNIQ FileName
-                string uniqueFileName =
-                    $"{model.MachineIncidentId}_{model.UserId}_{DateTime.UtcNow:yyyyMMddHHmmssfff}_{Guid.NewGuid()}.{extension}";
-
-                string physicalPath = Path.Combine(uploadRoot, uniqueFileName);
-
-                // 🔹 Fiziki save
-                using (FileStream stream = new(physicalPath, FileMode.Create))
-                {
-                    await model.File.CopyToAsync(stream);
-                }
-
-                // 🔹 Server tərəfindən doldurulan sahələr
-                model.FileName = uniqueFileName;
-                model.FilePath =
-                    $"/MachineIncidentDocuments/{model.MachineIncidentId}/{extension}/{uniqueFileName}";
-                model.ContentType = model.File.ContentType;
-                model.FileSize = model.File.Length;
+                model.FileName = fileResult.fileName;
+                model.FilePath = fileResult.filePath;
+                model.ContentType = fileResult.contentType;
+                model.FileSize = fileResult.fileSize;
 
                 int result = await _incidentService.MachineIncidentDocumentInsert(model);
 
-                return result == 1
-                    ? Ok(new CustomerResponseModel<object>
-                    {
-                        StatusCode = 0,
-                        title = "Uğurlu əməliyyat",
-                        AccessToken = null,
-                        Data = null
-                    })
-                    : Ok(new CustomerResponseModel<object>
-                    {
-                        StatusCode = 404,
-                        title = "Məlumat tapılmadı",
-                        AccessToken = null,
-                        Data = null
-                    });
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = result == 1 ? 0 : 404,
+                    title = result == 1 ? "Uğurlu əməliyyat" : "Məlumat tapılmadı"
+                });
             }
             catch (Exception ex)
             {
                 return Ok(new CustomerResponseModel<object>
                 {
                     StatusCode = 500,
-                    title = "Internal server error: " + ex.Message,
-                    AccessToken = null,
-                    Data = null
+                    title = ex.Message
                 });
             }
         }
+
+
 
         [HttpDelete("MachineIncidentDocumentStatus")]
 

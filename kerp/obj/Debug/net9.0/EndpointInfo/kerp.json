@@ -3669,6 +3669,484 @@
         }
       }
     },
+    "/api/PreCheck/PreCheckInsert": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PreCheckInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PreCheckInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PreCheckInsert"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckGroupSelectForInsert": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckResultTypeSelectForInsert": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckTemplateSelectForInsert": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckWorkOrderTypeLangSelectForInsert": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckWorkShiftSelectForInsert": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckSelect": {
+      "get": {
+        "tags": [
+          "PreCheck"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckDocumentInsert": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FileName": {
+                    "type": "string"
+                  },
+                  "FilePath": {
+                    "type": "string"
+                  },
+                  "FileNameTitle": {
+                    "type": "string"
+                  },
+                  "ContentType": {
+                    "type": "string"
+                  },
+                  "FileSize": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "UserId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PreCheckId": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "FileName": {
+                  "style": "form"
+                },
+                "FilePath": {
+                  "style": "form"
+                },
+                "FileNameTitle": {
+                  "style": "form"
+                },
+                "ContentType": {
+                  "style": "form"
+                },
+                "FileSize": {
+                  "style": "form"
+                },
+                "UserId": {
+                  "style": "form"
+                },
+                "PreCheckId": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckDocumentUpdate": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckDocumentStatus": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckDocumentStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckRecordInsert": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordInsert"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordInsert"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordInsert"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckRecordUpdate": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/PreCheckRecordStatus": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckRecordStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/Accepted": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/InReview": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/Approved": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheck/Closed": {
+      "post": {
+        "tags": [
+          "PreCheck"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckControllerLifeCircle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/PreCheckGroupTemplateAndType/PreCheckGroups": {
       "get": {
         "tags": [
@@ -8109,6 +8587,56 @@
         },
         "additionalProperties": false
       },
+      "PreCheckControllerLifeCircle": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckDocumentStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckDocumentUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fileNameTitle": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PreCheckGroupInsert": {
         "type": "object",
         "properties": {
@@ -8138,6 +8666,94 @@
         "additionalProperties": false
       },
       "PreCheckGroupUpdate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckInsert": {
+        "type": "object",
+        "properties": {
+          "assetId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "shiftId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "structureId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preCheckSectionInsert": {
+            "$ref": "#/components/schemas/PreCheckSectionInsert"
+          },
+          "preCheckStructureInsert": {
+            "$ref": "#/components/schemas/PreCheckStructureInsert"
+          },
+          "preCheckWorkOrderInsert": {
+            "$ref": "#/components/schemas/PreCheckWorkOrderInsert"
+          },
+          "preCheckTemplateExecuteInsert": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PreCheckTemplateExecuteInsert"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckRecordInsert": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preCheckId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckRecordStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckRecordUpdate": {
         "type": "object",
         "properties": {
           "id": {
@@ -8217,6 +8833,68 @@
         },
         "additionalProperties": false
       },
+      "PreCheckSectionInsert": {
+        "type": "object",
+        "properties": {
+          "preCheckId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sectionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckStructureInsert": {
+        "type": "object",
+        "properties": {
+          "preCheckId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "structureId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckTemplateExecuteInsert": {
+        "type": "object",
+        "properties": {
+          "preCheckId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preCheckTemplateId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "preCheckResultTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descreption": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PreCheckTemplateInsert": {
         "type": "object",
         "properties": {
@@ -8261,6 +8939,24 @@
             "nullable": true
           },
           "preCheckGroupId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckWorkOrderInsert": {
+        "type": "object",
+        "properties": {
+          "preCheckId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "workOrderId": {
             "type": "integer",
             "format": "int32"
           },

@@ -41,6 +41,9 @@ namespace kerp.Controllers
             }
 
         }
+
+
+
         [HttpGet("MachineIncidentReportYear")]
         public IActionResult MachineIncidentReportYear()
         {

@@ -4,9 +4,11 @@ using kerp.Contexts;
 using kerp.Hubs.IncidentHub;
 using kerp.Hubs.PageHub;
 using kerp.Service;
+using kerp.Service.FileUploadService;
 using kerp.Service.IncidentService;
 using kerp.Service.MailService;
 using kerp.Service.PmOrderService;
+using kerp.Service.PreCheckService;
 using kerp.SystemModel;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -88,6 +90,8 @@ namespace kerp
             _ = services.AddScoped<IIncidentService, IncidentService>();
             _ = services.AddScoped<IMailService, MailService>();
             _ = services.AddScoped<IPmOrderService, PmOrderService>();
+            _ = services.AddScoped<IPreCheckService, PreCheckService>();
+            _ = services.AddScoped<IFileUploadService, FileUploadService>();
             _ = services.AddScoped<LdapService>();
 
             /*

@@ -62,6 +62,17 @@ using kerp.Prosedur.PMOrders.Material;
 using kerp.Prosedur.PMOrders.Order;
 using kerp.Prosedur.PMOrders.Record;
 using kerp.Prosedur.PMOrders.WorkOrder;
+using kerp.Prosedur.PreCheck.Document;
+using kerp.Prosedur.PreCheck.Event;
+using kerp.Prosedur.PreCheck.Group;
+using kerp.Prosedur.PreCheck.Pre;
+using kerp.Prosedur.PreCheck.Record;
+using kerp.Prosedur.PreCheck.ResultType;
+using kerp.Prosedur.PreCheck.Section;
+using kerp.Prosedur.PreCheck.Structure;
+using kerp.Prosedur.PreCheck.Template;
+using kerp.Prosedur.PreCheck.WorkOrder;
+using kerp.Prosedur.PreCheck.WorkShift;
 using kerp.Prosedur.SmtpSettings;
 using kerp.Prosedur.Structure;
 using kerp.Prosedur.Translation;
@@ -89,12 +100,28 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<PreCheckRecordSelect> PreCheckRecordSelect { get; set; }
+    public virtual DbSet<PreCheckDocumentSelect> PreCheckDocumentSelect { get; set; }
+    public virtual DbSet<PreCheckWorkShiftSelectForInsert> PreCheckWorkShiftSelectForInsert { get; set; }
+    public virtual DbSet<PreCheckWorkOrderSelect> PreCheckWorkOrderSelect { get; set; }
+    public virtual DbSet<PreCheckTemplateExecuteSelect> PreCheckTemplateExecuteSelect { get; set; }
+    public virtual DbSet<PreCheckStructureSelect> PreCheckStructureSelect { get; set; }
+    public virtual DbSet<PreCheckSectionSelect> PreCheckSectionSelect { get; set; }
+    public virtual DbSet<PreCheckResultTypeSelectForInsert> PreCheckResultTypeSelectForInsert { get; set; }
+    public virtual DbSet<PreCheckSelect> PreCheckSelect { get; set; }
+    public virtual DbSet<PreCheckGroupSelectForInsert> PreCheckGroupSelectForInsert { get; set; }
+    public virtual DbSet<PreCheckEventSelect> PreCheckEventSelect { get; set; }
+    public virtual DbSet<PreCheckTemplateSelect> PreCheckTemplateSelect { get; set; }
+    public virtual DbSet<PreCheckTemplateGroupSelect> PreCheckTemplateGroupSelect { get; set; }
+    public virtual DbSet<PreCheckResultTypeSelect> PreCheckResultTypeSelect { get; set; }
+    public virtual DbSet<PreCheckGroupSelect> PreCheckGroupSelect { get; set; }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
     public virtual DbSet<PMOrderAssetSelect> PMOrderAssetSelect { get; set; }
     public virtual DbSet<PMScheduleAssetSelect> PMScheduleAssetSelect { get; set; }
-    public virtual DbSet<PreCheckResultTypeSelect> PreCheckResultTypeSelect { get; set; }
-    public virtual DbSet<PreCheckTemplateGroupSelect> PreCheckTemplateGroupSelect { get; set; }
-    public virtual DbSet<PreCheckTemplateSelect> PreCheckTemplateSelect { get; set; }
-    public virtual DbSet<PreCheckGroupSelect> PreCheckGroupSelect { get; set; }
     public virtual DbSet<UserPMOrderPermissionSelect> UserPMOrderPermissionSelect { get; set; }
     public virtual DbSet<PMOrderPermissionSelect> PMOrderPermissionSelect { get; set; }
     public virtual DbSet<PMMaterialSelectMulti> PMOrderMaterialSelectMulti { get; set; }
@@ -284,12 +311,33 @@ public partial class KerpContext : DbContext
 
 
 
+
+        _ = modelBuilder.Entity<PreCheckEventSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckGroupSelectForInsert>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckResultTypeSelectForInsert>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckTemplateExecuteSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckTemplateSelectForInsert>().HasKey(q => q.Id);
+
+
+        _ = modelBuilder.Entity<PreCheckStructureSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<PreCheckSectionSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<PreCheckWorkOrderSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<PreCheckWorkOrderTypeLangSelectForInsert>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckDocumentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckRecordSelect>().HasKey(q => q.Id);
+
+
+
+
+
+
+
+
+
+
         _ = modelBuilder.Entity<PMOrderAssetSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMScheduleAssetSelect>().HasKey(q => q.Id);
-        _ = modelBuilder.Entity<PreCheckResultTypeSelect>().HasKey(q => q.Id);
-        _ = modelBuilder.Entity<PreCheckGroupSelect>().HasKey(q => q.Id);
-        _ = modelBuilder.Entity<PreCheckTemplateSelect>().HasKey(q => q.Id);
-        _ = modelBuilder.Entity<PreCheckTemplateGroupSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserPMOrderPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMOrderPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMMaterialSelectMulti>().HasKey(q => q.Id);

@@ -1,5 +1,4 @@
 ﻿using FirebaseAdmin.Messaging;
-using kerp.Prosedur.MachineIncident.Incident;
 using Newtonsoft.Json;
 
 namespace kerp.Service
@@ -13,23 +12,26 @@ namespace kerp.Service
             _firebaseMessaging = FirebaseMessaging.DefaultInstance;
         }
 
-        public async Task SendAndroidNotificationAsync(
+        public async Task SendAndroidNotificationAsync<T>(
             List<string> fcmTokens,
-            MachineIncidentSelectForBackEnd incident)
+            T data
+
+            )
         {
             if (fcmTokens == null || !fcmTokens.Any())
             {
                 return;
             }
 
-            string jsonData = JsonConvert.SerializeObject(incident);
+            string jsonData = JsonConvert.SerializeObject(data);
+            string notificationType = typeof(T).Name;
 
             MulticastMessage message = new()
             {
                 Tokens = fcmTokens,
                 Data = new Dictionary<string, string>
                 {
-                    { "type", "new_incident" },
+                    { "type", notificationType },
                     { "data", jsonData }
                 },
                 Android = new AndroidConfig

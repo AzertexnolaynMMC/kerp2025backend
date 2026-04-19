@@ -2213,6 +2213,283 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "Accepted",
+    "RelativePath": "api/PreCheck/Accepted",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Pre.PreCheckControllerLifeCircle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "Approved",
+    "RelativePath": "api/PreCheck/Approved",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Pre.PreCheckControllerLifeCircle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "Closed",
+    "RelativePath": "api/PreCheck/Closed",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Pre.PreCheckControllerLifeCircle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "InReview",
+    "RelativePath": "api/PreCheck/InReview",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Pre.PreCheckControllerLifeCircle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckDocumentInsert",
+    "RelativePath": "api/PreCheck/PreCheckDocumentInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FilePath",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileNameTitle",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileSize",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PreCheckId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckDocumentStatus",
+    "RelativePath": "api/PreCheck/PreCheckDocumentStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Document.PreCheckDocumentStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckDocumentUpdate",
+    "RelativePath": "api/PreCheck/PreCheckDocumentUpdate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Document.PreCheckDocumentUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckGroupSelectForInsert",
+    "RelativePath": "api/PreCheck/PreCheckGroupSelectForInsert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckInsert",
+    "RelativePath": "api/PreCheck/PreCheckInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.PreCheck.Pre.PreCheckInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckRecordInsert",
+    "RelativePath": "api/PreCheck/PreCheckRecordInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Record.PreCheckRecordInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckRecordStatus",
+    "RelativePath": "api/PreCheck/PreCheckRecordStatus",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Record.PreCheckRecordStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckRecordUpdate",
+    "RelativePath": "api/PreCheck/PreCheckRecordUpdate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "kerp.Prosedur.PreCheck.Record.PreCheckRecordUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckResultTypeSelectForInsert",
+    "RelativePath": "api/PreCheck/PreCheckResultTypeSelectForInsert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckSelect",
+    "RelativePath": "api/PreCheck/PreCheckSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckTemplateSelectForInsert",
+    "RelativePath": "api/PreCheck/PreCheckTemplateSelectForInsert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckWorkOrderTypeLangSelectForInsert",
+    "RelativePath": "api/PreCheck/PreCheckWorkOrderTypeLangSelectForInsert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.PreCheckController",
+    "Method": "PreCheckWorkShiftSelectForInsert",
+    "RelativePath": "api/PreCheck/PreCheckWorkShiftSelectForInsert",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "kerp.Controllers.Admin.PreCheckGroupTemplateAndTypeController",
     "Method": "PostPreCheckGroup",
     "RelativePath": "api/PreCheckGroupTemplateAndType/PreCheckGroupInsert",

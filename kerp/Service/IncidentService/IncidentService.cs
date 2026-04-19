@@ -104,8 +104,8 @@ namespace kerp.Service.IncidentService
             // 5️⃣ Controller-ə geri (mail gözləmədən)
             return incidents;
         }
-     
-        
+
+
         /// <summary>
         /// Android cihazlara push notification göndər
         /// </summary>

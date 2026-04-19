@@ -539,7 +539,7 @@ model.Status
             InsertPMEvent(
                 model.PMOrderControllerLifeCrcyle.Id,
                 model.PMOrderControllerLifeCrcyle.UserId,
-                PMOrderEventType.Closed,
+                PMOrderEventType.Finished,
                 model.PMOrderControllerLifeCrcyle.UserId
             );
 
@@ -558,12 +558,14 @@ model.Status
         public PMOrdersSelect? PMOrderAssetInsert(List<PMOrderAssetInsert> models)
         {
             if (models == null || models.Count == 0)
+            {
                 return null;
+            }
 
             int orderId = models[0].PMScheduleId; // hamısı eyni order-dir
-            int userId = models[0].UserId;
+            _ = models[0].UserId;
 
-            foreach (var model in models)
+            foreach (PMOrderAssetInsert model in models)
             {
                 PMOrderAssetSelect? result = ExecuteSingle<PMOrderAssetSelect>(
                     "EXEC dbo.PMOrderAssetInsert @p0, @p1, @p2",
