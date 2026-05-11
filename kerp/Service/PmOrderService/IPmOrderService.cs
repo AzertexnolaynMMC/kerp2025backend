@@ -1,4 +1,5 @@
-﻿using kerp.Prosedur.PMOrders;
+﻿using kerp.Prosedur.MachineIncident.Incident;
+using kerp.Prosedur.PMOrders;
 using kerp.Prosedur.PMOrders.Asset;
 using kerp.Prosedur.PMOrders.Assigness;
 using kerp.Prosedur.PMOrders.Chat;
@@ -33,5 +34,6 @@ namespace kerp.Service.PmOrderService
 
         Task<int> PMOrderAssetInsert(List<PMOrderAssetInsert> model);
         Task<int> PMOrderAssetStatus(PMOrderAssetStatus model);
+        Task SendAndroidPushNotifications(List<MachineIncidentSelectForBackEnd> incidents);
     }
 }

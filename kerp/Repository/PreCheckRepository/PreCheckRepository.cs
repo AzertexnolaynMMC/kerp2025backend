@@ -1,8 +1,10 @@
 ﻿using kerp.Contexts;
 using kerp.Enums;
+using kerp.Prosedur.MachineIncident.Incident;
 using kerp.Prosedur.PreCheck.Document;
 using kerp.Prosedur.PreCheck.Event;
 using kerp.Prosedur.PreCheck.Group;
+using kerp.Prosedur.PreCheck.Incident;
 using kerp.Prosedur.PreCheck.Pre;
 using kerp.Prosedur.PreCheck.Record;
 using kerp.Prosedur.PreCheck.ResultType;
@@ -11,16 +13,18 @@ using kerp.Prosedur.PreCheck.Structure;
 using kerp.Prosedur.PreCheck.Template;
 using kerp.Prosedur.PreCheck.WorkOrder;
 using kerp.Prosedur.PreCheck.WorkShift;
+using kerp.Repository.MachineIncidentRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace kerp.Repository.PreCheckRepository
 {
-    public class PreCheckRepository(KerpContext ctx) : IPreCheckRepository
+    public class PreCheckRepository(KerpContext ctx, IMachineIncidentRepository machineIncidentRepo) : IPreCheckRepository
     {
         private readonly KerpContext _ctx = ctx;
+        // private field əlavə et
 
+        private readonly IMachineIncidentRepository _machineIncidentRepo = machineIncidentRepo;
         // ─── Event ────────────────────────────────────────────────────────────
-
         public PreCheckEventSelect? PreCheckEventInsert(PreCheckEventInsert request)
         {
             return ExecuteSingle<PreCheckEventSelect>(
@@ -31,23 +35,18 @@ namespace kerp.Repository.PreCheckRepository
                 request.WhoId
             );
         }
-
         public List<PreCheckEventSelect>? PreCheckEventSelect(int id)
         {
             return ExecuteList<PreCheckEventSelect>(
                 "EXEC dbo.PreCheckEventSelect @p0", id);
         }
-
         // ─── Group ────────────────────────────────────────────────────────────
-
         public List<PreCheckGroupSelectForInsert>? PreCheckGroupSelectForInsert()
         {
             return ExecuteList<PreCheckGroupSelectForInsert>(
                 "EXEC dbo.PreCheckGroupSelectForInsert");
         }
-
         // ─── PreCheck (main) ──────────────────────────────────────────────────
-
         public List<PreCheckSelect>? PreCheckInsert(List<PreCheckInsert> request)
         {
             List<PreCheckSelect> result = [];
@@ -169,15 +168,12 @@ namespace kerp.Repository.PreCheckRepository
             return model;
         }
         // ─── ResultType ───────────────────────────────────────────────────────
-
         public List<PreCheckResultTypeSelectForInsert>? PreCheckResultTypeSelectForInsert()
         {
             return ExecuteList<PreCheckResultTypeSelectForInsert>(
                 "EXEC dbo.PreCheckResultTypeSelectForInsert");
         }
-
         // ─── Section ──────────────────────────────────────────────────────────
-
         public PreCheckSectionSelect? PreCheckSectionInsert(PreCheckSectionInsert request)
         {
             return ExecuteSingle<PreCheckSectionSelect>(
@@ -187,15 +183,12 @@ namespace kerp.Repository.PreCheckRepository
                 request.UserId
             );
         }
-
         public List<PreCheckSectionSelect>? PreCheckSectionSelect(int id)
         {
             return ExecuteList<PreCheckSectionSelect>(
                 "EXEC dbo.PreCheckSectionSelect @p0", id);
         }
-
         // ─── Structure ────────────────────────────────────────────────────────
-
         public PreCheckStructureSelect? PreCheckStructureInsert(PreCheckStructureInsert request)
         {
             return ExecuteSingle<PreCheckStructureSelect>(
@@ -205,15 +198,12 @@ namespace kerp.Repository.PreCheckRepository
                 request.UserId
             );
         }
-
         public List<PreCheckStructureSelect>? PreCheckStructureSelect(int id)
         {
             return ExecuteList<PreCheckStructureSelect>(
                 "EXEC dbo.PreCheckStructureSelect @p0", id);
         }
-
         // ─── Template ─────────────────────────────────────────────────────────
-
         public PreCheckTemplateExecuteSelect? PreCheckTemplateExecuteInsert(PreCheckTemplateExecuteInsert request)
         {
             return ExecuteSingle<PreCheckTemplateExecuteSelect>(
@@ -225,21 +215,17 @@ namespace kerp.Repository.PreCheckRepository
                 request.UserId
             );
         }
-
         public List<PreCheckTemplateExecuteSelect>? PreCheckTemplateExecuteSelect(int id)
         {
             return ExecuteList<PreCheckTemplateExecuteSelect>(
                 "EXEC dbo.PreCheckTemplateExecuteSelect @p0", id);
         }
-
         public List<PreCheckTemplateSelectForInsert>? PreCheckTemplateSelectForInsert()
         {
             return ExecuteList<PreCheckTemplateSelectForInsert>(
                 "EXEC dbo.PreCheckTemplateSelectForInsert");
         }
-
         // ─── WorkOrder ────────────────────────────────────────────────────────
-
         public PreCheckWorkOrderSelect? PreCheckWorkOrderInsert(PreCheckWorkOrderInsert request)
         {
             return ExecuteSingle<PreCheckWorkOrderSelect>(
@@ -249,34 +235,28 @@ namespace kerp.Repository.PreCheckRepository
                 request.UserId
             );
         }
-
         public List<PreCheckWorkOrderSelect>? PreCheckWorkOrderSelect(int id)
         {
             return ExecuteList<PreCheckWorkOrderSelect>(
                 "EXEC dbo.PreCheckWorkOrderTypeSelect @p0", id);
         }
-
         public List<PreCheckWorkOrderTypeLangSelectForInsert>? PreCheckWorkOrderTypeLangSelectForInsert()
         {
             return ExecuteList<PreCheckWorkOrderTypeLangSelectForInsert>(
                 "EXEC dbo.PreCheckWorkOrderTypeLangSelectForInsert");
         }
-
         // ─── WorkShift ────────────────────────────────────────────────────────
-
         public List<PreCheckWorkShiftSelectForInsert>? PreCheckWorkShiftSelectForInsert()
         {
             return ExecuteList<PreCheckWorkShiftSelectForInsert>(
                 "EXEC dbo.PreCheckWorkShiftSelectForInsert");
         }
         // ─── Document ─────────────────────────────────────────────────────────
-
         public List<PreCheckDocumentSelect>? PreCheckDocumentSelect(int id)
         {
             return ExecuteList<PreCheckDocumentSelect>(
                 "EXEC dbo.PreCheckDocumentSelect @p0", id);
         }
-
         public PreCheckSelect? PreCheckDocumentInsert(PreCheckDocumentInsert request)
         {
             _ = ExecuteList<PreCheckDocumentSelect>(
@@ -291,11 +271,10 @@ namespace kerp.Repository.PreCheckRepository
             );
 
             // 🔥 EVENT
-            InsertEvent(request.PreCheckId, request.UserId, PreCheckEventType.DocumentInserted, request.UserId);
+            InsertEvent(request.PreCheckId ?? 0, request.UserId ?? 0, PreCheckEventType.DocumentInserted, request.UserId ?? 0);
 
-            return PreCheckSelect(request.PreCheckId);
+            return PreCheckSelect(request.PreCheckId ?? 0);
         }
-
         public PreCheckSelect? PreCheckDocumentUpdate(PreCheckDocumentUpdate request)
         {
             PreCheckDocumentSelect? doc = ExecuteSingle<PreCheckDocumentSelect>(
@@ -315,7 +294,6 @@ namespace kerp.Repository.PreCheckRepository
 
             return PreCheckSelect(doc.PreCheckId ?? 0);
         }
-
         public PreCheckSelect? PreCheckDocumentStatus(PreCheckDocumentStatus request)
         {
             PreCheckDocumentSelect? doc = ExecuteSingle<PreCheckDocumentSelect>(
@@ -335,8 +313,6 @@ namespace kerp.Repository.PreCheckRepository
             return PreCheckSelect(doc.PreCheckId ?? 0);
         }
         // ─── Record ───────────────────────────────────────────────────────────
-
-
         public List<PreCheckRecordSelect>? PreCheckRecordSelect(int id)
         {
             return ExecuteList<PreCheckRecordSelect>(
@@ -356,7 +332,6 @@ namespace kerp.Repository.PreCheckRepository
 
             return PreCheckSelect(request.PreCheckId);
         }
-
         public PreCheckSelect? PreCheckRecordUpdate(PreCheckRecordUpdate request)
         {
             PreCheckRecordSelect? rec = ExecuteSingle<PreCheckRecordSelect>(
@@ -376,7 +351,6 @@ namespace kerp.Repository.PreCheckRepository
 
             return PreCheckSelect(rec.PreCheckId ?? 0);
         }
-
         public PreCheckSelect? PreCheckRecordStatus(PreCheckRecordStatus request)
         {
             PreCheckRecordSelect? rec = ExecuteSingle<PreCheckRecordSelect>(
@@ -395,9 +369,7 @@ namespace kerp.Repository.PreCheckRepository
 
             return PreCheckSelect(rec.PreCheckId ?? 0);
         }
-
         // ─── Helpers ──────────────────────────────────────────────────────────
-
         private void InsertEvent(int preCheckId, int userId, PreCheckEventType eventType, int whoId)
         {
             _ = ExecuteSingle<PreCheckEventSelect>(
@@ -408,7 +380,6 @@ namespace kerp.Repository.PreCheckRepository
                 whoId
             );
         }
-
         private T? ExecuteSingle<T>(string sql, params object[] parameters) where T : class
         {
             return _ctx.Set<T>()
@@ -417,7 +388,6 @@ namespace kerp.Repository.PreCheckRepository
                        .AsEnumerable()
                        .FirstOrDefault();
         }
-
         private List<T>? ExecuteList<T>(string sql) where T : class
         {
             return [.. _ctx.Set<T>()
@@ -425,7 +395,6 @@ namespace kerp.Repository.PreCheckRepository
                        .AsNoTracking()
                        .AsEnumerable()];
         }
-
         private List<T>? ExecuteList<T>(string sql, params object[] parameters) where T : class
         {
             return [.. _ctx.Set<T>()
@@ -433,7 +402,6 @@ namespace kerp.Repository.PreCheckRepository
                        .AsNoTracking()
                        .AsEnumerable()];
         }
-
         public PreCheckSelect? Accepted(PreCheckControllerLifeCircle request)
         {
             PreCheckSelect? result = ExecuteSingle<PreCheckSelect>(
@@ -454,6 +422,37 @@ namespace kerp.Repository.PreCheckRepository
             return null;
         }
 
+
+
+
+        public PreCheckSelect? ElectricalController(PreCheckEventInsert request)
+        {
+            PreCheckEventSelect? result = ExecuteSingle<PreCheckEventSelect>(
+                "EXEC dbo.PreCheckEventInsert @p0, @p1, @p2, @p3",
+                request.PreCheckId,
+                request.UserId,
+                (int)PreCheckEventType.ElectricalController,
+                request.WhoId
+            );
+
+            return result != null ? PreCheckSelect(request.PreCheckId) : null;
+        }
+        public PreCheckSelect? MechanicalController(PreCheckEventInsert request)
+        {
+            PreCheckEventSelect? result = ExecuteSingle<PreCheckEventSelect>(
+                "EXEC dbo.PreCheckEventInsert @p0, @p1, @p2, @p3",
+                request.PreCheckId,
+                request.UserId,
+                (int)PreCheckEventType.MechanicalController,
+                request.WhoId
+            );
+
+            return result != null ? PreCheckSelect(request.PreCheckId) : null;
+        }
+
+
+
+
         public PreCheckSelect? InReview(PreCheckControllerLifeCircle request)
         {
             PreCheckSelect? result = ExecuteSingle<PreCheckSelect>(
@@ -473,7 +472,6 @@ namespace kerp.Repository.PreCheckRepository
 
             return null;
         }
-
         public PreCheckSelect? Approved(PreCheckControllerLifeCircle request)
         {
             PreCheckSelect? result = ExecuteSingle<PreCheckSelect>(
@@ -493,7 +491,6 @@ request.UserId,
 
             return null;
         }
-
         public PreCheckSelect? Closed(PreCheckControllerLifeCircle request)
         {
             PreCheckSelect? result = ExecuteSingle<PreCheckSelect>(
@@ -519,6 +516,136 @@ request.UserId,
                 "EXEC dbo.PreCheckEventsSelectMulti @p0",
                 id
             );
+        }
+
+
+        // ─── INCIDENT LOOKUPS ─────────────────────────────────────────────────
+
+        public List<PreCheckCrashTypeForIncidentSelect>? PreCheckCrashTypeForIncidentSelect()
+        {
+            return ExecuteList<PreCheckCrashTypeForIncidentSelect>(
+                "EXEC dbo.PreCheckCrashTypeForIncidentSelect"
+            );
+        }
+
+        public List<PreCheckProjectForIncidentSelect>? PreCheckProjectForIncidentSelect()
+        {
+            return ExecuteList<PreCheckProjectForIncidentSelect>(
+                "EXEC dbo.PreCheckProjectForIncidentSelect"
+            );
+        }
+
+        public List<PreCheckWorkOrderTypeForIncidentSelect>? PreCheckWorkOrderTypeForIncidentSelect()
+        {
+            return ExecuteList<PreCheckWorkOrderTypeForIncidentSelect>(
+                "EXEC dbo.PreCheckWorkOrderTypeForIncidentSelect"
+            );
+        }
+
+        public List<PreCheckWorkShiftForIncidentSelect>? PreCheckWorkShiftForIncidentSelect()
+        {
+            return ExecuteList<PreCheckWorkShiftForIncidentSelect>(
+                "EXEC dbo.PreCheckWorkShiftForIncidentSelect"
+            );
+        }
+        // =========================
+        // REPOSITORY CLASS sonuna əlavə et
+        // =========================
+
+        public List<PreCheckUserSelect>? PreCheckUserSelect(int id)
+        {
+            return ExecuteList<PreCheckUserSelect>(
+                "EXEC dbo.PreCheckUserSelect @p0",
+                id
+            );
+        }
+        public PreCheckSelect? PreCheckCreateCM(PreCheckCreateCM model)
+        {
+            // 🛡️ Validation — yalnız CM olduqda
+            if (model.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002)
+            {
+                if (model.PlannedDate == null)
+                {
+                    throw new Exception("CM seçildikdə PlannedDate məcburidir.");
+                }
+
+                if (model.DeadlineHours == null)
+                {
+                    throw new Exception("CM seçildikdə DeadlineHours məcburidir.");
+                }
+            }
+
+            // 1️⃣ MachineIncident yarat
+            MachineIncidentInsert insert = new()
+            {
+                Title = model.Title,
+                UserId = model.UserId,
+                AssetId = model.AssetId,
+                ProjectId = model.ProjectId,
+                PlannedDate = model.PlannedDate,
+                DeadlineHours = model.DeadlineHours,
+                AsigntUserId = model.AsigntUserId,
+                MachineIncidentCrashTypeInsert = model.MachineIncidentCrashTypeInsert,
+                MachineIncidentWorkOrderTypeInsert = model.MachineIncidentWorkOrderTypeInsert,
+                MachineIncidentSectionInsert = model.MachineIncidentSectionInsert,
+                MachineIncidentStructureInsert = model.MachineIncidentStructureInsert,
+                MachineIncidentWorkShiftInsert = model.MachineIncidentWorkShiftInsert
+            };
+
+            List<MachineIncidentSelectForBackEnd> result =
+                _machineIncidentRepo.Post([insert]);
+
+            MachineIncidentSelectForBackEnd incident = result.First();
+
+            int createdCmId = incident.Id;
+
+            // =========================
+            // 2️⃣ PreCheck CM UPDATE
+            // =========================
+            PreCheckTemplateExecuteSelect? execution =
+                ExecuteSingle<PreCheckTemplateExecuteSelect>(
+                    "EXEC dbo.PreCheckTemplateExecuteCMUpdate @p0, @p1, @p2, @p3",
+                    model.CmStatus!,
+                    createdCmId,
+                    model.UserId,
+                    model.PreCheckExecutionId
+                );
+
+            if (execution == null)
+            {
+                return null;
+            }
+
+            // =========================
+            // 3️⃣ 🔥 PRECHECK INCIDENT INSERT (YENİ ƏLAVƏ)
+            // =========================
+            _ =
+                ExecuteSingle<PreCheckIncidentSelect>(
+                    "EXEC dbo.PreCheckIncidentInsert @p0, @p1, @p2",
+                    execution.PreCheckTemplateId,
+                    createdCmId,
+                    model.UserId
+                );
+
+            // =========================
+            // 4️⃣ EVENT ADD
+            // =========================
+            PreCheckEventType eventType =
+                model.MachineIncidentWorkOrderTypeInsert?.WorkOrderTypeId == 1002
+                    ? PreCheckEventType.CMEMAdded
+                    : PreCheckEventType.CMAdded;
+
+            InsertEvent(
+                execution.PreCheckId,
+                model.UserId,
+                eventType,
+                model.UserId
+            );
+
+            // =========================
+            // 5️⃣ RETURN FULL DATA
+            // =========================
+            return PreCheckSelect(execution.PreCheckId);
         }
 
     }

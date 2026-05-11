@@ -1,5 +1,7 @@
 ﻿using kerp.Prosedur.PreCheck.Document;
+using kerp.Prosedur.PreCheck.Event;
 using kerp.Prosedur.PreCheck.Group;
+using kerp.Prosedur.PreCheck.Incident;
 using kerp.Prosedur.PreCheck.Pre;
 using kerp.Prosedur.PreCheck.Record;
 using kerp.Prosedur.PreCheck.ResultType;
@@ -226,8 +228,8 @@ namespace kerp.Controllers
                 (string fileName, string filePath, string contentType, long fileSize) = await _fileUploadService.UploadAsync(
                     model.File,
                     "PreCheckDocuments",
-                    model.PreCheckId,
-                    model.UserId
+                    model.PreCheckId ?? 0,
+                    model.UserId ?? 0
                 );
 
                 model.FileName = fileName;
@@ -252,6 +254,12 @@ namespace kerp.Controllers
                 });
             }
         }
+
+
+
+
+
+
         [HttpPost("PreCheckDocumentUpdate")]
         public async Task<IActionResult> PreCheckDocumentUpdate([FromBody] PreCheckDocumentUpdate model)
         {
@@ -523,6 +531,231 @@ namespace kerp.Controllers
                     {
                         StatusCode = 0,
                         title = "Bağlandı",
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    Data = null
+                });
+            }
+        }
+
+
+        [HttpPost("ElectricalController")]
+        public async Task<IActionResult> ElectricalController([FromBody] PreCheckEventInsert model)
+        {
+            try
+            {
+                int result = await _preCheckService.ElectricalController(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Elektrik nəzarəti tamamlandı",
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPost("MechanicalController")]
+        public async Task<IActionResult> MechanicalController([FromBody] PreCheckEventInsert model)
+        {
+            try
+            {
+                int result = await _preCheckService.MechanicalController(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "Mexaniki nəzarət tamamlandı",
+                        Data = null
+                    })
+                    : Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 404,
+                        title = "Məlumat tapılmadı",
+                        Data = null
+                    });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    Data = null
+                });
+            }
+        }
+        [HttpGet("PreCheckCrashTypeForIncidentSelect")]
+        public IActionResult PreCheckCrashTypeForIncidentSelect()
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PreCheckCrashTypeForIncidentSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.PreCheckCrashTypeForIncidentSelect()
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpGet("PreCheckProjectForIncidentSelect")]
+        public IActionResult PreCheckProjectForIncidentSelect()
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PreCheckProjectForIncidentSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.PreCheckProjectForIncidentSelect()
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpGet("PreCheckWorkOrderTypeForIncidentSelect")]
+        public IActionResult PreCheckWorkOrderTypeForIncidentSelect()
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PreCheckWorkOrderTypeForIncidentSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.PreCheckWorkOrderTypeForIncidentSelect()
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpGet("PreCheckWorkShiftForIncidentSelect")]
+        public IActionResult PreCheckWorkShiftForIncidentSelect()
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PreCheckWorkShiftForIncidentSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.PreCheckWorkShiftForIncidentSelect()
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        // =========================
+        // CONTROLLER içinə əlavə et
+        // (son GET-lərdən sonra əlavə edə bilərsən)
+        // =========================
+
+        [HttpGet("PreCheckUserSelect")]
+        public IActionResult PreCheckUserSelect(int Id)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<PreCheckUserSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.PreCheckUserSelect(Id)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex.Message,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPost("PreCheckCreateCM")]
+        public async Task<IActionResult> PreCheckCreateCM([FromBody] PreCheckCreateCM model)
+        {
+            try
+            {
+                int result = await _preCheckService.PreCheckCreateCM(model);
+
+                return result == 1
+                    ? Ok(new CustomerResponseModel<object>
+                    {
+                        StatusCode = 0,
+                        title = "CM uğurla yaradıldı",
                         Data = null
                     })
                     : Ok(new CustomerResponseModel<object>

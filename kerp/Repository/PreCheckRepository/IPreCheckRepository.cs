@@ -1,6 +1,7 @@
 ﻿using kerp.Prosedur.PreCheck.Document;
 using kerp.Prosedur.PreCheck.Event;
 using kerp.Prosedur.PreCheck.Group;
+using kerp.Prosedur.PreCheck.Incident;
 using kerp.Prosedur.PreCheck.Pre;
 using kerp.Prosedur.PreCheck.Record;
 using kerp.Prosedur.PreCheck.ResultType;
@@ -19,6 +20,7 @@ namespace kerp.Repository.PreCheckRepository
         // =========================
         PreCheckEventSelect? PreCheckEventInsert(PreCheckEventInsert request);
         List<PreCheckEventSelect>? PreCheckEventSelect(int id);
+        List<PreCheckEventsSelectMulti>? PreCheckEventsSelectMulti(int id);
 
         // =========================
         // GROUP
@@ -76,6 +78,7 @@ namespace kerp.Repository.PreCheckRepository
         // RECORD
         // =========================
         List<PreCheckRecordSelect>? PreCheckRecordSelect(int id);
+
         PreCheckSelect? PreCheckRecordInsert(PreCheckRecordInsert request);
         PreCheckSelect? PreCheckRecordUpdate(PreCheckRecordUpdate request);
         PreCheckSelect? PreCheckRecordStatus(PreCheckRecordStatus request);
@@ -83,5 +86,16 @@ namespace kerp.Repository.PreCheckRepository
         PreCheckSelect? InReview(PreCheckControllerLifeCircle request);
         PreCheckSelect? Approved(PreCheckControllerLifeCircle request);
         PreCheckSelect? Closed(PreCheckControllerLifeCircle request);
+        PreCheckSelect? ElectricalController(PreCheckEventInsert request);
+        PreCheckSelect? MechanicalController(PreCheckEventInsert request);
+
+        List<PreCheckCrashTypeForIncidentSelect>? PreCheckCrashTypeForIncidentSelect();
+        List<PreCheckProjectForIncidentSelect>? PreCheckProjectForIncidentSelect();
+        List<PreCheckWorkOrderTypeForIncidentSelect>? PreCheckWorkOrderTypeForIncidentSelect();
+        List<PreCheckWorkShiftForIncidentSelect>? PreCheckWorkShiftForIncidentSelect();
+        List<PreCheckUserSelect>? PreCheckUserSelect(int id);
+        PreCheckSelect? PreCheckCreateCM(PreCheckCreateCM request);
+
+
     }
 }

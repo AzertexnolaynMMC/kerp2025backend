@@ -93,13 +93,14 @@ namespace kerp.Repository.UserRepository
                 userLogin.MachineIncidentPermissionSelect = _ctx.UserMachineIncidentPermissionSelect.FromSqlRaw("EXEC dbo.UserMachineIncidentPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+                userLogin.UserPreCheckPermissionSelect = _ctx.UserPreCheckPermissionSelect.FromSqlRaw("EXEC dbo.UserPreCheckPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.UserPMOrderPermissionSelect = _ctx.UserPMOrderPermissionSelect
     .FromSqlRaw("EXEC dbo.UserPMOrderPermissionSelect @p0", userLogin.UserId)
     .AsEnumerable()
     .FirstOrDefault();
                 if (!string.IsNullOrEmpty(model.FcmToken))
                 {
-                    _ctx.Database.ExecuteSqlRaw(
+                    _ = _ctx.Database.ExecuteSqlRaw(
                         "EXEC dbo.UserFcmTokenUpdate @p0, @p1",
                         userLogin.UserId,
                         model.FcmToken
@@ -109,8 +110,8 @@ namespace kerp.Repository.UserRepository
 
             return userLogin;
         }
-    
-        
+
+
         public UserSelectMailSingle? PostUserInsertMailSingle(UserInsertMailSingle pageInsert)
         {
             return pageInsert == null || string.IsNullOrWhiteSpace(pageInsert.Title)
@@ -228,6 +229,7 @@ namespace kerp.Repository.UserRepository
             userLogin.MachineIncidentPermissionSelect = _ctx.UserMachineIncidentPermissionSelect.FromSqlRaw("EXEC dbo.UserMachineIncidentPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+            userLogin.UserPreCheckPermissionSelect = _ctx.UserPreCheckPermissionSelect.FromSqlRaw("EXEC dbo.UserPreCheckPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.UserPMOrderPermissionSelect = _ctx.UserPMOrderPermissionSelect
        .FromSqlRaw("EXEC dbo.UserPMOrderPermissionSelect @p0", userLogin.UserId)
        .AsEnumerable()

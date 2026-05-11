@@ -19,6 +19,11 @@
         // =========================
         DocumentInserted = 9,
         DocumentUpdated = 10,
-        DocumentStatusChanged = 11
+        DocumentStatusChanged = 11,
+        ElectricalController = 12,
+        MechanicalController = 13,
+        CMAdded = 14,
+        CMEMAdded = 15
+
     }
 }

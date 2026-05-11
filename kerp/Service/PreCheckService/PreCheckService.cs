@@ -1,12 +1,19 @@
 ﻿using kerp.Hubs.IncidentHub;
 using kerp.Prosedur.Canban;
+using kerp.Prosedur.MachineIncident.Incident;
+using kerp.Prosedur.MachineIncident.Record;
 using kerp.Prosedur.PreCheck.Document;
+using kerp.Prosedur.PreCheck.Event;
+using kerp.Prosedur.PreCheck.Incident;
 using kerp.Prosedur.PreCheck.Pre;
 using kerp.Prosedur.PreCheck.Record;
+using kerp.Prosedur.PreCheck.Template;
 using kerp.Prosedur.Users;
 using kerp.Repository.CanbanRepository;
+using kerp.Repository.MachineIncidentRepository;
 using kerp.Repository.PreCheckRepository;
 using kerp.Repository.UserRepository;
+using kerp.Service.PmOrderService;
 using Microsoft.AspNetCore.SignalR;
 
 namespace kerp.Service.PreCheckService
@@ -14,13 +21,17 @@ namespace kerp.Service.PreCheckService
     public class PreCheckService(
         IPreCheckRepository preCheckRepository,
         ICanbanRepository canbanRepository,
+        IPmOrderService pmOrderService,
         IHubContext<IncidentHub> hubContext,
+        IMachineIncidentRepository machineIncidentRepository,
         IUserRepository userRepository) : IPreCheckService
     {
         private readonly IPreCheckRepository _preCheckRepository = preCheckRepository;
         private readonly ICanbanRepository _canbanRepository = canbanRepository;
         private readonly IHubContext<IncidentHub> _hubContext = hubContext;
         private readonly IUserRepository _userRepository = userRepository;
+        private readonly IPmOrderService _pmOrderService1 = pmOrderService;
+        private readonly IMachineIncidentRepository _machineIncidentRepository = machineIncidentRepository;  // ✅ əlavə et
 
         public async Task<int> PreCheckInsert(List<PreCheckInsert> request)
         {
@@ -124,6 +135,31 @@ namespace kerp.Service.PreCheckService
 
             return 0;
         }
+        public async Task<int> ElectricalController(PreCheckEventInsert request)
+        {
+            PreCheckSelect? result = _preCheckRepository.ElectricalController(request);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync("PreCheckInfo", result);
+                return 1;
+            }
+
+            return 0;
+        }
+
+        public async Task<int> MechanicalController(PreCheckEventInsert request)
+        {
+            PreCheckSelect? result = _preCheckRepository.MechanicalController(request);
+
+            if (result != null)
+            {
+                await _hubContext.Clients.All.SendAsync("PreCheckInfo", result);
+                return 1;
+            }
+
+            return 0;
+        }
 
         private async Task SendAndroidPushNotifications(List<PreCheckSelect> items)
         {
@@ -206,6 +242,44 @@ namespace kerp.Service.PreCheckService
             }
 
             return 0;
+        }
+
+        public async Task<int> PreCheckCreateCM(PreCheckCreateCM model)
+        {
+            // 1️⃣ Repository çağır (CM create + DB update)
+            PreCheckSelect? result = _preCheckRepository.PreCheckCreateCM(model);
+
+            if (result == null)
+            {
+                return 0;
+            }
+
+            await _hubContext.Clients.All.SendAsync("PreCheckInfo", result);
+            PreCheckTemplateExecuteSelect? matchedExecution = result.PreCheckTemplateExecuteSelect?.FirstOrDefault(x => x.Id == model.PreCheckExecutionId && x.CreatedCmId != null);
+            if (matchedExecution != null)
+            {
+                MachineIncidentRecordInsert record = new()
+                {
+                    UserId = model.UserId,
+                    MachineIncidentId = matchedExecution.CreatedCmId!.Value,
+                    Title = $"Bu iş əmri, {result.Id} nömrəli AYJ iş əmri zamanı aparılan {matchedExecution.Id} nömrəli yoxlamaya əsasən açılıb."
+                };
+                _ = _machineIncidentRepository.MachineIncidentRecordInsert(record);
+                MachineIncidentSelectForBackEnd? incident =
+                    _machineIncidentRepository.GetMachineIncidentForBackEnd(matchedExecution.CreatedCmId!.Value);
+
+                if (incident != null)
+                {
+                    CanbanCardHub? card = _canbanRepository.CanbanCardHub(incident.Id, 1);
+                    await _hubContext.Clients.All.SendAsync("IncidentInserted", new[] { card });
+                    await _hubContext.Clients.All.SendAsync("NotificationDesktop", new[] { incident });
+                    await _pmOrderService1.SendAndroidPushNotifications([incident]);
+                }
+
+            }
+
+            // 5️⃣ Success
+            return 1;
         }
     }
 }

@@ -14,5 +14,9 @@
         public int PreCheckGroupId { get; set; }
         public bool IsComment { get; set; }
         public string? PreCheckGroupTite { get; set; }
+
+        public DateTime CmCrateDate { get; set; }
+        public string? CmStatus { get; set; }
+        public int? CreatedCmId { get; set; }
     }
 }

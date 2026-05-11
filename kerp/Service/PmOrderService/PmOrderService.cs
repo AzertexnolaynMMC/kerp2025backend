@@ -288,7 +288,7 @@ namespace kerp.Service.PmOrderService
         }
 
 
-        private async Task SendAndroidPushNotifications(List<MachineIncidentSelectForBackEnd> incidents)
+        public async Task SendAndroidPushNotifications(List<MachineIncidentSelectForBackEnd> incidents)
         {
             NotificationService notificationService = new();
             foreach (MachineIncidentSelectForBackEnd incident in incidents)

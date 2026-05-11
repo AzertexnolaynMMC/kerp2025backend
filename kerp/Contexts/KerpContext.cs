@@ -23,6 +23,22 @@ using kerp.Prosedur.Admin.UserStructureSee;
 using kerp.Prosedur.Admin.UserWorkOrderSee;
 using kerp.Prosedur.Admin.WorkOrderType;
 using kerp.Prosedur.Canban;
+using kerp.Prosedur.Dsr.Assistant;
+using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Document;
+using kerp.Prosedur.Dsr.Dsrs;
+using kerp.Prosedur.Dsr.DSRTaskType;
+using kerp.Prosedur.Dsr.Event;
+using kerp.Prosedur.Dsr.LostTime;
+using kerp.Prosedur.Dsr.Machine;
+using kerp.Prosedur.Dsr.Material;
+using kerp.Prosedur.Dsr.Record;
+using kerp.Prosedur.Dsr.Section;
+using kerp.Prosedur.Dsr.Structure;
+using kerp.Prosedur.Dsr.Task;
+using kerp.Prosedur.Dsr.TaskComment;
+using kerp.Prosedur.Dsr.WorkOrderType;
+using kerp.Prosedur.Dsr.WorkShift;
 using kerp.Prosedur.Helpers;
 using kerp.Prosedur.Hr.Users.Mail;
 using kerp.Prosedur.Hr.Users.Phone;
@@ -65,6 +81,7 @@ using kerp.Prosedur.PMOrders.WorkOrder;
 using kerp.Prosedur.PreCheck.Document;
 using kerp.Prosedur.PreCheck.Event;
 using kerp.Prosedur.PreCheck.Group;
+using kerp.Prosedur.PreCheck.Incident;
 using kerp.Prosedur.PreCheck.Pre;
 using kerp.Prosedur.PreCheck.Record;
 using kerp.Prosedur.PreCheck.ResultType;
@@ -100,6 +117,35 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<DSRMaterialSelectMulti> DSRMaterialSelectMulti { get; set; }
+    public virtual DbSet<DSRMaterialSelect> DSRMaterialSelect { get; set; }
+    public virtual DbSet<DSRTaskCommentSelect> DSRTaskCommentSelect { get; set; }
+    public virtual DbSet<DSRChatSelect> DSRChatSelect { get; set; }
+    public virtual DbSet<DSRLostTimeSelect> DSRLostTimeSelect { get; set; }
+    public virtual DbSet<DSRRecordSelect> DSRRecordSelect { get; set; }
+    public virtual DbSet<DSRDocumentSelect> DSRDocumentSelect { get; set; }
+    public virtual DbSet<DSRSelect> DSRSelect { get; set; }
+    public virtual DbSet<DSRMachineSelect> DSRMachineSelect { get; set; }
+    public virtual DbSet<DSREventSelect> DSREventSelect { get; set; }
+    public virtual DbSet<DSRTaskAssistantSelect> DSRTaskAssistantSelect { get; set; }
+    public virtual DbSet<DSRTaskSelect> DSRTaskSelect { get; set; }
+    public virtual DbSet<DSRWorkShiftSelect> DSRWorkShiftSelect { get; set; }
+    public virtual DbSet<DSRStructureSelect> DSRStructureSelect { get; set; }
+    public virtual DbSet<DSRSectionSelect> DSRSectionSelect { get; set; }
+    public virtual DbSet<DSRWorkOrderTypeSelect> DSRWorkOrderTypeSelect { get; set; }
+    public virtual DbSet<DsrBackEndSelect> DsrBackEndSelect { get; set; }
+    public virtual DbSet<DsrWorkShiftSelectMulti> DsrWorkShiftSelectMulti { get; set; }
+    public virtual DbSet<DSRWorkOrderTypeSelectMulti> DSRWorkOrderTypeSelectMulti { get; set; }
+    public virtual DbSet<DSRTaskTypeSelectAdmin> DSRTaskTypeSelectAdmin { get; set; }
+    public virtual DbSet<UserPreCheckPermissionSelect> UserPreCheckPermissionSelect { get; set; }
+    public virtual DbSet<PreCheckIncidentSelect> PreCheckIncidentSelect { get; set; }
+    public virtual DbSet<PreCheckUserSelect> PreCheckUserSelect { get; set; }
+    public virtual DbSet<PreCheckCrashTypeForIncidentSelect> PreCheckCrashTypeForIncidentSelect { get; set; }
+    public virtual DbSet<PreCheckProjectForIncidentSelect> PreCheckProjectForIncidentSelect { get; set; }
+    public virtual DbSet<PreCheckWorkOrderTypeForIncidentSelect> PreCheckWorkOrderTypeForIncidentSelect { get; set; }
+    public virtual DbSet<PreCheckWorkShiftForIncidentSelect> PreCheckWorkShiftForIncidentSelect { get; set; }
+
+    public virtual DbSet<PreCheckEventsSelectMulti> PreCheckEventsSelectMulti { get; set; }
     public virtual DbSet<PreCheckRecordSelect> PreCheckRecordSelect { get; set; }
     public virtual DbSet<PreCheckDocumentSelect> PreCheckDocumentSelect { get; set; }
     public virtual DbSet<PreCheckWorkShiftSelectForInsert> PreCheckWorkShiftSelectForInsert { get; set; }
@@ -300,6 +346,9 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<MachineIncidentReportCrashTypeSelect>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<MachineIncidentSelectForBackEndCrashType>().HasKey(q => q.LangId);
         _ = modelBuilder.Entity<PMOrderWorkOrderTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<DSRWorkOrderTypeSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<DSRSectionSelect>().HasKey(q => q.LangId);
+        _ = modelBuilder.Entity<DSRStructureSelect>().HasKey(q => q.LangId);
 
 
 
@@ -312,6 +361,8 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<UserPreCheckPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckIncidentSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckEventSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckGroupSelectForInsert>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckSelect>().HasKey(q => q.Id);
@@ -326,6 +377,13 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<PreCheckWorkOrderTypeLangSelectForInsert>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckDocumentSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckRecordSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckEventsSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckWorkShiftForIncidentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckProjectForIncidentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckCrashTypeForIncidentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckWorkOrderTypeForIncidentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<PreCheckUserSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRMachineSelect>().HasKey(q => q.Id);
 
 
 
@@ -334,8 +392,26 @@ public partial class KerpContext : DbContext
 
 
 
+        //DSR
 
+        _ = modelBuilder.Entity<DSRMaterialSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRMaterialSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRTaskCommentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRChatSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRLostTimeSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRRecordSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRDocumentSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DsrBackEndSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRWorkShiftSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRTaskSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRTaskAssistantSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSREventSelect>().HasKey(q => q.Id);
 
+        //
+        _ = modelBuilder.Entity<DsrWorkShiftSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRWorkOrderTypeSelectMulti>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRTaskTypeSelectAdmin>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMOrderAssetSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PMScheduleAssetSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserPMOrderPermissionSelect>().HasKey(q => q.Id);
