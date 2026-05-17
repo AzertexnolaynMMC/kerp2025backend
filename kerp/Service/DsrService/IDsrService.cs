@@ -1,5 +1,6 @@
 ﻿using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.LostTime;
@@ -54,5 +55,12 @@ namespace kerp.Service.DsrService
         Task<int> DSRRecordUpdate(DSRRecordUpdate request);
         Task<int> DSRRecordStatus(DSRRecordStatus request);
         Task<int> DSRWorkOrderStarted(DSRControllerLifeCycle request);
+        Task<int> WorkOrderClosed(DSRControllerLifeCycle request);
+        Task<int> WorkOrderEvaluated(DSRControllerLifeCycle request);
+        Task<int> DSRTaskAssistantDelivered(DSRTaskAssistantControllerLifeCycle request);
+        Task<int> DSRTaskAssistantRejected(DSRTaskAssistantReject request);
+        Task<int> DSRReject(DSRReject request);
+        Task<int> WorkOrderFinished(DSRControllerLifeCycle request);
+        Task<int> DSRCostInsert(List<DSRCostInsert> request);
     }
 }

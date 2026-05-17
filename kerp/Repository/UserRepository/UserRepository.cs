@@ -94,6 +94,7 @@ namespace kerp.Repository.UserRepository
                 userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.UserPreCheckPermissionSelect = _ctx.UserPreCheckPermissionSelect.FromSqlRaw("EXEC dbo.UserPreCheckPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+                userLogin.UserDSRPermissionSelect = _ctx.UserDSRPermissionSelect.FromSqlRaw("EXEC dbo.UserDSRPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
                 userLogin.UserPMOrderPermissionSelect = _ctx.UserPMOrderPermissionSelect
     .FromSqlRaw("EXEC dbo.UserPMOrderPermissionSelect @p0", userLogin.UserId)
     .AsEnumerable()
@@ -230,6 +231,7 @@ namespace kerp.Repository.UserRepository
             userLogin.UserProfilePermissionSelect = _ctx.UserProfilePermissionSelect.FromSqlRaw("EXEC dbo.UserProfilePermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.GetMachineIncidentReportPermission = _ctx.GetMachineIncidentReportPermission.FromSqlRaw("EXEC dbo.GetMachineIncidentReportPermission @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.UserPreCheckPermissionSelect = _ctx.UserPreCheckPermissionSelect.FromSqlRaw("EXEC dbo.UserPreCheckPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
+            userLogin.UserDSRPermissionSelect = _ctx.UserDSRPermissionSelect.FromSqlRaw("EXEC dbo.UserDSRPermissionSelect @p0", userLogin.UserId).AsEnumerable().FirstOrDefault();
             userLogin.UserPMOrderPermissionSelect = _ctx.UserPMOrderPermissionSelect
        .FromSqlRaw("EXEC dbo.UserPMOrderPermissionSelect @p0", userLogin.UserId)
        .AsEnumerable()

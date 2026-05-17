@@ -269,6 +269,32 @@
   },
   {
     "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRCostInsert",
+    "RelativePath": "api/Dsr/DSRCostInsert",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Dsr.Cost.DSRCostInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRCostTypeSelect",
+    "RelativePath": "api/Dsr/DSRCostTypeSelect",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
     "Method": "DSRDocumentInsert",
     "RelativePath": "api/Dsr/DSRDocumentInsert",
     "HttpMethod": "POST",
@@ -522,6 +548,22 @@
   },
   {
     "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRReject",
+    "RelativePath": "api/Dsr/DSRReject",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Dsrs.DSRReject",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
     "Method": "DSRSelect",
     "RelativePath": "api/Dsr/DSRSelect",
     "HttpMethod": "GET",
@@ -538,6 +580,22 @@
   },
   {
     "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRTaskAssistantDelivered",
+    "RelativePath": "api/Dsr/DSRTaskAssistantDelivered",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Assistant.DSRTaskAssistantControllerLifeCycle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
     "Method": "DSRTaskAssistantInsert",
     "RelativePath": "api/Dsr/DSRTaskAssistantInsert",
     "HttpMethod": "POST",
@@ -547,6 +605,22 @@
       {
         "Name": "request",
         "Type": "kerp.Prosedur.Dsr.Assistant.DSRTaskAssistantInsert",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRTaskAssistantRejected",
+    "RelativePath": "api/Dsr/DSRTaskAssistantRejected",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Assistant.DSRTaskAssistantReject",
         "IsRequired": true
       }
     ],
@@ -724,9 +798,57 @@
   },
   {
     "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRWorkOrderEvaluated",
+    "RelativePath": "api/Dsr/DSRWorkOrderEvaluated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dsrId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRWorkOrderEvaluatedAll",
+    "RelativePath": "api/Dsr/DSRWorkOrderEvaluatedAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dsrId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "DSRWorkOrderEvaluatedWorker",
+    "RelativePath": "api/Dsr/DSRWorkOrderEvaluatedWorker",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dsrId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
     "Method": "DSRWorkOrderStarted",
     "RelativePath": "api/Dsr/DSRWorkOrderStarted",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -769,6 +891,80 @@
       {
         "Name": "request",
         "Type": "kerp.Prosedur.Dsr.WorkShift.DSRWorkShiftUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "WorkOrderClosed",
+    "RelativePath": "api/Dsr/WorkOrderClosed",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Dsrs.DSRControllerLifeCycle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "WorkOrderEvaluated",
+    "RelativePath": "api/Dsr/WorkOrderEvaluated",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Dsrs.DSRControllerLifeCycle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.DsrController",
+    "Method": "WorkOrderFinished",
+    "RelativePath": "api/Dsr/WorkOrderFinished",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Dsr.Dsrs.DSRControllerLifeCycle",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DSRPermissionController",
+    "Method": "Select",
+    "RelativePath": "api/DSRPermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.DSRPermissionController",
+    "Method": "Update",
+    "RelativePath": "api/DSRPermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Admin.Permission.DSRPermission.DSRPermissionUpdate",
         "IsRequired": true
       }
     ],
@@ -3295,6 +3491,32 @@
       {
         "Name": "model",
         "Type": "kerp.Prosedur.Admin.PreCheckTemplate.PreCheckTemplateUpdate",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckPermissionController",
+    "Method": "Select",
+    "RelativePath": "api/PreCheckPermission/Select",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "kerp.Controllers.Admin.PreCheckPermissionController",
+    "Method": "Update",
+    "RelativePath": "api/PreCheckPermission/Update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "kerp.Prosedur.Admin.Permission.PreCheckPermission.PreCheckPermissionUpdate",
         "IsRequired": true
       }
     ],

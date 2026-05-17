@@ -8,6 +8,7 @@ using kerp.Service.DsrService;
 using kerp.Service.FileUploadService;
 using kerp.Service.IncidentService;
 using kerp.Service.MailService;
+using kerp.Service.PermissionService;
 using kerp.Service.PmOrderService;
 using kerp.Service.PreCheckService;
 using kerp.SystemModel;
@@ -94,6 +95,7 @@ namespace kerp
             _ = services.AddScoped<IPreCheckService, PreCheckService>();
             _ = services.AddScoped<IFileUploadService, FileUploadService>();
             _ = services.AddScoped<IDsrService, DsrService>();
+            _ = services.AddScoped<IPermissionService, PermissionService>();
             _ = services.AddScoped<LdapService>();
 
             /*
@@ -133,7 +135,11 @@ namespace kerp
         {
             _ = app.UseCors("CorsPolicy");
             _ = app.UseSwagger();
-            _ = app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kerp API v1"));
+            _ = app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kerp API v1");
+                c.RoutePrefix = string.Empty;
+            });
 
             _ = app.UseExceptionHandler("/Error");
             _ = env.IsDevelopment() ? app.UseDeveloperExceptionPage() : app.UseHsts();

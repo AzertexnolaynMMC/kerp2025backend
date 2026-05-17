@@ -1,5 +1,6 @@
 ﻿using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.DSRTaskType;
@@ -108,8 +109,22 @@ namespace kerp.Repository.DsrRepository
 
 
         DSRSelect? DSRWorkOrderStarted(DSRControllerLifeCycle DSRControllerLifeCycle);
+        DSRSelect? WorkOrderEvaluated(DSRControllerLifeCycle DSRControllerLifeCycle);
         DSRTaskAssistantSelect? DSRTaskAssistantAccepted(DSRTaskAssistantControllerLifeCycle DSRTaskAssistantControllerLifeCycle);
         DSRTaskAssistantSelect? DSRTaskAssistantDelivered(DSRTaskAssistantControllerLifeCycle DSRTaskAssistantControllerLifeCycle);
-        // DSRTaskAssistantSelect? DSRTaskAssistantRejected(DSRTaskAssistantControllerLifeCycle DSRTaskAssistantControllerLifeCycle);
+        DSRTaskAssistantSelect? DSRTaskAssistantRejected(DSRTaskAssistantReject DSRTaskAssistantReject);
+        DSRSelect? DSRReject(DSRReject DSRTaskAssistantReject);
+        DSRSelect? WorkOrderFinished(DSRControllerLifeCycle request);
+        DSRSelect? WorkOrderClosed(DSRControllerLifeCycle request);
+
+        // WorkOrderEvaluatedWorker
+        List<DSRWorkOrderEvaluatedWorker>? DSRWorkOrderEvaluatedWorker(int DsrId);
+        List<DSRWorkOrderEvaluatedAll>? DSRWorkOrderEvaluatedAll(int DsrId);
+        DSRWorkOrderEvaluated? DSRWorkOrderEvaluated(int DsrId);
+
+        // CostType
+        List<DSRCostTypeSelect>? DSRCostTypeSelect();
+        DSRCostSelect? DSRCostInsert(List<DSRCostInsert> DSRCostInsert);
+        List<DSRCostSelect>? DSRCostSelect(int DsrId);
     }
 }

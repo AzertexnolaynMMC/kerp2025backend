@@ -1,6 +1,14 @@
 {
   "Files": [
     {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\DSRDocuments\\19\\png\\19_230_20260515184830364_4a8d6c85-f907-4298-a205-4ab913139a21.png",
+      "PackagePath": "staticwebassets\\DSRDocuments\\19\\png\\19_230_20260515184830364_4a8d6c85-f907-4298-a205-4ab913139a21.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\DSRDocuments\\23\\png\\23_230_20260516201715487_f1da61cc-896a-4aff-bdb8-980a1789eb04.png",
+      "PackagePath": "staticwebassets\\DSRDocuments\\23\\png\\23_230_20260516201715487_f1da61cc-896a-4aff-bdb8-980a1789eb04.png"
+    },
+    {
       "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\DSRDocuments\\8\\png\\8_230_20260504171159039_ae63d4f4-1a3e-4b00-8d42-cda0f54c3e09.png",
       "PackagePath": "staticwebassets\\DSRDocuments\\8\\png\\8_230_20260504171159039_ae63d4f4-1a3e-4b00-8d42-cda0f54c3e09.png"
     },
@@ -35,6 +43,10 @@
     {
       "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\DSRDocuments\\8\\png\\8_230_20260504174625086_903761de-a58e-410a-880c-116c039a1a74.png",
       "PackagePath": "staticwebassets\\DSRDocuments\\8\\png\\8_230_20260504174625086_903761de-a58e-410a-880c-116c039a1a74.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\DSRDocuments\\8\\png\\8_230_20260511181011440_e1bb11cd-8705-4faa-854d-029711660a5e.png",
+      "PackagePath": "staticwebassets\\DSRDocuments\\8\\png\\8_230_20260511181011440_e1bb11cd-8705-4faa-854d-029711660a5e.png"
     },
     {
       "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\MachineIncidentDocuments\\15996\\png\\15996_230_20260314205728295_45f61304-27da-482d-b13d-518900df3c5a.png",
@@ -133,6 +145,14 @@
       "PackagePath": "staticwebassets\\PMChecklistExecution\\127\\png\\127_230_20260412161950990_248af798-1e14-4bf6-ace7-791e356a79e9.png"
     },
     {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\PMChecklistExecution\\149\\png\\149_230_20260514113711390_fdfee5d2-5ec6-4ca2-9730-b45488f94246.png",
+      "PackagePath": "staticwebassets\\PMChecklistExecution\\149\\png\\149_230_20260514113711390_fdfee5d2-5ec6-4ca2-9730-b45488f94246.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\PMChecklistExecution\\151\\png\\151_230_20260514113711407_cf56e990-4794-4518-8f07-177e0b1a520f.png",
+      "PackagePath": "staticwebassets\\PMChecklistExecution\\151\\png\\151_230_20260514113711407_cf56e990-4794-4518-8f07-177e0b1a520f.png"
+    },
+    {
       "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\PMChecklistExecution\\20\\png\\20_230_20260314201749282_6e1c30ef-7006-46fc-a33a-cb64e40afee4.png",
       "PackagePath": "staticwebassets\\PMChecklistExecution\\20\\png\\20_230_20260314201749282_6e1c30ef-7006-46fc-a33a-cb64e40afee4.png"
     },
@@ -219,6 +239,10 @@
     {
       "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\PreCheckDocuments\\26\\png\\26_230_20260426172138648_edb60980-f93e-42eb-a1c8-692e637874b3.png",
       "PackagePath": "staticwebassets\\PreCheckDocuments\\26\\png\\26_230_20260426172138648_edb60980-f93e-42eb-a1c8-692e637874b3.png"
+    },
+    {
+      "Id": "E:\\2025\\kerp\\back\\kerp\\kerp\\wwwroot\\PreCheckDocuments\\30\\png\\30_230_20260514111443473_fa7236e2-5582-4673-8ec8-4000bdbf9044.png",
+      "PackagePath": "staticwebassets\\PreCheckDocuments\\30\\png\\30_230_20260514111443473_fa7236e2-5582-4673-8ec8-4000bdbf9044.png"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.kerp.props",

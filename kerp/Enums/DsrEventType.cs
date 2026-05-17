@@ -65,5 +65,7 @@
         AssistantAccepted = 33,
         AssistantDelivered = 34,
         AssistantRejected = 35,
+        DsrRejected = 36,
+        CostAdded = 37,
     }
 }

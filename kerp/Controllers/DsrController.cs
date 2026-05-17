@@ -1,5 +1,6 @@
 ﻿using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.DSRTaskType;
@@ -847,8 +848,8 @@ namespace kerp.Controllers
                     Data = null
                 });
             }
-        }     
-        [HttpDelete("DSRWorkOrderStarted")]
+        }
+        [HttpPut("DSRWorkOrderStarted")]
         public async Task<IActionResult> DSRWorkOrderStarted([FromBody] DSRControllerLifeCycle request)
         {
             try
@@ -859,6 +860,286 @@ namespace kerp.Controllers
                     title = "Uğurlu əməliyyat",
                     AccessToken = null,
                     Data = await _service.DSRWorkOrderStarted(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("DSRTaskAssistantDelivered")]
+        public async Task<IActionResult> DSRTaskAssistantDelivered([FromBody] DSRTaskAssistantControllerLifeCycle request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.DSRTaskAssistantDelivered(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("DSRTaskAssistantRejected")]
+        public async Task<IActionResult> DSRTaskAssistantRejected([FromBody] DSRTaskAssistantReject request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.DSRTaskAssistantRejected(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("DSRReject")]
+        public async Task<IActionResult> DSRReject([FromBody] DSRReject request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.DSRReject(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("WorkOrderEvaluated")]
+        public async Task<IActionResult> WorkOrderEvaluated([FromBody] DSRControllerLifeCycle request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.WorkOrderEvaluated(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPut("WorkOrderFinished")]
+        public async Task<IActionResult> WorkOrderFinished([FromBody] DSRControllerLifeCycle request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.WorkOrderFinished(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpPut("WorkOrderClosed")]
+        public async Task<IActionResult> WorkOrderClosed([FromBody] DSRControllerLifeCycle request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.WorkOrderClosed(request)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+
+
+
+
+
+        [HttpGet("DSRWorkOrderEvaluatedWorker")]
+        public IActionResult DSRWorkOrderEvaluatedWorker(int dsrId)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<DSRWorkOrderEvaluatedWorker>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.DSRWorkOrderEvaluatedWorker(dsrId)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+        [HttpGet("DSRWorkOrderEvaluatedAll")]
+        public IActionResult DSRWorkOrderEvaluatedAll(int dsrId)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<DSRWorkOrderEvaluatedAll>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.DSRWorkOrderEvaluatedAll(dsrId)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+
+
+        [HttpGet("DSRCostTypeSelect")]
+        public IActionResult DSRCostTypeSelect()
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<List<DSRCostTypeSelect>>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.DSRCostTypeSelect()
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+
+
+        [HttpGet("DSRWorkOrderEvaluated")]
+        public IActionResult DSRWorkOrderEvaluated(int dsrId)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<DSRWorkOrderEvaluated>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = _repository.DSRWorkOrderEvaluated(dsrId)
+                });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new CustomerResponseModel<object>
+                {
+                    StatusCode = 500,
+                    title = "Internal server error: " + ex,
+                    AccessToken = null,
+                    Data = null
+                });
+            }
+        }
+        [HttpPost("DSRCostInsert")]
+        public async Task<IActionResult> DSRCostInsert([FromBody] List<DSRCostInsert> request)
+        {
+            try
+            {
+                return Ok(new CustomerResponseModel<int>
+                {
+                    StatusCode = 0,
+                    title = "Uğurlu əməliyyat",
+                    AccessToken = null,
+                    Data = await _service.DSRCostInsert(request)
                 });
             }
             catch (Exception ex)

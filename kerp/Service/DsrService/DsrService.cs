@@ -2,6 +2,7 @@
 using kerp.Prosedur.Canban;
 using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.LostTime;
@@ -85,7 +86,86 @@ namespace kerp.Service.DsrService
             return 0;
         }
 
+        public async Task<int> DSRReject(DSRReject request)
+        {
+            DSRSelect result = _dsrRepository.DSRReject(request);
 
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 4);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await SendUpdate(result.Id);
+
+                return 1;
+            }
+            return 0;
+        }
+
+        public async Task<int> WorkOrderEvaluated(DSRControllerLifeCycle request)
+        {
+            DSRSelect result = _dsrRepository.WorkOrderEvaluated(request);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 4);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await SendUpdate(result.Id);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> WorkOrderFinished(DSRControllerLifeCycle request)
+        {
+            DSRSelect result = _dsrRepository.WorkOrderFinished(request);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 4);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await SendUpdate(result.Id);
+
+                return 1;
+            }
+            return 0;
+        }
+
+        public async Task<int> WorkOrderClosed(DSRControllerLifeCycle request)
+        {
+            DSRSelect result = _dsrRepository.WorkOrderClosed(request);
+
+            if (result != null)
+            {
+                CanbanCardHub? card = _canbanRepository.CanbanCardHub(result.Id, 4);
+                await _hubContext.Clients.All.SendAsync("IncidentCardUpdate", card);
+                await SendUpdate(result.Id);
+
+                return 1;
+            }
+            return 0;
+        }
+        public async Task<int> DSRTaskAssistantDelivered(DSRTaskAssistantControllerLifeCycle request)
+        {
+            DSRTaskAssistantSelect? result = _dsrRepository.DSRTaskAssistantDelivered(request);
+            if (result == null)
+            {
+                return 0;
+            }
+
+            await SendUpdate(result.DsrId);
+            return 1;
+        }
+        public async Task<int> DSRTaskAssistantRejected(DSRTaskAssistantReject request)
+        {
+            DSRTaskAssistantSelect? result = _dsrRepository.DSRTaskAssistantRejected(request);
+            if (result == null)
+            {
+                return 0;
+            }
+
+            await SendUpdate(result.DsrId);
+            return 1;
+        }
 
         // =====================================================
         // WORK SHIFT
@@ -134,6 +214,18 @@ namespace kerp.Service.DsrService
         public async Task<int> DSRTaskUpdate(DSRTaskUpdate request)
         {
             DSRTaskSelect? result = _dsrRepository.DSRTaskUpdate(request);
+            if (result == null)
+            {
+                return 0;
+            }
+
+            await SendUpdate(result.DsrId);
+            return 1;
+        }
+
+        public async Task<int> DSRCostInsert(List<DSRCostInsert> request)
+        {
+            DSRCostSelect? result = _dsrRepository.DSRCostInsert(request);
             if (result == null)
             {
                 return 0;

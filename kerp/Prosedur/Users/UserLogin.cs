@@ -50,5 +50,7 @@ namespace kerp.Prosedur.Users
         public UserPMOrderPermissionSelect? UserPMOrderPermissionSelect { get; set; }
         [NotMapped]
         public UserPreCheckPermissionSelect? UserPreCheckPermissionSelect { get; set; }
+        [NotMapped]
+        public UserDSRPermissionSelect? UserDSRPermissionSelect { get; set; }
     }
 }

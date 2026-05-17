@@ -1,5 +1,6 @@
 ﻿using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Event;
 using kerp.Prosedur.Dsr.LostTime;
@@ -56,7 +57,9 @@ namespace kerp.Prosedur.Dsr.Dsrs
         [NotMapped]
         public List<DSRRecordSelect>? DSRRecordSelect { get; set; }
         [NotMapped]
-        public List<DSRTaskCommentSelect>? DSRTaskCommentSelect { get; set; }
+        public List<DSRTaskCommentSelect>? DSRTaskCommentSelect { get; set; }   
+        [NotMapped]
+        public List<DSRCostSelect>? DSRCostSelect { get; set; }
 
 
     }

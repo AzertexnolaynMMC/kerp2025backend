@@ -2,6 +2,7 @@
 using kerp.Enums;
 using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.DSRTaskType;
@@ -45,14 +46,15 @@ namespace kerp.Repository.DsrRepository
                 .AsEnumerable()];
         }
 
-        private void InsertEvent(int dsrId, int userId, DsrEventType eventType)
+        private void InsertEvent(int dsrId, int userId, DsrEventType eventType, int? dsrTaskId = null)
         {
             _ = ExecuteSingle<DSREventSelect>(
-                "EXEC dbo.DSREventInsert @p0, @p1, @p2, @p3",
+                "EXEC dbo.DSREventInsert @p0, @p1, @p2, @p3, @p4",
                 dsrId,
                 userId,
                 (int)eventType,
-                userId
+                userId,
+                dsrTaskId ?? 0
             );
         }
 
@@ -655,11 +657,12 @@ namespace kerp.Repository.DsrRepository
             try
             {
                 DSRLostTimeSelect? result = ExecuteSingle<DSRLostTimeSelect>(
-                    "EXEC dbo.DSRLostTimeInsert @p0, @p1, @p2, @p3",
+                    "EXEC dbo.DSRLostTimeInsert @p0, @p1, @p2, @p3, @p4",
                     request.Title,
                     request.UserId,
                     request.DsrId,
-                    request.Second
+                    request.Second,
+                    request.DsrTaskAssistantId
                 );
                 if (result != null)
                 {
@@ -939,6 +942,9 @@ namespace kerp.Repository.DsrRepository
                 result.DSRTaskCommentSelect = ExecuteList<DSRTaskCommentSelect>(
                     "EXEC dbo.DSRTaskCommentSelect @p0", dsrId
                 );
+                result.DSRCostSelect = ExecuteList<DSRCostSelect>(
+    "EXEC dbo.DSRCostSelect @p0", dsrId
+);
 
                 transaction.Commit();
                 return result;
@@ -1132,7 +1138,7 @@ namespace kerp.Repository.DsrRepository
 
                 if (result != null)
                 {
-                    InsertEvent(result.DsrId, request.UserId, DsrEventType.AssistantAccepted);
+                    InsertEvent(result.DsrId, request.UserId, DsrEventType.AssistantAccepted, request.DsrTaskId);
                 }
 
                 return result;
@@ -1158,8 +1164,246 @@ namespace kerp.Repository.DsrRepository
 
                 if (result != null)
                 {
-                    InsertEvent(result.DsrId, request.UserId, DsrEventType.AssistantDelivered);
+                    InsertEvent(result.DsrId, request.UserId, DsrEventType.AssistantDelivered, request.DsrTaskId);
                 }
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public DSRTaskAssistantSelect? DSRTaskAssistantRejected(DSRTaskAssistantReject request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                DSRTaskAssistantSelect? result = ExecuteSingle<DSRTaskAssistantSelect>(
+                    "EXEC dbo.DSRTaskAssistantReject @p0, @p1, @p2",
+                    request.Id,
+                    request.UserId,
+                    request.RejectTitle
+                );
+
+                if (result != null)
+                {
+                    InsertEvent(result.DsrId, request.UserId, DsrEventType.AssistantRejected, request.Id);
+                }
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public DSRSelect? DSRReject(DSRReject request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                DSRSelect? result = ExecuteSingle<DSRSelect>(
+                    "EXEC dbo.DSRReject @p0, @p1, @p2",
+                    request.Id,
+                    request.UserId,
+                    request.RejectTitle
+                );
+
+                if (result != null)
+                {
+                    InsertEvent(result.Id, request.UserId, DsrEventType.DsrRejected);
+                }
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public DSRSelect? WorkOrderEvaluated(DSRControllerLifeCycle request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                // 1. DSR lifecycle update
+                DSRSelect? result = ExecuteSingle<DSRSelect>(
+                    "EXEC dbo.DSRControllerLifeCycle @p0, @p1, @p2",
+                    request.Id,
+                    request.UserId,
+                    request.Status
+                );
+
+                if (result == null)
+                {
+                    transaction.Rollback();
+                    return null;
+                }
+
+
+
+                // 3. Event log
+                InsertEvent(request.Id, request.UserId, DsrEventType.WorkOrderEvaluated);
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public DSRSelect? WorkOrderFinished(DSRControllerLifeCycle request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                // 1. DSR lifecycle update
+                DSRSelect? result = ExecuteSingle<DSRSelect>(
+                    "EXEC dbo.DSRControllerLifeCycle @p0, @p1, @p2",
+                    request.Id,
+                    request.UserId,
+                    request.Status
+                );
+
+                if (result == null)
+                {
+                    transaction.Rollback();
+                    return null;
+                }
+
+
+
+                // 3. Event log
+                InsertEvent(request.Id, request.UserId, DsrEventType.WorkOrderStarted);
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public List<DSRWorkOrderEvaluatedWorker>? DSRWorkOrderEvaluatedWorker(int dsrId)
+        {
+            return ExecuteList<DSRWorkOrderEvaluatedWorker>(
+                "EXEC dbo.DSRWorkOrderEvaluatedWorker @p0",
+                dsrId
+            );
+        }
+        public List<DSRWorkOrderEvaluatedAll>? DSRWorkOrderEvaluatedAll(int dsrId)
+        {
+            return ExecuteList<DSRWorkOrderEvaluatedAll>(
+                "EXEC dbo.DSRWorkOrderEvaluatedAll @p0",
+                dsrId
+            );
+        }
+
+
+
+        public List<DSRCostTypeSelect>? DSRCostTypeSelect()
+        {
+            return ExecuteList<DSRCostTypeSelect>(
+                "EXEC dbo.DSRCostTypeSelect"
+            );
+        }
+
+        public DSRWorkOrderEvaluated? DSRWorkOrderEvaluated(int DsrId)
+        {
+            return new DSRWorkOrderEvaluated
+            {
+                DSRWorkOrderEvaluatedWorker = DSRWorkOrderEvaluatedWorker(DsrId),
+                DSRWorkOrderEvaluatedAll = DSRWorkOrderEvaluatedAll(DsrId)?.FirstOrDefault()
+            };
+        }
+
+        public DSRCostSelect? DSRCostInsert(List<DSRCostInsert> request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                DSRCostSelect? result = null;
+
+                foreach (DSRCostInsert item in request)
+                {
+                    result = ExecuteSingle<DSRCostSelect>(
+                        "EXEC dbo.DSRCostInsert @p0, @p1, @p2, @p3, @p4, @p5",
+                        item.DsrId,
+                        item.CostTypeId,
+                        item.Quantity,
+                        item.UnitPrice,
+                        item.Description ?? "",
+                        item.UserId
+                    );
+
+                    if (result != null)
+                    {
+                        InsertEvent(item.DsrId, item.UserId, DsrEventType.CostAdded);
+                    }
+                }
+
+                transaction.Commit();
+                return result;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
+        }
+
+        public List<DSRCostSelect>? DSRCostSelect(int DsrId)
+        {
+            return ExecuteList<DSRCostSelect>(
+                "EXEC dbo.DSRCostSelect @p0",
+                DsrId
+            );
+        }
+
+        public DSRSelect? WorkOrderClosed(DSRControllerLifeCycle request)
+        {
+            using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
+
+            try
+            {
+                // 1. DSR lifecycle update
+                DSRSelect? result = ExecuteSingle<DSRSelect>(
+                    "EXEC dbo.DSRControllerLifeCycle @p0, @p1, @p2",
+                    request.Id,
+                    request.UserId,
+                    request.Status
+                );
+
+                if (result == null)
+                {
+                    transaction.Rollback();
+                    return null;
+                }
+
+
+
+                // 3. Event log
+                InsertEvent(request.Id, request.UserId, DsrEventType.WorkOrderClosed);
 
                 transaction.Commit();
                 return result;

@@ -8,9 +8,11 @@ using kerp.Prosedur.Admin.ManagerEmploye;
 using kerp.Prosedur.Admin.Material;
 using kerp.Prosedur.Admin.Pages;
 using kerp.Prosedur.Admin.PageUser;
+using kerp.Prosedur.Admin.Permission.DSRPermission;
 using kerp.Prosedur.Admin.Permission.MachineIncidentPermission;
 using kerp.Prosedur.Admin.Permission.MachineIncidentReportPermission;
 using kerp.Prosedur.Admin.Permission.PMOrderPermission;
+using kerp.Prosedur.Admin.Permission.PreCheckPermission;
 using kerp.Prosedur.Admin.Permission.ProfilePermission;
 using kerp.Prosedur.Admin.PreCheckGroup;
 using kerp.Prosedur.Admin.PreCheckResultType;
@@ -25,6 +27,7 @@ using kerp.Prosedur.Admin.WorkOrderType;
 using kerp.Prosedur.Canban;
 using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
+using kerp.Prosedur.Dsr.Cost;
 using kerp.Prosedur.Dsr.Document;
 using kerp.Prosedur.Dsr.Dsrs;
 using kerp.Prosedur.Dsr.DSRTaskType;
@@ -117,6 +120,13 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<PreCheckPermissionSelect> PreCheckPermissionSelect { get; set; }
+    public virtual DbSet<DSRPermissionSelect> DSRPermissionSelect { get; set; }
+    public virtual DbSet<UserDSRPermissionSelect> UserDSRPermissionSelect { get; set; }
+    public virtual DbSet<DSRCostSelect> DSRCostSelect { get; set; }
+    public virtual DbSet<DSRWorkOrderEvaluatedAll> DSRWorkOrderEvaluatedAll { get; set; }
+    public virtual DbSet<DSRCostTypeSelect> DSRCostTypeSelect { get; set; }
+    public virtual DbSet<DSRWorkOrderEvaluatedWorker> DSRWorkOrderEvaluatedWorker { get; set; }
     public virtual DbSet<DSRMaterialSelectMulti> DSRMaterialSelectMulti { get; set; }
     public virtual DbSet<DSRMaterialSelect> DSRMaterialSelect { get; set; }
     public virtual DbSet<DSRTaskCommentSelect> DSRTaskCommentSelect { get; set; }
@@ -361,6 +371,9 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<PreCheckPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRPermissionSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<UserDSRPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserPreCheckPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckIncidentSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckEventSelect>().HasKey(q => q.Id);
@@ -394,6 +407,9 @@ public partial class KerpContext : DbContext
 
         //DSR
 
+        _ = modelBuilder.Entity<DSRWorkOrderEvaluatedAll>().HasKey(q => q.DsrId);
+        _ = modelBuilder.Entity<DSRWorkOrderEvaluatedWorker>().HasKey(q => q.VirtualId);
+        _ = modelBuilder.Entity<DSRCostTypeSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSRMaterialSelectMulti>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSRMaterialSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSRTaskCommentSelect>().HasKey(q => q.Id);
@@ -407,6 +423,7 @@ public partial class KerpContext : DbContext
         _ = modelBuilder.Entity<DSRTaskSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSRTaskAssistantSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSREventSelect>().HasKey(q => q.Id);
+        _ = modelBuilder.Entity<DSRCostSelect>().HasKey(q => q.Id);
 
         //
         _ = modelBuilder.Entity<DsrWorkShiftSelectMulti>().HasKey(q => q.Id);

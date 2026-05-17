@@ -1370,7 +1370,7 @@
       }
     },
     "/api/Dsr/DSRWorkOrderStarted": {
-      "delete": {
+      "put": {
         "tags": [
           "Dsr"
         ],
@@ -1389,6 +1389,353 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRTaskAssistantDelivered": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantControllerLifeCycle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantControllerLifeCycle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantControllerLifeCycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRTaskAssistantRejected": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantReject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantReject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRTaskAssistantReject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRReject": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRReject"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRReject"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRReject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/WorkOrderEvaluated": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/WorkOrderFinished": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/WorkOrderClosed": {
+      "put": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRControllerLifeCycle"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRWorkOrderEvaluatedWorker": {
+      "get": {
+        "tags": [
+          "Dsr"
+        ],
+        "parameters": [
+          {
+            "name": "dsrId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRWorkOrderEvaluatedAll": {
+      "get": {
+        "tags": [
+          "Dsr"
+        ],
+        "parameters": [
+          {
+            "name": "dsrId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRCostTypeSelect": {
+      "get": {
+        "tags": [
+          "Dsr"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRWorkOrderEvaluated": {
+      "get": {
+        "tags": [
+          "Dsr"
+        ],
+        "parameters": [
+          {
+            "name": "dsrId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dsr/DSRCostInsert": {
+      "post": {
+        "tags": [
+          "Dsr"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DSRCostInsert"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DSRCostInsert"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DSRCostInsert"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/DSRPermission/Select": {
+      "get": {
+        "tags": [
+          "DSRPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/DSRPermission/Update": {
+      "put": {
+        "tags": [
+          "DSRPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRPermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRPermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DSRPermissionUpdate"
               }
             }
           }
@@ -5599,6 +5946,49 @@
         }
       }
     },
+    "/api/PreCheckPermission/Select": {
+      "get": {
+        "tags": [
+          "PreCheckPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/PreCheckPermission/Update": {
+      "put": {
+        "tags": [
+          "PreCheckPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckPermissionUpdate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckPermissionUpdate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreCheckPermissionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ProfilePermission/Select": {
       "get": {
         "tags": [
@@ -7793,6 +8183,36 @@
         },
         "additionalProperties": false
       },
+      "DSRCostInsert": {
+        "type": "object",
+        "properties": {
+          "dsrId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "costTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "double"
+          },
+          "unitPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "DSRDocumentStatus": {
         "type": "object",
         "properties": {
@@ -7879,6 +8299,10 @@
             "nullable": true
           },
           "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "dsrTaskAssistantId": {
             "type": "integer",
             "format": "int32"
           },
@@ -8009,6 +8433,27 @@
         },
         "additionalProperties": false
       },
+      "DSRPermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "DSRRecordInsert": {
         "type": "object",
         "properties": {
@@ -8055,6 +8500,24 @@
           "userId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DSRReject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rejectTitle": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -8127,6 +8590,24 @@
           "userId": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DSRTaskAssistantReject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rejectTitle": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -10538,6 +11019,27 @@
               "$ref": "#/components/schemas/PreCheckTemplateExecuteInsert"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PreCheckPermissionUpdate": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "operatorUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "check": {
+            "type": "boolean"
+          },
+          "enumType": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
