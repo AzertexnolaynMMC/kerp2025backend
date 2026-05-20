@@ -1664,7 +1664,7 @@
         }
       }
     },
-    "/api/Dsr/DSRCostInsert": {
+    "/api/Dsr/DsrCostMaterialInsert": {
       "post": {
         "tags": [
           "Dsr"
@@ -1673,26 +1673,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DSRCostInsert"
-                }
+                "$ref": "#/components/schemas/DsrCostMaterialInsert"
               }
             },
             "text/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DSRCostInsert"
-                }
+                "$ref": "#/components/schemas/DsrCostMaterialInsert"
               }
             },
             "application/*+json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DSRCostInsert"
-                }
+                "$ref": "#/components/schemas/DsrCostMaterialInsert"
               }
             }
           }
@@ -7764,45 +7755,6 @@
         }
       }
     },
-    "/WeatherForecast": {
-      "get": {
-        "tags": [
-          "WeatherForecast"
-        ],
-        "operationId": "GetWeatherForecast",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/WeatherForecast"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/WorkOrderType/WorkOrderTypeSelectAdmin": {
       "get": {
         "tags": [
@@ -8927,6 +8879,26 @@
           "userId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DsrCostMaterialInsert": {
+        "type": "object",
+        "properties": {
+          "isMaterial": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "materialInsert": {
+            "$ref": "#/components/schemas/MaterialInsert"
+          },
+          "dsrCostInsert": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DSRCostInsert"
+            },
             "nullable": true
           }
         },
@@ -12148,29 +12120,6 @@
           "status": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "WeatherForecast": {
-        "type": "object",
-        "properties": {
-          "date": {
-            "type": "string",
-            "format": "date"
-          },
-          "temperatureC": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "temperatureF": {
-            "type": "integer",
-            "format": "int32",
-            "readOnly": true
-          },
-          "summary": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

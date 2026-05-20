@@ -124,7 +124,8 @@ namespace kerp.Repository.DsrRepository
 
         // CostType
         List<DSRCostTypeSelect>? DSRCostTypeSelect();
-        DSRCostSelect? DSRCostInsert(List<DSRCostInsert> DSRCostInsert);
+        DSRCostSelect? DsrCostMaterialInsert(DsrCostMaterialInsert DSRCostInsert);
         List<DSRCostSelect>? DSRCostSelect(int DsrId);
+        List<DsrCostMaterialSelect>? DsrCostMaterialSelect(int DsrId);
     }
 }

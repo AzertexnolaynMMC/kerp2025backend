@@ -19,5 +19,7 @@
         public DateTime AddDate { get; set; }
 
         public string? DSRCostTypeTitle { get; set; }
+        public bool? IsMaterial { get; set; }
+        public int? MaterialId { get; set; }
     }
 }

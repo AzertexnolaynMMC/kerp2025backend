@@ -1,5 +1,6 @@
 ﻿using kerp.Contexts;
 using kerp.Enums;
+using kerp.Prosedur.Admin.Material;
 using kerp.Prosedur.Dsr.Assistant;
 using kerp.Prosedur.Dsr.Chat;
 using kerp.Prosedur.Dsr.Cost;
@@ -17,14 +18,16 @@ using kerp.Prosedur.Dsr.Task;
 using kerp.Prosedur.Dsr.TaskComment;
 using kerp.Prosedur.Dsr.WorkOrderType;
 using kerp.Prosedur.Dsr.WorkShift;
+using kerp.Repository.AdminRepository.MaterialRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace kerp.Repository.DsrRepository
 {
-    public class DsrRepository(KerpContext ctx) : IDsrRepository
+    public class DsrRepository(KerpContext ctx, IMaterialRepository materialRepository) : IDsrRepository
     {
         private readonly KerpContext _ctx = ctx;
+        private readonly IMaterialRepository _materialRepository = materialRepository;
 
         // =====================================================
         // HELPERS
@@ -944,6 +947,8 @@ namespace kerp.Repository.DsrRepository
                 );
                 result.DSRCostSelect = ExecuteList<DSRCostSelect>(
     "EXEC dbo.DSRCostSelect @p0", dsrId
+); result.DsrCostMaterialSelect = ExecuteList<DsrCostMaterialSelect>(
+    "EXEC dbo.DsrCostMaterialSelect @p0", dsrId
 );
 
                 transaction.Commit();
@@ -1336,29 +1341,69 @@ namespace kerp.Repository.DsrRepository
             };
         }
 
-        public DSRCostSelect? DSRCostInsert(List<DSRCostInsert> request)
+        public DSRCostSelect? DsrCostMaterialInsert(DsrCostMaterialInsert request)
         {
             using IDbContextTransaction transaction = _ctx.Database.BeginTransaction();
 
             try
             {
-                DSRCostSelect? result = null;
+                MaterialSelectAdmin? material = null;
 
-                foreach (DSRCostInsert item in request)
+                // =========================================
+                // MATERIAL INSERT
+                // =========================================
+                if (request.IsMaterial == true)
                 {
-                    result = ExecuteSingle<DSRCostSelect>(
-                        "EXEC dbo.DSRCostInsert @p0, @p1, @p2, @p3, @p4, @p5",
-                        item.DsrId,
-                        item.CostTypeId,
-                        item.Quantity,
-                        item.UnitPrice,
-                        item.Description ?? "",
-                        item.UserId
+                    if (request.MaterialInsert == null)
+                    {
+                        throw new Exception("MaterialInsert is required");
+                    }
+
+                    material = ExecuteSingle<MaterialSelectAdmin>(
+                        "EXEC dbo.MaterialForDsrInsert @p0,@p1,@p2,@p3,@p4",
+                        request.MaterialInsert.Title,
+                        request.MaterialInsert.Code,
+                        request.MaterialInsert.Measure,
+                        request.DSRCostInsert!.First().DsrId,
+                        request.DSRCostInsert.First().UserId
                     );
 
-                    if (result != null)
+                    if (material == null)
                     {
-                        InsertEvent(item.DsrId, item.UserId, DsrEventType.CostAdded);
+                        throw new Exception("Material insert failed");
+                    }
+                }
+
+                // =========================================
+                // COST INSERT
+                // =========================================
+                DSRCostSelect? result = null;
+
+                if (request.DSRCostInsert != null)
+                {
+                    foreach (DSRCostInsert item in request.DSRCostInsert)
+                    {
+
+                        result = ExecuteSingle<DSRCostSelect>(
+                            "EXEC dbo.DSRCostInsert @p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7",
+                            item.DsrId,
+                            item.CostTypeId,
+                            item.Quantity,
+                            item.UnitPrice,
+                            item.Description,
+                            item.UserId,
+                            request.IsMaterial,
+                            request.IsMaterial == true ? material!.Id : 0
+                        );
+
+                        if (result != null)
+                        {
+                            InsertEvent(
+                                item.DsrId,
+                                item.UserId,
+                                DsrEventType.CostAdded
+                            );
+                        }
                     }
                 }
 
@@ -1413,6 +1458,14 @@ namespace kerp.Repository.DsrRepository
                 transaction.Rollback();
                 throw;
             }
+        }
+
+        public List<DsrCostMaterialSelect>? DsrCostMaterialSelect(int DsrId)
+        {
+            return ExecuteList<DsrCostMaterialSelect>(
+     "EXEC dbo.DsrCostMaterialSelect @p0",
+     DsrId
+ );
         }
     }
 }

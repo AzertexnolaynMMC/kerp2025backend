@@ -57,9 +57,13 @@ namespace kerp.Prosedur.Dsr.Dsrs
         [NotMapped]
         public List<DSRRecordSelect>? DSRRecordSelect { get; set; }
         [NotMapped]
-        public List<DSRTaskCommentSelect>? DSRTaskCommentSelect { get; set; }   
+        public List<DSRTaskCommentSelect>? DSRTaskCommentSelect { get; set; }
+
+
         [NotMapped]
         public List<DSRCostSelect>? DSRCostSelect { get; set; }
+        [NotMapped]
+        public List<DsrCostMaterialSelect>? DsrCostMaterialSelect { get; set; }
 
 
     }

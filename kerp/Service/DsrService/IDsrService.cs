@@ -61,6 +61,6 @@ namespace kerp.Service.DsrService
         Task<int> DSRTaskAssistantRejected(DSRTaskAssistantReject request);
         Task<int> DSRReject(DSRReject request);
         Task<int> WorkOrderFinished(DSRControllerLifeCycle request);
-        Task<int> DSRCostInsert(List<DSRCostInsert> request);
+        Task<int> DsrCostMaterialInsert(DsrCostMaterialInsert request);
     }
 }

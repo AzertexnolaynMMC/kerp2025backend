@@ -1129,8 +1129,8 @@ namespace kerp.Controllers
                 });
             }
         }
-        [HttpPost("DSRCostInsert")]
-        public async Task<IActionResult> DSRCostInsert([FromBody] List<DSRCostInsert> request)
+        [HttpPost("DsrCostMaterialInsert")]
+        public async Task<IActionResult> DsrCostMaterialInsert([FromBody] DsrCostMaterialInsert request)
         {
             try
             {
@@ -1139,7 +1139,7 @@ namespace kerp.Controllers
                     StatusCode = 0,
                     title = "Uğurlu əməliyyat",
                     AccessToken = null,
-                    Data = await _service.DSRCostInsert(request)
+                    Data = await _service.DsrCostMaterialInsert(request)
                 });
             }
             catch (Exception ex)

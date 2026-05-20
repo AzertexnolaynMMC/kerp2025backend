@@ -3,6 +3,7 @@ using Google.Apis.Auth.OAuth2;
 using kerp.Contexts;
 using kerp.Hubs.IncidentHub;
 using kerp.Hubs.PageHub;
+using kerp.Middleware;
 using kerp.Service;
 using kerp.Service.DsrService;
 using kerp.Service.FileUploadService;
@@ -27,6 +28,8 @@ namespace kerp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _ = services.AddExceptionHandler<GlobalExceptionHandler>();
+            _ = services.AddProblemDetails();
             _ = FirebaseApp.Create(new AppOptions()
             {
                 Credential = GoogleCredential.FromFile("firebase-adminsdk.json")
@@ -141,8 +144,15 @@ namespace kerp
                 c.RoutePrefix = string.Empty;
             });
 
-            _ = app.UseExceptionHandler("/Error");
-            _ = env.IsDevelopment() ? app.UseDeveloperExceptionPage() : app.UseHsts();
+            if (env.IsDevelopment())
+            {
+                _ = app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                _ = app.UseExceptionHandler();
+                _ = app.UseHsts();
+            }
             _ = app.UseHttpsRedirection();
             _ = app.UseStaticFiles();
 

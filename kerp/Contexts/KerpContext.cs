@@ -120,6 +120,7 @@ public partial class KerpContext : DbContext
     {
     }
     //basladi
+    public virtual DbSet<DsrCostMaterialSelect> DsrCostMaterialSelect { get; set; }
     public virtual DbSet<PreCheckPermissionSelect> PreCheckPermissionSelect { get; set; }
     public virtual DbSet<DSRPermissionSelect> DSRPermissionSelect { get; set; }
     public virtual DbSet<UserDSRPermissionSelect> UserDSRPermissionSelect { get; set; }
@@ -371,6 +372,7 @@ public partial class KerpContext : DbContext
 
 
 
+        _ = modelBuilder.Entity<DsrCostMaterialSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<PreCheckPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<DSRPermissionSelect>().HasKey(q => q.Id);
         _ = modelBuilder.Entity<UserDSRPermissionSelect>().HasKey(q => q.Id);

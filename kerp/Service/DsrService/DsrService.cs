@@ -223,9 +223,9 @@ namespace kerp.Service.DsrService
             return 1;
         }
 
-        public async Task<int> DSRCostInsert(List<DSRCostInsert> request)
+        public async Task<int> DsrCostMaterialInsert(DsrCostMaterialInsert request)
         {
-            DSRCostSelect? result = _dsrRepository.DSRCostInsert(request);
+            DSRCostSelect? result = _dsrRepository.DsrCostMaterialInsert(request);
             if (result == null)
             {
                 return 0;

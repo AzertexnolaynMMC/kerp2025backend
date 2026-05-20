@@ -269,15 +269,15 @@
   },
   {
     "ContainingType": "kerp.Controllers.DsrController",
-    "Method": "DSRCostInsert",
-    "RelativePath": "api/Dsr/DSRCostInsert",
+    "Method": "DsrCostMaterialInsert",
+    "RelativePath": "api/Dsr/DsrCostMaterialInsert",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "System.Collections.Generic.List\u00601[[kerp.Prosedur.Dsr.Cost.DSRCostInsert, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "kerp.Prosedur.Dsr.Cost.DsrCostMaterialInsert",
         "IsRequired": true
       }
     ],
@@ -4387,26 +4387,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "kerp.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[kerp.WeatherForecast, kerp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "GetWeatherForecast"
   }
 ]
